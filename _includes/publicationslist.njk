@@ -1,0 +1,23 @@
+{%- set grouped = publicationslist | groupby("data.year") %}
+
+<p>
+	List with academic publications from the years.
+</p>
+
+
+{%- for year, publications in grouped %}
+
+<h2>{{ year }}</h2>
+
+<ol reversed class="postlist" style="--postlist-index: {{ yearGroup.items.length + 1 }}">
+{%- for publication in publications %}
+	<li>
+	<a href="{{ publication.url }}" class="postlist-link">
+		{{ publication.data.title }}
+	</a>
+	</li>
+{%- endfor %}
+</ol>
+{%- endfor %}
+
+<p><strong>Total Publications:</strong> {{ publicationslist | length }}</p>
