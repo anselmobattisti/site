@@ -235,7 +235,7 @@ header {
 	padding-left: 1.5rem;
 }
 .postlist-item {
-	display: flex;
+	display: block;
 	flex-wrap: wrap;
 	align-items: baseline;
 	counter-increment: start-from -1;
@@ -296,3 +296,10 @@ header {
 	margin-right: 1em;
 }
 
+/* About */
+.academic-formation .formation {
+	border: 10px solid var(--color-gray-90);
+	color: #000;
+	padding: 1em;
+	margin-bottom: 1em;
+}

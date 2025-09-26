@@ -7,7 +7,7 @@ abstract: "The use of ICTs (Information and Communication) as a tool for spreadi
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2014/CONTECSI/artigo.pdf"
 ---
 
-<h3>How to cite</h3>
+<strong>How to Cite:</strong>
 
 <pre>
 @inproceedings{Battisti2014,
