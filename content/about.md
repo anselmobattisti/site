@@ -75,9 +75,9 @@ My work bridges research and practice, exploring how technology can transform th
     <p><strong>Title:</strong> ESPERTO - Uma Ferramenta Web Para o Desenvolvimento Colaborativo e Uso de Sistemas Especialistas de Classificação</p>
     <p><strong>Advisor:</strong> Claudia Brandelero Rizzi</p>    
 	
-	<p>
-		<a href="https://github.com/anselmobattisti/publications/blob/main/docs/2009/2009-especializacao.pdf">Read Specialization Paper</a> 
-	</p>
+	  <p>
+		  <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2009/2009-especializacao.pdf">Read Specialization Paper</a> 
+	  </p>
 
   </div>
 
