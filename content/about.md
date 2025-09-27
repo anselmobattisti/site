@@ -10,6 +10,8 @@
 
 # Anselmo Luiz Éden Battisti
 
+## Bio
+
 I’m *Anselmo Luiz Éden Battisti*, **PhD in Computer Science from Fluminense Federal University (UFF)**, with research focused on Internet of Things (IoT), Edge Computing, and Virtual Network Functions (VNFs). My academic background also includes a **Master’s in Computer Science (UFF)**, a **Master’s in Strategic Management (PUCPR)**, a specialization in Java Development (Unioeste), and a **Bachelor’s in Computer Science (Unioeste)**.
 
 I have worked as a university professor and project manager, contributing to innovation-driven initiatives and participating in national and international projects in areas such as 5G, smart cities and digital platforms. These efforts resulted in scientific publications, patents registered in the United States and market-applied solutions. 
@@ -33,6 +35,10 @@ My work bridges research and practice, exploring how technology can transform th
 		<a href="https://github.com/anselmobattisti/publications/blob/main/docs/2025/Tese/tese.pdf">Read PhD’s Thesis</a> 
 	</p>
 
+  <p>
+    <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2025/Tese/apresentacao-defesa.pdf">Presentation</a>
+  </p>
+
   </div>
 
   <div class="formation">
@@ -44,6 +50,12 @@ My work bridges research and practice, exploring how technology can transform th
 	<p>
 		<a href="https://github.com/anselmobattisti/publications/blob/main/docs/2020/2020-mestrado-comptuacao.pdf">Read Master’s Thesis</a> 
 	</p>
+  <p>
+    <a href="https://www.youtube.com/watch?v=LnwZzGuZkVM&t=1967s">
+      Watch the Presentation
+    </a>
+  </p>
+
   </div>
 
   <div class="formation">

@@ -3,13 +3,28 @@ layout: layouts/base.njk
 ---
 <article>
   <h1>{{ title }}</h1>  
-  <p><strong>Year:</strong> {{ year }}
-  <p style="text-align: justify;"><strong>Abstract:</strong> {{ abstract }}</p>  
-  <p><strong>Event / Magazine:</strong> {{ event_magazine }}</p>  
+  <p><strong>Year:</strong> {{ year }}  
   
-  <p><strong>Download:</strong> 
-    <a href="{{ pdf_link }}" target="_blank" rel="noopener">PDF</a>    
+  <p><strong>Event / Magazine:</strong> {{ event_magazine }}</p>    
+
+    <p><strong>Document:</strong> 
+    <a href="{{ pdf_link }}" target="_blank" rel="noopener">Download</a>    
   </p>
+
+  {% if presentation_link %}
+    <p><strong>Presentation PDF:</strong> 
+      <a href="{{ presentation_link }}" target="_blank" rel="noopener">Download</a>    
+    </p>
+  {% endif %}
+
+  {% if video_link %}
+    <p><strong>Video Presentation:</strong> 
+      <a href="{{ video_link }}" target="_blank" rel="noopener">Watch</a>    
+    </p>
+  {% endif %}
+
+  <p style="text-align: justify;"><strong>Abstract:</strong> {{ abstract }}</p>  
+
   <div>
     {{ content | safe }}
   </div>
