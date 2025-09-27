@@ -1,5 +1,5 @@
 ---
-title: "Dynamic and Mobility-Aware VNF Placement in 5G-Edge Computing Environments"
+title: "A MAPE-K and Queueing Theory Approach for VNF Auto-scaling in Edge Computin"
 year: 2023
 tags: ["conference"]
 event_magazine: "CloudNet"

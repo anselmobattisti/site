@@ -304,3 +304,10 @@ header {
 	padding: 1em;
 	margin-bottom: 1em;
 }
+
+.patents .patent{
+	border: 10px solid var(--color-gray-90);
+	color: #000;
+	padding: 1em;
+	margin-bottom: 1em;
+}
