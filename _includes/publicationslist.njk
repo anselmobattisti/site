@@ -1,5 +1,7 @@
 <p>List of my academic publications and research.</p>
 
+<p><strong>Total Publications:</strong> {{ publicationslist | length }}</p>
+
 {% for year, pubs in publicationslist | groupby("data.year") | dictsort | reverse %}
   <h2>{{ year }}</h2>
   	
@@ -12,4 +14,4 @@
   </ul>
 {% endfor %}
 
-<p><strong>Total Publications:</strong> {{ publicationslist | length }}</p>
+

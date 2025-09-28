@@ -4,6 +4,40 @@
 	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
 }
 
+.social { 
+  padding: 0 1rem 1.25rem; 
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: .5rem 0 0;
+}
+.social-links a {
+  display: inline-flex;
+  width: 40px; /* tap target */
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  border: 1px solid var(--color-gray-20);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.social-links a:hover,
+.social-links a:focus-visible {
+  background-color: var(--color-gray-20);
+  border-color: var(--color-gray-50);
+}
+.social-links svg {
+  width: 22px;
+  height: 22px;
+}
+
 /* Theme colors */
 :root {
 	--color-gray-20: #e0e0e0;
