@@ -15,7 +15,7 @@ This page lists the academic background pursued by Anselmo Luiz Éden Battisti. 
 
 <section class="academic-formation">
   <div class="formation">
-    <h3>2020 – 2025 · Doutorado em Computação</h3>
+    <h3>2020 – 2025 · Ph.D. in Computer Science</h3>
     <p><strong>Institution:</strong> Universidade Federal Fluminense (UFF), Brasil</p>
     <p><strong>Title:</strong> SPEED - SFC Placement in Edge-Cloud Continuum: a Distributed Approach (2025)</p>
     <p>
@@ -33,7 +33,7 @@ This page lists the academic background pursued by Anselmo Luiz Éden Battisti. 
   </div>
 
   <div class="formation">
-    <h3>2018 – 2020 · Mestrado em Computação</h3>
+    <h3>2018 – 2020 · Master’s in Computer Science</h3>
     <p><strong>Institution:</strong> Universidade Federal Fluminense (UFF), Brasil</p>
     <p><strong>Title:</strong> V-PRISM: Uma Arquitetura para Virtualização na Edge de Sensores Multimídia em Ambientes de IoT (2020)</p>
     <p><strong>Advisor:</strong> Débora Christina Muchaluat Saade<br>
@@ -50,7 +50,7 @@ This page lists the academic background pursued by Anselmo Luiz Éden Battisti. 
   </div>
 
   <div class="formation">
-    <h3>2013 – 2015 · Mestrado em Administração</h3>
+    <h3>2013 – 2015 · Master’s in Strategic Business</h3>
     <p><strong>Institution:</strong> Pontifícia Universidade Católica do Paraná (PUC/PR), Brasil</p>
     <p><strong>Title:</strong> A INFLUÊNCIA DA INOVATIVIDADE E DO FINANCIAMENTO SOBRE O RESULTADO EM WEB START-UPS BRASILEIRAS (2015)</p>
     <p><strong>Advisor:</strong> Carlos Olavo Quandt</p>    
@@ -61,7 +61,7 @@ This page lists the academic background pursued by Anselmo Luiz Éden Battisti. 
   </div>
 
   <div class="formation">
-    <h3>2008 – 2009 · Especialização em Desenvolvimento de Software e Novas Tecnologias</h3>
+    <h3>2008 – 2009 · Specialization in Software Development and New Technologies</h3>
     <p><strong>Institution:</strong> Universidade Estadual do Oeste do Paraná (UNIOESTE), Brasil</p>
     <p><strong>Title:</strong> ESPERTO - Uma Ferramenta Web Para o Desenvolvimento Colaborativo e Uso de Sistemas Especialistas de Classificação</p>
     <p><strong>Advisor:</strong> Claudia Brandelero Rizzi</p>    
@@ -73,7 +73,7 @@ This page lists the academic background pursued by Anselmo Luiz Éden Battisti. 
   </div>
 
   <div class="formation">
-    <h3>2003 – 2007 · Graduação em Informática</h3>
+    <h3>2003 – 2007 · Graduation in Informatics (Computer Science)</h3>
     <p><strong>Institution:</strong> Universidade Estadual do Oeste do Paraná (UNIOESTE), Brasil</p>
     <p><strong>Title:</strong> Usabilidade em Sistemas Web - Um Estudo de Caso</p>
     <p><strong>Advisor:</strong> Carlos José Maria Olguin</p>
