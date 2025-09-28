@@ -210,6 +210,17 @@ header {
 	text-decoration: none;
 }
 
+/* Mobile nav toggle button (hidden on wide screens) */
+.nav-toggle {
+  display: none;
+  font: inherit;
+  padding: .4rem .7rem;
+  border: 1px solid var(--color-gray-90);
+  border-radius: 4px;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
 /* Nav */
 .nav {
 	display: flex;
@@ -311,3 +322,47 @@ header {
 	padding: 1em;
 	margin-bottom: 1em;
 }
+
+/* Bio: two-column layout */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  gap: 1rem;
+  align-items: start;
+  margin: 1em 0;
+  background-color: #e0e0e0;
+  padding: 1em;
+}
+.bio-col-left img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid var(--color-gray-90);
+}
+.bio-col-right p:first-child {
+  margin-top: 0;
+}
+
+/* Stack on small screens */
+@media (max-width: 700px) {
+  .bio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile menu behavior */
+@media (max-width: 700px) {
+  .nav-toggle { display: inline-block; }
+  /* Hide nav container by default, show when toggled */
+  #site-nav { display: none; width: 100%; }
+  #site-nav.is-open { display: block; }
+  /* Stack links vertically on mobile */
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding-top: .5rem;
+  }
+}
+  

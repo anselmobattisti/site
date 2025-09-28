@@ -1,20 +1,22 @@
 ---js
 {
-  eleventyNavigation: {
-    key: "Patents",
-    order: 3
-  }
+    eleventyNavigation: {
+        key: "Patents",
+        order: 3
+    },
+    title: "Anselmo Luiz Éden Battisti - List of Patents",
+    description: "List of some of patents published by Anselmo Luiz Éden Battisti with multiple authors during multiple research projects."   
 }
 ---
 
 # Patents
 
-List of patents co-authored.
+List of patents co-authored. For mode details about the patents access [Google Patents](https://patents.google.com/?inventor=anselmo+battisti).
 
 <section class="patents">
 
 <div class="patent">
-    <h3>2025 · Mobility-aware iterative sfc migration in a dynamic 5g edge environment</h3>
+    <h2>2025 · Mobility-aware iterative sfc migration in a dynamic 5g edge environment</h2>
     <p><strong>ID:</strong> US-2025106277-A1</p>
     <p><strong>Assignee/Applicant:</strong> Dell Products L.P.</p>
     <p><strong>Inventor(es):</strong> Ana Cristina Bernardo de Oliveira, Anselmo Luiz Éden Battisti, Débora Christina Muchaluat Saade, Evandro Luiz Cardoso Macedo, Flavia Coimbra Delicato, Juan Lucas do Rosário Vieira, Julia Drummond Noce, Marina Ivanov Pereira Josué, Paulo de Figueiredo Pires</p>
@@ -25,7 +27,7 @@ List of patents co-authored.
   </div>
   
   <div class="patent">
-    <h3>2025 · Logical network resource allocation and creation</h3>
+    <h2>2025 · Logical network resource allocation and creation</h2>
     <p><strong>ID:</strong> US-12244462-B2</p>
     <p><strong>Assignee/Applicant:</strong> Dell Products L.P.</p>
     <p><strong>Inventor(es):</strong> Ana Cristina Bernardo de Oliveira, Anselmo Luiz Eden Battisti, Arthur Albuquerque Zopellaro Soares, Debora Christina Muchaluat Saade, Evandro Luiz Cardoso Macedo, Flavia Coimbra Delicato, Juan Lucas do Rosario Vieira, Paulo de Figueiredo Pires, Marina Ivanov Pereira Josué</p>
@@ -38,7 +40,7 @@ List of patents co-authored.
 
 
   <div class="patent">
-    <h3>2024 · Dynamic virtual network function placement in edge computing environments</h3>
+    <h2>2024 · Dynamic virtual network function placement in edge computing environments</h2>
     <p><strong>ID:</strong> US-12143271-B2</p>
     <p><strong>Assignee/Applicant:</strong> Dell Products L.P.</p>
     <p><strong>Inventor(es):</strong> Ana Cristina Bernardo de Oliveira, Anselmo Luiz Éden Battisti, Arthur Albuquerque Zopellaro Soares, Débora Christina Muchaluat Saade, Evandro Luiz Cardoso Macedo, Flávia Coimbra Delicato, Juan Lucas Do Rosário Vieira, Marina Ivanov Pereira Josué, Paulo de Figueiredo Pires</p>
@@ -50,7 +52,7 @@ List of patents co-authored.
   </div>
 
   <div class="patent">
-    <h3>2024 · System and method for an auction-based scheme for service function chain placement</h3>
+    <h2>2024 · System and method for an auction-based scheme for service function chain placement</h2>
     <p><strong>ID:</strong> US-11916742-B1</p>
     <p><strong>Assignee/Applicant:</strong> Dell Products L.P.</p>
     <p><strong>Inventor(es):</strong> Julia Drummond Noce, Ana Cristina Bernardo de Oliveira, Anselmo Luiz Éden Battisti, Débora Christina Muchaluat Saade, Evandro Luiz Cardoso Macedo, Flávia Coimbra Delicato, Juan Lucas Do Rosário Vieira, Paulo de Figueiredo Pires, Marina Ivanov</p>
@@ -62,7 +64,7 @@ List of patents co-authored.
   </div>
 
   <div class="patent">
-    <h3>2024 · Systems and methods for predictive scaling of edge entities</h3>
+    <h2>2024 · Systems and methods for predictive scaling of edge entities</h2>
     <p><strong>ID:</strong> US-12003378-B1</p>
     <p><strong>Assignee/Applicant:</strong> Dell Products L.P.</p>
     <p><strong>Inventor(es):</strong> Ana Cristina Bernardo de Oliveira, André Ricardo de Carvalho Saraiva, Anselmo Luiz Éden Battisti, Antonio Augusto de Aragão Rocha, Flávia Coimbra Delicato, Ian Vilar Bastos, Paulo de Figueiredo Pires, Thais Vasconcelos Batista, Thiago Pereira da Silva, Evandro Luiz Cardoso Macedo</p>
@@ -74,7 +76,7 @@ List of patents co-authored.
   </div>
 
 <div class="patent">
-    <h3>2023 · Latency-capacity-and energy-aware vnf placement in edge computing environments</h3>
+    <h2>2023 · Latency-capacity-and energy-aware vnf placement in edge computing environments</h2>
     <p><strong>ID:</strong> US-2023130420-A1</p>
     <p><strong>Assignee/Applicant:</strong> EMC IP Holding Company LLC</p>
     <p><strong>Inventor(es):</strong> Douglas Paulo de Mattos, Anselmo Luiz Éden Battisti, Hugo de Oliveira Barbalho, Ana Cristina Bernardo de Oliveira, Flávia Coimbra Delicato, Paulo de Figueiredo Pires, Débora Christina Muchaluat Saade</p>

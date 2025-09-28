@@ -45,9 +45,10 @@
 		<header>
 			<a href="/" class="home-link">{{ metadata.title }}</a>
 
+			<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" title="Toggle navigation">Menu</button>
+
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
+			<nav id="site-nav" aria-label="Primary">
 				<ul class="nav">
 				{%- for entry in collections.all | eleventyNavigation %}
 					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
@@ -64,11 +65,21 @@
 
 		<footer>
 			<p>
-				<em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em>
 			</p>
 		</footer>
 
 		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+		<script>
+		(function() {
+		  const btn = document.querySelector('.nav-toggle');
+		  const nav = document.getElementById('site-nav');
+		  if (!btn || !nav) return;
+		  btn.addEventListener('click', function () {
+		    const open = nav.classList.toggle('is-open');
+		    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		  });
+		})();
+		</script>
 	</body>
 </html>

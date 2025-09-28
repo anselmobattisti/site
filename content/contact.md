@@ -3,7 +3,9 @@
   eleventyNavigation: {
     key: "Contact",
     order: 4
-  }
+  },
+  title: "Contact Anselmo Luiz Éden Battisti",
+  description: "Contact Anselmo Luiz Éden Battisti."  
 }
 ---
 
