@@ -1,6 +1,6 @@
-<p>List of my academic publications and research.</p>
-
-<p><strong>Total Publications:</strong> {{ publicationslist | length }}</p>
+<p>List of some of publications published by Anselmo Luiz Éden Battisti 
+  in co-authorship with other authors. I already publised <em>{{ publicationslist | length }}</em> papers in 
+  peer-reviewed magazines and events. Some papers have the PDF available for download and the BibTeX citation.</p>
 
 {% for year, pubs in publicationslist | groupby("data.year") | dictsort | reverse %}
   <h2>{{ year }}</h2>

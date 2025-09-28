@@ -11,7 +11,7 @@
 
 # Patents
 
-List of patents co-authored. For mode details about the patents access [Google Patents](https://patents.google.com/?inventor=anselmo+battisti).
+List of patents co-authored. For mode details about the patents access [Google Patents](https://patents.google.com/?inventor=anselmo+battisti). The patents are sorted by year in descending order. Some patents have the PDF available for download.
 
 <section class="patents">
 
