@@ -10,7 +10,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2025/J
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @article{Quico_2025, 
   title={L-PRISM: A Domain-Specific Language for Describing Multimedia Service Function Chains}, 
   volume={31}, 
@@ -23,4 +23,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2025/J
   month={8}, 
   pages={545–569}
 }
-</pre>
+{% endhighlight %}

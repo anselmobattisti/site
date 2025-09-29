@@ -9,7 +9,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2021/I
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @ARTICLE{9404150,
   author={Battisti, Anselmo Luiz Éden and Muchaluat-Saade, Débora Christina and Delicato, Flávia C.},
   journal={IEEE Access}, 
@@ -21,4 +21,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2021/I
   keywords={Sensors;Streaming media;Computer architecture;Cloud computing;Virtualization;Wireless sensor networks;Internet of Things;Edge computing;Internet of Media Things;Internet of Things;virtual multimedia sensors},
   doi={10.1109/ACCESS.2021.3073240}
 }
-</pre>
+{% endhighlight %}

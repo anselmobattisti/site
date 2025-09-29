@@ -11,7 +11,7 @@ presentation_link: "https://github.com/anselmobattisti/publications/blob/main/do
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @INPROCEEDINGS{9221199,
   author={Battisti, Anselmo Luiz Éden and Muchaluat-Saade, Débora Christina and Delicato, Flávia C.},
   booktitle={2020 IEEE 6th World Forum on Internet of Things (WF-IoT)}, 
@@ -23,4 +23,4 @@ presentation_link: "https://github.com/anselmobattisti/publications/blob/main/do
   keywords={Soft sensors;Multimedia computing;Computer architecture;Telecommunication traffic;Streaming media;Data processing;Delays;Virtual Multimedia Sensors;Internet of Things;Edge Computing},
   doi={10.1109/WF-IoT48130.2020.9221199}
   }
-</pre>
+{% endhighlight %}

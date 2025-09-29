@@ -9,7 +9,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2014/C
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @inproceedings{Battisti2014,
   series = {CONTECSI},
   title = {A e-PARTICIPAÇÃO COMO FERRAMENTA DE TRANSFORMAÇÃO SOCIAL - UM ESTUDO DE CASO},
@@ -22,4 +22,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2014/C
   month = may,
   collection = {CONTECSI}
 }
-</pre>
+{% endhighlight %}

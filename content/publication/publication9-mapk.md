@@ -10,7 +10,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/C
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @INPROCEEDINGS{10490065,
   author={Silva, Thiago P. and Batista, Thais V. and Battisti, Anselmo L. and Saraiva, Andre and Rocha, Antonio A. and Delicato, Flavia C. and Bastos, Ian Vilar and Macedo, Evandro L. C. and de Oliveira, Ana C. B. and Pires, Paulo F.},
   booktitle={2023 IEEE 12th International Conference on Cloud Networking (CloudNet)}, 
@@ -21,4 +21,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/C
   pages={144-152},
   keywords={Cloud computing;Service function chaining;Heuristic algorithms;Virtual machining;Software;Network function virtualization;Servers;Autonomic Computing;Auto-scaling;Edge Computing;Network Function Virtualization;Queueing Theory},
   doi={10.1109/CloudNet59005.2023.10490065}}
-</pre>
+{% endhighlight %}

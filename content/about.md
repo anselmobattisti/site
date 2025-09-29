@@ -24,10 +24,7 @@
 
   </div>
 </div>
-  <hr>
-  <p>I have worked as a university professor and project manager, contributing to innovation-driven initiatives and participating in national and international projects in areas such as 5G, smart cities and digital platforms. These efforts resulted in scientific publications, patents registered in the United States and market-applied solutions. </p>
+  
+  <p>I have worked as a project manager and professor for two decades, contributing to innovation-driven initiatives and participating in national and international projects in areas such as 5G, smart cities and digital platforms. These efforts resulted in scientific publications, patents registered in the United States and market-applied solutions. </p>
 
-  <p>As one of the founders of Webgenium, I have continued this journey by driving digital innovation and creating solutions that support businesses in their transformation processes, combining hands-on experience in web and digital projects with a broader vision of how technology can generate meaningful impact. This path has allowed me to bridge academic research with real-world applications, reinforcing my commitment to turning knowledge into practical, smart and effective solutions.</p>
-
-  <p>My work bridges research and practice, exploring how technology can transform the way we connect, process information, and innovate across different sectors.</p>
-
+  <p>As one of the founders of <a target="_blank" href="https://webgenium.com.br/"><strong>Webgenium</strong></a>, I have continued this journey by driving digital innovation and creating solutions that support businesses in their transformation processes, combining hands-on experience in web and digital projects with a broader vision of how technology can generate meaningful impact. This path has allowed me to bridge academic research with real-world applications, reinforcing my commitment to turning knowledge into practical, smart and effective solutions.</p>

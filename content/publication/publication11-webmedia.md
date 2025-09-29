@@ -10,7 +10,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2024/W
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @inproceedings{webmedia,
  author = {Franklin Quico and Anselmo Battisti and Débora Muchaluat-Saade and Flavia Delicato},
  title = { A Domain-Specific Language for Multimedia Service Function Chains based on Virtualization of Sensors},
@@ -25,4 +25,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2024/W
  doi = {10.5753/webmedia.2024.243129},
  url = {https://sol.sbc.org.br/index.php/webmedia/article/view/30292}
 }
-</pre>
+{% endhighlight %}

@@ -10,7 +10,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2024/C
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}    
 @article{VIEIRA2024110571,
 title = {Mobility-aware SFC migration in dynamic 5G-Edge networks},
 journal = {Computer Networks},
@@ -23,4 +23,4 @@ url = {https://www.sciencedirect.com/science/article/pii/S1389128624004031},
 author = {Juan Lucas Vieira and Evandro L.C. Macedo and Anselmo L.E. Battisti and Julia Noce and Paulo F. Pires and Débora C. Muchaluat-Saade and Ana C.B. Oliveira and Flavia C. Delicato},
 keywords = {Service function chain, Virtual network function, Migration, Edge computing, User mobility},
 }
-</pre>
+{% endhighlight %}

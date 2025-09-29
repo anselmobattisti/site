@@ -9,7 +9,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2015/C
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @inproceedings{Battisti2015,
   series = {CONTECSI},
   title = {A INFLUundefinedNCIA DA INOVATIVIDADE E DO FINANCIAMENTO SOBRE O RESULTADO EM WEB START-UPS BRASILEIRAS},
@@ -22,4 +22,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2015/C
   month = jun,
   collection = {CONTECSI}
 }
-</pre>
+{% endhighlight %}

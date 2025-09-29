@@ -9,7 +9,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/S
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @article{macedo2023distributed,
   title={Distributed Auction-Based SFC Placement in a Multi-domain 5G Environment},
   author={Macedo, Evandro LC and Battisti, Anselmo LE and Vieira, Juan Lucas and Noce, Julia and Pires, Paulo F and Muchaluat-Saade, D{\'e}bora C and Oliveira, Ana CB and Delicato, Flavia C},
@@ -20,4 +20,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/S
   year={2023},
   publisher={Springer}
 }
-</pre>
+{% endhighlight %}

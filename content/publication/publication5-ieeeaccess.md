@@ -9,7 +9,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/?tab=readme-ov-file"
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @inproceedings{wgrs,
  author = {Anselmo Battisti and Débora Muchaluat-Saade and Flávia Delicato},
  title = { Uma Proposta de Arquitetura para Virtualização de Sensores Multimídia na Borda da Rede},
@@ -24,4 +24,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/?tab=readme-ov-file"
  doi = {10.5753/wgrs.2020.12464},
  url = {https://sol.sbc.org.br/index.php/wgrs/article/view/12464}
 }
-</pre>
+{% endhighlight %}

@@ -10,7 +10,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/N
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @INPROCEEDINGS{10175437,
   author={Vieira, Juan Lucas and Battisti, Anselmo L. E. and Macedo, Evandro L. C. and Pires, Paulo F. and Muchaluat-Saade, Débora C. and Delicato, Flavia C. and Oliveira, Ana C. B.},
   booktitle={2023 IEEE 9th International Conference on Network Softwarization (NetSoft)}, 
@@ -22,4 +22,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/N
   keywords={Energy consumption;5G mobile communication;Heuristic algorithms;Quality of service;Programming;Network function virtualization;Resource management;Network Function Virtualization;5G;Edge Computing;User Mobility},
   doi={10.1109/NetSoft57336.2023.10175437}
 }
-</pre>
+{% endhighlight %}

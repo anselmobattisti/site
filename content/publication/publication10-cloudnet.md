@@ -11,7 +11,7 @@ presentation_link: "https://github.com/anselmobattisti/publications/blob/main/do
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @INPROCEEDINGS{10815829,
   author={Éden Battisti, Anselmo Luiz and Delicato, Flavia C. and Muchaluat-Saade, Débora Christina},
   booktitle={2024 IEEE 13th International Conference on Cloud Networking (CloudNet)}, 
@@ -23,4 +23,4 @@ presentation_link: "https://github.com/anselmobattisti/publications/blob/main/do
   keywords={Cloud computing;Costs;Service function chaining;Stars;Complex networks;Network function virtualization;Topology;Bars;Service Function Chain;SFC placement;SFC segmentation},
   doi={10.1109/CloudNet62863.2024.10815829}
 }
-</pre>
+{% endhighlight %}

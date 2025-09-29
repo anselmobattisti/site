@@ -9,7 +9,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2018/P
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @article{Battisti2018,
   title = {A influ\^encia da inovatividade e do financiamento sobre o resultado em web startups brasileiras},
   volume = {5},
@@ -24,4 +24,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2018/P
   month = sep,
   pages = {43–69}
 }
-</pre>
+{% endhighlight %}

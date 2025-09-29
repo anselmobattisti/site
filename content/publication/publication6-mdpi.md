@@ -9,7 +9,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2022/M
 
 <strong>How to Cite:</strong>
 
-<pre>
+{% highlight "bibtex" %}
 @article{Battisti2022,
   title = {A Novel Strategy for VNF Placement in Edge Computing Environments},
   volume = {14},
@@ -24,4 +24,4 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2022/M
   month = nov,
   pages = {361}
 }
-</pre>
+{% endhighlight %}
