@@ -1,5 +1,5 @@
 ---
-title: "L-PRISM: A Domain-Specific Language for Describing Multimedia Service Function Chains"
+title: "Speed: a distributed approach for SFC placement in the edge-cloud continuum"
 year: 2026
 tags: ["magazine"]
 event_magazine: "Annals of Telecommunications"
