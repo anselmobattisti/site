@@ -14,7 +14,15 @@
 
 <div class="bio-grid">
   <div class="bio-col-left">
-    <img loading="lazy" decoding="async" src="./about/anselmo_oliver.jpg" alt="Anselmo Luiz Éden Battisti e Oliver">
+    <img
+      src="./about/anselmo_oliver_mini.png"
+      alt="Anselmo Luiz Éden Battisti e Oliver"
+      width="144"
+      height="215"
+      fetchpriority="high"
+      decoding="async"
+    />
+
     <p style="font-size: 14px; text-align: center; margin-top:0px; font-style: italic">
       Anselmo e Oliver
     </p>

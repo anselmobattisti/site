@@ -3,13 +3,7 @@
 	<head>
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2Z5QQ6Q24"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
 
-		gtag('config', 'G-V2Z5QQ6Q24');
-		</script>
 		<meta charset="utf-8">
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,7 +72,7 @@
 		</main>
 
 		<footer>
-			<hr/>
+			<hr/>			
 			<nav class="social" aria-label="Social links">
 				<ul class="social-links">
 					<li>
@@ -101,7 +95,7 @@
 						</a>
 					</li>
 				</ul>
-			</nav>
+			</nav>			
 		</footer>
 
 		<script type="text/javascript">
@@ -116,5 +110,13 @@
 		})();
 		</script>
 
+		{% raw %}
+		<script type="text/javascript">
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-V2Z5QQ6Q24');
+		</script>
+		{% endraw %}
 	</body>
 </html>
