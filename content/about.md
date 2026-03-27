@@ -28,7 +28,9 @@
     </p>
   </div>
   <div class="bio-col-right">
-    <p>I’m <strong>Anselmo Luiz Éden Battisti</strong>, <strong>PhD in Computer Science from Fluminense Federal University (UFF)</strong>, with research focused on Internet of Things (IoT), Edge Computing, and Virtual Network Functions (VNFs). My academic background also includes a <strong>Master’s in Computer Science (UFF)</strong>, a <strong>Master’s in Strategic Management (PUCPR)</strong>, a specialization in Java Development (Unioeste), and a <strong>Bachelor’s in Computer Science (Unioeste)</strong>.</p>
+    <!-- <p>I’m <strong>Anselmo Luiz Éden Battisti</strong>, <strong>PhD in Computer Science from Fluminense Federal University (UFF)</strong>, with research focused on Internet of Things (IoT), Edge Computing, and Virtual Network Functions (VNFs). My academic background also includes a <strong>Master’s in Computer Science (UFF)</strong>, a <strong>Master’s in Strategic Management (PUCPR)</strong>, a specialization in Java Development (Unioeste), and a <strong>Bachelor’s in Computer Science (Unioeste)</strong>.</p> -->
+
+    <p>I’m <strong>Anselmo Luiz Éden Battisti</strong>. I completed a <strong>PhD in Computer Science at Fluminense Federal University (UFF)</strong>, where my research focused on the Service Function Chain Placement Problem, under the supervision of <strong><a style="color: #fff" href="https://lattes.cnpq.br/5386282151810710">Flávia Coimbra Delicato</a></strong> and <strong><a style="color: #fff" href="https://lattes.cnpq.br/2448703093928632">Debora Christina Muchaluat Saade</a></strong>. My academic background also includes a <strong>Master’s in Strategic Management (PUCPR)</strong>, where I was supervised by <strong><a style="color: #fff"  href="https://lattes.cnpq.br/6550914415733724">Carlos Olavo Quandt</a></strong>, a <strong>Master’s in Computer Science (UFF)</strong>, a specialization in Java Development (Unioeste), and a <strong>Bachelor’s in Computer Science (Unioeste)</strong>.</p>
 
   </div>
 </div>

@@ -10,6 +10,7 @@
 ---
 <h1>Publications</h1>
 
+{# Sort by 'year' in reverse order (newest first) #}
+{% set publicationslist = collections.publications | sort(attribute="data.year") %}
 
-{% set publicationslist = collections.publications %}
 {% include "publicationslist.njk" %}
