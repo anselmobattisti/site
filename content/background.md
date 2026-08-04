@@ -2,7 +2,7 @@
 {
   eleventyNavigation: {
     key: "Background",
-    order: 1
+    order: 4
   },  
   title: "Anselmo Luiz Éden Battisti - Academic Background",
   description: "List of academic background pursued by Anselmo Luiz Éden Battisti. It covers the undergraduate, master's and doctoral degrees."

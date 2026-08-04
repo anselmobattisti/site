@@ -2,7 +2,8 @@
 {
     eleventyNavigation: {
         key: "Patents",
-        order: 3
+        parent: "Research",
+        order: 2
     },
     title: "Anselmo Luiz Éden Battisti - List of Patents",
     description: "List of some of patents published by Anselmo Luiz Éden Battisti with multiple authors during multiple research projects."   
