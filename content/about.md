@@ -10,7 +10,7 @@
 }
 ---
 
-# Anselmo Luiz Éden Battisti
+# About
 
 
 <div class="bio-banner">
