@@ -99,6 +99,20 @@ html {
 
 body {
 	max-width: 48em;
+	/* Sticky footer: keeps <footer> at the bottom of the viewport on short pages */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100svh;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+footer {
+	flex-shrink: 0;
+	margin-top: 2rem;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -604,6 +618,7 @@ pre {
 	gap: 1.5rem;
 	margin-top: 2rem;
 }
+
 .contact-card {
 	border: 10px solid #082840;
 	padding: 1.5em;
@@ -611,15 +626,18 @@ pre {
 	flex-direction: column;
 	justify-content: space-between;
 }
+
 .contact-card h3 {
 	margin-top: 0;
 	font-size: 1.25em;
 }
+
 .contact-card p {
 	margin: 0.5em 0 1.5em 0;
 	font-size: 0.95em;
 	color: var(--text-color);
 }
+
 .contact-btn {
 	display: inline-block;
 	background-color: #082840;
@@ -632,17 +650,25 @@ pre {
 	transition: background-color 0.2s ease;
 	margin-top: auto;
 }
+
 .contact-btn:hover {
 	background-color: var(--text-color-link);
 }
+
 .contact-grid .contact-card:first-child {
 	grid-column: span 2;
 }
+
 @media (max-width: 600px) {
 	.contact-grid {
 		grid-template-columns: 1fr;
 	}
+
 	.contact-grid .contact-card:first-child {
 		grid-column: span 1;
 	}
+}
+
+h1 {
+	font-size: 1.4em;
 }
