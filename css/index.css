@@ -482,6 +482,11 @@ header {
 	margin-bottom: 1em;
 }
 
+/* Past positions: lighter border to set them apart from current roles */
+.work-experience .job-card--past {
+	border-color: var(--color-gray-20);
+}
+
 .job-header {
 	display: flex;
 	justify-content: space-between;

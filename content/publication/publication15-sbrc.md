@@ -1,6 +1,7 @@
 ---
 title: "SPEED - SFC Placement in Edge-Cloud Continuum: a Distributed Approach"
 year: 2026
+date: 2026-01-01
 tags: ["conference"]
 event_magazine: "SBRC (Concurso de Teses e Dissertações)"
 abstract: "In the last decades, there has been a trend to virtualize computing and networking resources. This approach was initially adopted in the core functions of the network, thus creating the Network Function Virtualization paradigm. The process that defines the computational nodes and links to execute a set of Virtual Network Functions (VNF) is called placement. However, executing only VNFs individually is often not enough to meet users requirements. Therefore, the Service Function Chain (SFC) concept was created. With the advancement of the Edge-Cloud continuum infrastructure, SFCs started to be executed on multiple nodes, sometimes managed by independent service providers. In this multi-domain scenario, a distributed placement mechanism to allocate SFCs without complete knowledge of the infrastructure is required. In this work, we propose a new approach named SPEED to solve the SFC Placement Problem over a multi-domain environment in a distributed manner. The solution encompasses algorithms and a new mapping model between the SFCPP and the Game Theory approach. The results show that SPEED is feasible and, compared to other approaches, has a gain of 30% in the number of SFC requests placed."

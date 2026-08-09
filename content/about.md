@@ -15,7 +15,7 @@
 
 <div class="bio-banner">
 
-  <img style="float:left; margin-right:10px" src="{{ 'img/anselmo_no_impatech.jpeg' | url }}" alt="Lattes" width="250" loading="lazy" decoding="async">
+  <img style="float:left; margin-right:10px" src="{{ 'img/anselmo_no_impatech.jpeg' | url }}" alt="Portrait of Anselmo Luiz Éden Battisti" width="250" loading="lazy" decoding="async">
   
   <p>I’m <strong>Anselmo Luiz Éden Battisti</strong>. I completed my <strong>PhD and Master’s in Computer Science at Fluminense Federal University (UFF)</strong>, where my research focused on the SFC Placement Problem, under the supervision of <strong><a style="color: #fff" href="https://lattes.cnpq.br/5386282151810710">Flávia Coimbra Delicato</a></strong> and <strong><a style="color: #fff" href="https://lattes.cnpq.br/2448703093928632">Debora Christina Muchaluat Saade</a></strong>. My background also includes a <strong>Master’s in Strategic Management (PUCPR)</strong>, where I was supervised by <strong><a style="color: #fff"  href="https://lattes.cnpq.br/6550914415733724">Carlos Olavo Quandt</a></strong>, a specialization in Java Development, and a Bachelor’s in Computer Science (Unioeste).</p>
 </div>

@@ -1,20 +1,17 @@
-<p>List of some of publications published by Anselmo Luiz Éden Battisti 
-  in co-authorship with other authors. I already publised <em>{{ publicationslist | length }}</em> papers in 
+<p>List of some of publications published by Anselmo Luiz Éden Battisti
+  in co-authorship with other authors. I already publised <em>{{ publicationslist | length }}</em> papers in
   peer-reviewed magazines and events. Some papers have the PDF available for download and the BibTeX citation.</p>
 
-  <section class="patents">
-    
-    {% for pub in publicationslist | sort(false, false, "data.date") | reverse %}
-
-        <div class="patent">
-        <h2 class="publication-title">
-          <a href="{{ pub.url }}">{{ pub.data.title }}</a>
-        </h2>
-        <p class="publication-meta">
-          <span class="publication-venue">{{ pub.data.event_magazine }}</span> /
-          <span class="publication-year">{{ pub.data.year }}</span>
-        </p>
-      </div>
-    {% endfor %}
-  </div>
-
+<section class="patents">
+  {% for pub in publicationslist | sort(false, false, "data.date") | reverse %}
+    <div class="patent">
+      <h2 class="publication-title">
+        <a href="{{ pub.url }}">{{ pub.data.title }}</a>
+      </h2>
+      <p class="publication-meta">
+        <span class="publication-venue">{{ pub.data.event_magazine }}</span> /
+        <span class="publication-year">{{ pub.data.year }}</span>
+      </p>
+    </div>
+  {% endfor %}
+</section>
