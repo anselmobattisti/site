@@ -38,12 +38,15 @@
 
 		<link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
 
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@400;500;700&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+		{#- The face every page paints first: start it before layout reaches
+		    the text that needs it. #}
+		<link rel="preload" href="{{ '/fonts/roboto-latin.woff2' | url }}" as="font" type="font/woff2" crossorigin>
 
-		{#- Add the contents of a file to the bundle #}
-		<style>{% include "css/index.css" %}</style>
+		{#- Fonts are served from this origin and inlined with the rest of the
+		    CSS. A <link> to fonts.googleapis.com would block the first render
+		    on a third-party round trip before a single byte of text appears. #}
+		{%- set siteCss %}{% include "css/fonts.css" %}{% include "css/index.css" %}{% endset %}
+		<style>{{ siteCss | cssmin | safe }}</style>
 
 		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
 		<style>{% getBundle "css" %}</style>
@@ -142,12 +145,6 @@
 						</ul>
 					</nav>
 
-					<div class="rail-links">
-						<a href="{{ metadata.profiles.lattes }}" target="_blank" rel="noopener">Lattes</a>
-						<a href="{{ metadata.profiles.scholar }}" target="_blank" rel="noopener">Scholar</a>
-						<a href="{{ metadata.profiles.github }}" target="_blank" rel="noopener">GitHub</a>
-						<a href="{{ metadata.profiles.youtube }}" target="_blank" rel="noopener">YouTube</a>
-					</div>
 				</div>
 			</div>
 

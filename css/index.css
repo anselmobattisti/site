@@ -24,8 +24,12 @@
 	--accent-contrast: #2b2418;
 
 	--font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-	--font-family-display: "Spectral", Georgia, "Times New Roman", serif;
-	--font-family-monospace: "Roboto Mono", ui-monospace, Consolas, Menlo, Monaco, "Courier New", monospace;
+	/* Headings share the body face; the token stays so a display face can be
+	   swapped back in from one place. */
+	--font-family-display: "Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+	/* Labels, identifiers and figures. Same face as everything else — the role
+	   is carried by size, tracking and case, not by a second typeface. */
+	--font-family-data: "Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
 
 	--syntax-tab-size: 2;
 
@@ -203,7 +207,7 @@ main :is(h1, h2, h3) + p {
 }
 
 .eyebrow {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -263,7 +267,6 @@ main p,
 	max-width: var(--shell-max);
 	margin: 0 auto;
 	min-height: 100vh;
-	min-height: 100svh;
 	display: grid;
 	grid-template-columns: var(--rail-width) minmax(0, 1fr);
 	grid-template-rows: 1fr auto;
@@ -280,10 +283,32 @@ main p,
 
 .rail-inner {
 	position: sticky;
-	top: 1.5rem;
+	/* Matches the rail's padding-top: with a smaller offset the block slides
+	   up by the difference on the first scroll before it sticks. */
+	top: 2rem;
+	/* A sticky element taller than the viewport cannot stick at all — it just
+	   scrolls away. Cap it and let the rail scroll inside itself instead. */
+	max-height: calc(100vh - 4rem);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	scrollbar-width: thin;
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
+}
+
+/* Dynamic viewport units where they exist, plain vh everywhere else. Written
+   as @supports rather than a duplicate declaration so minification keeps both. */
+@supports (min-height: 100svh) {
+	.shell {
+		min-height: 100svh;
+	}
+}
+
+@supports (height: 100dvh) {
+	.rail-inner {
+		max-height: calc(100dvh - 4rem);
+	}
 }
 
 .identity {
@@ -392,28 +417,6 @@ main p,
 	font-size: 0.87rem;
 }
 
-.rail-links {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.4rem;
-}
-
-.rail-links a {
-	font-family: var(--font-family-monospace);
-	font-size: 0.7rem;
-	text-decoration: none;
-	color: var(--muted);
-	border: 1px solid var(--rule);
-	border-radius: 2px;
-	padding: 0.2rem 0.45rem;
-	transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.rail-links a:hover {
-	color: var(--accent-ink);
-	border-color: var(--accent-strong);
-}
-
 /* Mobile nav toggle, hidden on wide screens */
 .nav-toggle {
 	display: none;
@@ -446,7 +449,7 @@ main p,
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 0.5rem 1.25rem;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.71rem;
 	color: var(--muted);
 }
@@ -532,7 +535,7 @@ h2:focus-within .ha-placeholder {
 
 .section-head .more {
 	margin-left: auto;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.74rem;
 	text-decoration: none;
 	white-space: nowrap;
@@ -631,7 +634,7 @@ pre.mermaid > svg {
 p.diagram-caption {
 	max-width: none;
 	margin: 0.7rem 0 0;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.71rem;
 	line-height: 1.5;
 	color: var(--muted);
@@ -662,7 +665,7 @@ p.diagram-caption {
 .diagram-zoom {
 	display: inline-block;
 	margin: 0.6rem 0 0;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	cursor: pointer;
 	padding: 0.2rem 0.6rem;
@@ -719,7 +722,7 @@ dialog.lightbox::backdrop {
 	gap: 1rem;
 	padding: 0.5rem 0.75rem;
 	border-bottom: 1px solid var(--rule-soft);
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	line-height: 1.4;
 	color: var(--muted);
@@ -787,7 +790,7 @@ dialog.lightbox::backdrop {
 
 .diagram figcaption {
 	margin-top: 0.7rem;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.71rem;
 	line-height: 1.5;
 	color: var(--muted);
@@ -825,7 +828,7 @@ dialog.lightbox::backdrop {
 .stat .l {
 	display: block;
 	margin-top: 0.3rem;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.68rem;
 	letter-spacing: 0.07em;
 	text-transform: uppercase;
@@ -871,7 +874,7 @@ dialog.lightbox::backdrop {
 }
 
 .topics li {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	color: var(--ink-soft);
 	background-color: var(--surface);
@@ -892,7 +895,7 @@ dialog.lightbox::backdrop {
 
 .award .tag {
 	display: block;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.68rem;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -981,7 +984,7 @@ dialog.lightbox::backdrop {
 }
 
 .entry-year {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.8rem;
 	font-variant-numeric: tabular-nums;
 	color: var(--muted);
@@ -1027,7 +1030,7 @@ dialog.lightbox::backdrop {
 }
 
 .venue {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	color: var(--ink-soft);
 	background-color: var(--surface-2);
@@ -1037,7 +1040,7 @@ dialog.lightbox::backdrop {
 }
 
 .kind {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.66rem;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -1056,7 +1059,7 @@ dialog.lightbox::backdrop {
 }
 
 .entry-links a {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	text-decoration: none;
 }
@@ -1067,7 +1070,7 @@ dialog.lightbox::backdrop {
 
 /* Patent identifiers are data, so they get the data face */
 .entry-id {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.73rem;
 	color: var(--accent-ink);
 	margin: 0.3rem 0 0;
@@ -1085,7 +1088,7 @@ dialog.lightbox::backdrop {
 
 .entry summary {
 	width: fit-content;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	color: var(--muted);
 	cursor: pointer;
@@ -1103,7 +1106,7 @@ dialog.lightbox::backdrop {
 }
 
 .lang-tag {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.78rem;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
@@ -1133,7 +1136,7 @@ dialog.lightbox::backdrop {
 
 .filters .fl {
 	margin-right: 0.3rem;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.68rem;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -1142,7 +1145,7 @@ dialog.lightbox::backdrop {
 
 .chip {
 	font: inherit;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.74rem;
 	cursor: pointer;
 	background-color: var(--surface);
@@ -1203,7 +1206,7 @@ dialog.lightbox::backdrop {
 .tl-period {
 	display: block;
 	margin-bottom: 0.18rem;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	font-variant-numeric: tabular-nums;
 	color: var(--muted);
@@ -1251,7 +1254,7 @@ dialog.lightbox::backdrop {
 }
 
 .contact-lead .mail {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 1.05rem;
 	text-decoration: none;
 }
@@ -1261,7 +1264,7 @@ dialog.lightbox::backdrop {
 }
 
 .contact-lead .where {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.74rem;
 	font-style: normal;
 	line-height: 1.7;
@@ -1319,7 +1322,7 @@ dialog.lightbox::backdrop {
 
 .p-handle {
 	margin-left: auto;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.72rem;
 	color: var(--muted);
 	text-align: right;
@@ -1346,7 +1349,7 @@ dialog.lightbox::backdrop {
 
 .publication-facts dt,
 .publication-facts .k {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.7rem;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -1394,7 +1397,7 @@ dialog.lightbox::backdrop {
    ========================================================================== */
 pre,
 code {
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 }
 
 /* Code blocks in an article — in practice the BibTeX entry on every
@@ -1429,7 +1432,7 @@ code {
 	position: absolute;
 	top: 0.5rem;
 	right: 0.5rem;
-	font-family: var(--font-family-monospace);
+	font-family: var(--font-family-data);
 	font-size: 0.68rem;
 	letter-spacing: 0.04em;
 	cursor: pointer;
@@ -1501,6 +1504,8 @@ table th {
 
 	.rail-inner {
 		position: static;
+		max-height: none;
+		overflow: visible;
 		gap: 1rem;
 	}
 
@@ -1576,6 +1581,13 @@ table th {
 
 	/* Three stats do not divide into two columns without leaving one alone,
 	   and the labels are too long to sit three-up on a phone. */
+	/* Opt a block out of the phone layout entirely. On the home page this drops
+	   the Research section, whose diagram is the one thing that does not
+	   survive the narrow column. */
+	.hide-on-mobile {
+		display: none;
+	}
+
 	.stats {
 		grid-template-columns: 1fr;
 	}
@@ -1624,7 +1636,6 @@ table th {
    ========================================================================== */
 @media print {
 	.rail nav,
-	.rail-links,
 	.nav-toggle,
 	.filters,
 	.hero-actions,

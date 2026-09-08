@@ -34,7 +34,7 @@
   <li class="stat"><span class="n">10+</span><span class="l">Years teaching</span></li>
 </ul>
 
-<section class="section">
+<section class="section hide-on-mobile">
   <div class="section-head">
     <h2>Research</h2>
     <a class="more" href="/research/">Publications, patents &amp; awards →</a>
@@ -44,7 +44,7 @@
 
 <figure class="diagram">
   <svg viewBox="0 0 710 148" role="img" aria-label="A multimedia service function chain: a camera at the device tier, transcode and object-detection VNFs at the edge tier, and analytics in the cloud, connected by 12, 6 and 41 millisecond links.">
-    <g font-family="Roboto Mono, monospace">
+    <g font-family="Roboto, sans-serif">
       <text x="78" y="16" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle" letter-spacing="1.2">DEVICE</text>
       <text x="262" y="16" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle" letter-spacing="1.2">EDGE</text>
       <text x="446" y="16" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle" letter-spacing="1.2">EDGE</text>
