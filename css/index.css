@@ -780,7 +780,7 @@ dialog.lightbox::backdrop {
 /* Stat strip */
 .stats {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	border-top: 1px solid var(--rule);
 	margin: 2rem 0 0;
 	padding: 0;
@@ -1505,11 +1505,13 @@ table th {
 		min-width: 700px;
 	}
 
+	/* Three stats do not divide into two columns without leaving one alone,
+	   and the labels are too long to sit three-up on a phone. */
 	.stats {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 	}
 
-	.stat:nth-child(2n) {
+	.stat {
 		border-right: none;
 	}
 

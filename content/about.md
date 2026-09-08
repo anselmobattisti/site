@@ -31,8 +31,7 @@
 <ul class="stats">
   <li class="stat"><span class="n">{{ collections.publications | length }}</span><span class="l">Publications</span></li>
   <li class="stat"><span class="n">06</span><span class="l">US patents</span></li>
-  <li class="stat"><span class="n">02</span><span class="l">Master’s degrees</span></li>
-  <li class="stat"><span class="n">20</span><span class="l">Years teaching</span></li>
+  <li class="stat"><span class="n">10+</span><span class="l">Years teaching</span></li>
 </ul>
 
 <section class="section">
