@@ -10,7 +10,7 @@ abstract: "The fifth-generation mobile networks bring an evolution in the develo
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2024/ComputerNetworks/article.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}    
 @article{VIEIRA2024110571,

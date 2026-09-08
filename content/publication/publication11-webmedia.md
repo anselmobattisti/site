@@ -10,7 +10,7 @@ abstract: "Virtualization is a widely used technology that can abstract the comp
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2024/WebMedia/paper-webmedia-2024.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @inproceedings{webmedia,

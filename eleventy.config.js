@@ -140,6 +140,11 @@ export default async function(eleventyConfig) {
 		// selector: "h1,h2,h3,h4,h5,h6", // default
 	});
 
+	// Publications flagged `featured: true` in front matter, for the home page.
+	eleventyConfig.addCollection("featuredPublications", (collectionApi) => {
+		return collectionApi.getFilteredByTag("publications").filter((item) => item.data.featured);
+	});
+
 	eleventyConfig.addShortcode("currentBuildDate", () => {
 		return (new Date()).toISOString();
 	});

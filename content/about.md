@@ -95,8 +95,11 @@
     <a class="more" href="/publication/">All {{ collections.publications | length }} →</a>
   </div>
 
-  {% set publicationslist = collections.publications %}
-  {% set publicationslistLimit = 3 %}
+  {#- Publications carrying `featured: true`. With none flagged, fall back to
+      the three most recent so the section is never empty. -#}
+  {%- set featured = collections.featuredPublications %}
+  {%- set publicationslist = featured if featured | length else collections.publications %}
+  {%- if not featured | length %}{% set publicationslistLimit = 3 %}{% endif %}
   {% include "publicationslist.njk" %}
 </section>
 

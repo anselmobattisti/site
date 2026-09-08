@@ -185,6 +185,55 @@
 			</footer>
 		</div>
 
+		{#- One-click copy for the code blocks in an article — the BibTeX entry
+		    on a publication page. Only added when the clipboard API is there,
+		    so the block is never left with a button that does nothing. #}
+		<script type="text/javascript" eleventy:ignore>
+		(function () {
+		  var blocks = document.querySelectorAll('.prose pre[class*="language-"]');
+		  if (!blocks.length) return;
+
+		  var copyKey = navigator.userAgent.indexOf('Mac') > -1 ? '\u2318' : 'Ctrl';
+
+		  blocks.forEach(function (pre) {
+		    var code = pre.querySelector('code');
+		    if (!code) return;
+
+		    var button = document.createElement('button');
+		    button.type = 'button';
+		    button.className = 'copy-button';
+		    button.textContent = 'Copy';
+
+		    function flash(text) {
+		      button.textContent = text;
+		      button.classList.add('is-done');
+		      window.setTimeout(function () {
+		        button.textContent = 'Copy';
+		        button.classList.remove('is-done');
+		      }, 2200);
+		    }
+
+		    function selectInstead() {
+		      var range = document.createRange();
+		      range.selectNodeContents(code);
+		      var selection = window.getSelection();
+		      selection.removeAllRanges();
+		      selection.addRange(range);
+		      flash(copyKey + '+C');
+		    }
+
+		    button.addEventListener('click', function () {
+		      if (!navigator.clipboard) return selectInstead();
+		      navigator.clipboard.writeText(code.textContent).then(function () {
+		        flash('Copied');
+		      }, selectInstead);
+		    });
+
+		    pre.appendChild(button);
+		  });
+		})();
+		</script>
+
 		{#- Diagrams open in a larger view. Progressive enhancement: the control
 		    is only inserted when this runs, so a diagram still renders inline
 		    without JavaScript. The artwork is resolved at click time because a

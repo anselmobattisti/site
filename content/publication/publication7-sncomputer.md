@@ -9,7 +9,7 @@ abstract: "The fifth generation of mobile networks (5G) brings an evolution of n
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/SN-Computer-Science/article.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @article{macedo2023distributed,

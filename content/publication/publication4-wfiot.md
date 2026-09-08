@@ -11,7 +11,7 @@ video_link: "https://youtu.be/qCzzo-jGkE8"
 presentation_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2020/WF-IoT/presentation.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @INPROCEEDINGS{9221199,

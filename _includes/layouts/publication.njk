@@ -1,10 +1,6 @@
 ---
 layout: layouts/base.njk
 ---
-{# The BibTeX block in each publication needs a highlighter theme; keep it local
-   instead of pulling one from a third-party CDN. #}
-<style>{% include "node_modules/prismjs/themes/prism-tomorrow.css" %}</style>
-
 <article>
   <div class="hero">
     <p class="eyebrow">{{ tags | publicationKind }} · {{ event_magazine }} · {{ year }}</p>

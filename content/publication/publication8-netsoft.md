@@ -10,7 +10,7 @@ abstract: "The combination of both Network Function Virtualization (NFV) and Edg
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/NetSoft/article.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @INPROCEEDINGS{10175437,

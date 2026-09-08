@@ -9,7 +9,7 @@ abstract: "Constant innovation, also called innovativeness, and the incomes are 
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2015/CONTECSI/artigo.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @inproceedings{Battisti2015,

@@ -9,7 +9,7 @@ abstract: "Network function virtualization (NFV) is a novel technology that virt
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2022/MDPI/article.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @article{Battisti2022,

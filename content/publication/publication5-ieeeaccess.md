@@ -9,7 +9,7 @@ abstract: "Com a proliferação do uso de câmeras e microfones na IoT, o gerenc
 pdf_link: "https://github.com/anselmobattisti/publications/?tab=readme-ov-file"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @inproceedings{wgrs,

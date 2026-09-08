@@ -10,7 +10,7 @@ abstract: "Network Function Virtualization (NFV) and Edge Computing (EC) can acc
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2023/CloudNet/article.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @INPROCEEDINGS{10490065,

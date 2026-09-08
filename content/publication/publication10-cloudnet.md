@@ -11,7 +11,7 @@ pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2024/C
 presentation_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2024/CloudNet/presentation.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @INPROCEEDINGS{10815829,
