@@ -23,13 +23,13 @@
 	--accent-wash: #f7f0dc;
 	--accent-contrast: #2b2418;
 
-	--font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+	--font-family: "Roboto", "Roboto Fallback", Arial, Helvetica, sans-serif;
 	/* Headings share the body face; the token stays so a display face can be
 	   swapped back in from one place. */
-	--font-family-display: "Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+	--font-family-display: "Roboto", "Roboto Fallback", Arial, Helvetica, sans-serif;
 	/* Labels, identifiers and figures. Same face as everything else — the role
 	   is carried by size, tracking and case, not by a second typeface. */
-	--font-family-data: "Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+	--font-family-data: "Roboto", "Roboto Fallback", Arial, Helvetica, sans-serif;
 
 	--syntax-tab-size: 2;
 
@@ -491,7 +491,7 @@ main p,
 	height: 19px;
 }
 
-.social-links img {
+.social-links img[width] {
 	width: 19px;
 	height: 19px;
 	opacity: 0.7;
@@ -621,8 +621,13 @@ pre.mermaid.diagram {
 
 pre.mermaid:not([data-processed]) {
 	visibility: hidden;
-	height: 320px;
 	overflow: hidden;
+	/* Reserve the shape the diagram will take rather than a guessed height, so
+	   the page below does not jump when Mermaid swaps the source for an SVG.
+	   Measured on the LibVox diagram: an 810px-wide column renders 401px tall.
+	   A diagram of a different shape would want a different ratio here. */
+	aspect-ratio: 2 / 1;
+	height: auto;
 }
 
 pre.mermaid > svg {

@@ -6,6 +6,20 @@
    Roboto and Roboto Mono are variable: one file covers the whole weight axis.
    ========================================================================== */
 
+/* A metric-matched stand-in for Roboto, so the text occupies exactly the same
+   space before the webfont arrives. Measured in-browser: at 100px Roboto sets
+   1876.23px where Arial sets 1851.23px, hence size-adjust: 101.35%. Without
+   this the first fallback (system-ui) ran 12.7% wider, text wrapped onto
+   different lines, and everything below it jumped when the font swapped in. */
+@font-face {
+	font-family: 'Roboto Fallback';
+	src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Arimo');
+	size-adjust: 101.35%;
+	ascent-override: 91.53%;
+	descent-override: 24.09%;
+	line-gap-override: 0%;
+}
+
 @font-face {
 	font-family: 'Roboto';
 	font-style: normal;
