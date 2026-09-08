@@ -19,7 +19,11 @@
 
 <div class="contact-lead">
   <a class="mail" href="mailto:anselmo@battisti.com.br">anselmo@battisti.com.br</a>
-  <span class="where">IMPA Tech · Rio de Janeiro/RJ, Brazil</span>
+  <address class="where">
+    IMPA Tech<br>
+    Av. Prof. Pereira Reis, 76 - Santo Cristo<br>
+    Rio de Janeiro - RJ, 20220-800, Brazil
+  </address>
 </div>
 
 <section class="section">

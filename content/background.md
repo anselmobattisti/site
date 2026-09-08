@@ -5,12 +5,12 @@
     order: 5
   },  
   title: "Academic Background — Anselmo Luiz Éden Battisti",
-  description: "Academic background of Anselmo Luiz Éden Battisti: PhD and Master's in Computer Science at UFF, Master's in Strategic Business at PUC/PR, and undergraduate studies at Unioeste."
+  description: "Academic background of Anselmo Luiz Éden Battisti: PhD and Master's in Computer Science at UFF, Master's in Strategic Business at PUCPR, and undergraduate studies at Unioeste."
 }
 ---
 
 <div class="hero">
-  <p class="eyebrow">2003 — 2025 · Unioeste · PUC/PR · UFF</p>
+  <p class="eyebrow eyebrow--names">2003 — 2025 · Unioeste · PUCPR · UFF</p>
 
 # Academic Background
 
@@ -45,7 +45,7 @@
   <li class="tl-item">
     <span class="tl-period">2013 — 2015</span>
     <h3>Master’s in Strategic Business Management</h3>
-    <p class="tl-org">Pontifícia Universidade Católica do Paraná (PUC/PR) <span class="place">· Curitiba/PR, Brazil</span></p>
+    <p class="tl-org">Pontifícia Universidade Católica do Paraná (PUCPR) <span class="place">· Curitiba/PR, Brazil</span></p>
     <p class="tl-desc"><em>A influência da inovatividade e do financiamento sobre o resultado em web start-ups brasileiras.</em><br>
     Advisor: Carlos Olavo Quandt</p>
     <p class="entry-links">

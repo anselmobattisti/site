@@ -12,11 +12,11 @@
 
 <div class="hero">
 
-<p class="eyebrow">Unioeste · PUC/PR · UFF · IMPA Tech</p>
+<p class="eyebrow eyebrow--names">Unioeste · PUCPR · UFF · IMPA Tech</p>
 
 # Anselmo Luiz Éden Battisti
 
-<p class="lede">I completed my PhD and Master’s in Computer Science at <strong>Universidade Federal Fluminense (UFF)</strong>, supervised by <a href="https://lattes.cnpq.br/5386282151810710" target="_blank" rel="noopener">Flávia Coimbra Delicato</a> and <a href="https://lattes.cnpq.br/2448703093928632" target="_blank" rel="noopener">Débora Christina Muchaluat-Saade</a>. I also hold a Master’s in Strategic Business Management (PUC/PR), a specialization in Java development, and a Bachelor’s in Computer Science (Unioeste).</p>
+<p class="lede">I completed my PhD and Master’s in Computer Science at <strong>Universidade Federal Fluminense (UFF)</strong>, supervised by <a href="https://lattes.cnpq.br/5386282151810710" target="_blank" rel="noopener">Flávia Coimbra Delicato</a> and <a href="https://lattes.cnpq.br/2448703093928632" target="_blank" rel="noopener">Débora Christina Muchaluat-Saade</a>. I also hold a Master’s in Strategic Business Management (PUCPR), a specialization in Java development, and a Bachelor’s in Computer Science (Unioeste).</p>
 
 <p class="measure">Over two decades as a project manager and professor I have taken part in national and international projects in 5G, smart cities and digital platforms — work that produced scientific publications, patents registered in the United States, and solutions applied in the market. Today I teach at <a href="https://impatech.edu.br/" target="_blank" rel="noopener"><strong>IMPA Tech</strong></a> and run <a href="https://webgenium.com.br/" target="_blank" rel="noopener"><strong>Webgenium</strong></a>, the company I co-founded in 2007.</p>
 

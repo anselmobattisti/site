@@ -211,6 +211,13 @@ main :is(h1, h2, h3) + p {
 	margin: 0 0 0.55rem;
 }
 
+/* An eyebrow that lists institution names keeps their own casing — the
+   uppercase label treatment turns "IMPA Tech" into "IMPA TECH". */
+.eyebrow--names {
+	text-transform: none;
+	letter-spacing: 0.04em;
+}
+
 .lede {
 	font-size: 1.02rem;
 	color: var(--ink-soft);
@@ -1216,8 +1223,9 @@ dialog.lightbox::backdrop {
 .contact-lead {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: baseline;
-	gap: 0.75rem 1.25rem;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem 2rem;
 	border: 1px solid var(--rule);
 	border-radius: 2px;
 	padding: 1.15rem 1.25rem;
@@ -1237,7 +1245,16 @@ dialog.lightbox::backdrop {
 .contact-lead .where {
 	font-family: var(--font-family-monospace);
 	font-size: 0.74rem;
+	font-style: normal;
+	line-height: 1.7;
 	color: var(--muted);
+	text-align: right;
+}
+
+@media (max-width: 620px) {
+	.contact-lead .where {
+		text-align: left;
+	}
 }
 
 .profiles {
@@ -1257,11 +1274,12 @@ dialog.lightbox::backdrop {
 	border-right: 1px solid var(--rule-soft);
 }
 
+/* Both columns are inset, and the first one also clears the divider. */
 .profiles a {
 	display: flex;
 	align-items: baseline;
 	gap: 0.7rem;
-	padding: 0.8rem 0;
+	padding: 0.8rem 0 0.8rem 1rem;
 	text-decoration: none;
 	color: var(--ink);
 }
@@ -1503,6 +1521,11 @@ table th {
 
 	.profiles li:nth-child(odd) {
 		border-right: none;
+	}
+
+	.profiles li:nth-child(odd) a,
+	.profiles li:nth-child(even) a {
+		padding-inline: 0;
 	}
 
 	.entry,
