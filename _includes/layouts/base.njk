@@ -1,23 +1,12 @@
 <!doctype html>
 <html lang="{{ metadata.language }}">
 	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2Z5QQ6Q24"></script>
-		{% raw %}
-		<script type="text/javascript" eleventy:ignore>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-V2Z5QQ6Q24');
-		</script>
-		{% endraw %}
-
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		{%- set pageTitle = title or metadata.title %}
 		{%- set pageDescription = description or metadata.description %}
-		{%- set pageUrl = metadata.url | trim("/") + page.url %}
+		{%- set pageUrl = page.url | absoluteUrl(metadata.url) %}
 
 		<title>{{ pageTitle }}</title>
 		<meta name="description" content="{{ pageDescription }}">
@@ -182,6 +171,7 @@
 			</footer>
 		</div>
 
+{%- if 'class="language-' in content %}
 		{#- One-click copy for the code blocks in an article — the BibTeX entry
 		    on a publication page. Only added when the clipboard API is there,
 		    so the block is never left with a button that does nothing. #}
@@ -230,7 +220,9 @@
 		  });
 		})();
 		</script>
+		{%- endif %}
 
+{%- if 'class="diagram' in content %}
 		{#- Diagrams open in a larger view. Progressive enhancement: the control
 		    is only inserted when this runs, so a diagram still renders inline
 		    without JavaScript. The artwork is resolved at click time because a
@@ -380,6 +372,7 @@
 		  });
 		})();
 		</script>
+		{%- endif %}
 
 		<script type="text/javascript" eleventy:ignore>
 		(function() {
@@ -401,5 +394,15 @@
 		{%- set mermaidScript %}{% mermaid_js %}{% endset %}
 		{{ mermaidScript | replace('<script type="module" async>', '<script type="module" async eleventy:ignore>') | safe }}
 		{%- endif %}
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2Z5QQ6Q24"></script>
+		{% raw %}
+		<script type="text/javascript" eleventy:ignore>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-V2Z5QQ6Q24');
+		</script>
+		{% endraw %}
 	</body>
 </html>

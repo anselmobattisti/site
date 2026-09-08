@@ -59,6 +59,11 @@ export default function(eleventyConfig) {
 		return minified.toString();
 	});
 
+	// Join a site base and a page path without doubling or dropping the slash.
+	eleventyConfig.addFilter("absoluteUrl", (path, base) => {
+		return new URL(path, base).href;
+	});
+
 	eleventyConfig.addFilter("sortAlphabetically", strings =>
 		(strings || []).sort((b, a) => b.localeCompare(a))
 	);
