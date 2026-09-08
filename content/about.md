@@ -75,7 +75,7 @@
       <text x="354" y="138" font-size="9" fill="currentColor" opacity=".5" text-anchor="middle">end-to-end budget: 59 ms of 80 ms</text>
     </g>
   </svg>
-  <figcaption>A multimedia SFC placed across three tiers. The two edge VNFs are what the placement algorithm actually decides on.</figcaption>
+  <figcaption>A multimedia SFC across three tiers — the algorithm places only the two edge VNFs.</figcaption>
 </figure>
 
   <ul class="topics">

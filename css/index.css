@@ -643,6 +643,22 @@ p.diagram-caption {
 	cursor: zoom-in;
 }
 
+/* Mouse users click the diagram itself, so the control stays out of the
+   reading flow — below the figure it read as one more topic chip. It is still
+   in the DOM and appears on keyboard focus, which is the only way to reach
+   the larger view without a pointer. */
+.diagram-zoom:not(:focus-visible) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	clip-path: inset(50%);
+	border: 0;
+}
+
 .diagram-zoom {
 	display: inline-block;
 	margin: 0.6rem 0 0;
@@ -839,8 +855,10 @@ dialog.lightbox::backdrop {
 }
 
 /* Topic chips */
-.diagram + .topics {
-	margin-top: 1.1rem;
+/* General sibling, not adjacent: the script inserts the zoom control between
+   the figure and the chips, which breaks a `+` selector once it has run. */
+.diagram ~ .topics {
+	margin-top: 1.6rem;
 }
 
 .topics {
