@@ -1,5 +1,6 @@
 ---
 title: "A MAPE-K and Queueing Theory Approach for VNF Auto-scaling in Edge Computin"
+authors: "T. P. da Silva, T. V. Batista, A. L. É. Battisti, A. Saraiva, A. A. Rocha, F. C. Delicato, I. V. Bastos, E. L. C. Macedo, A. C. B. de Oliveira, P. F. Pires"
 year: 2023
 date: 2023-01-01
 tags: ["conference"]

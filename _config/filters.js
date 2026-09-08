@@ -40,4 +40,26 @@ export default function(eleventyConfig) {
 	eleventyConfig.addFilter("sortAlphabetically", strings =>
 		(strings || []).sort((b, a) => b.localeCompare(a))
 	);
+
+	// Bold the site owner inside a comma-separated author list, so a reader
+	// scanning the publication list can spot his position in each byline.
+	eleventyConfig.addFilter("highlightAuthor", (authors, surname = "Battisti") => {
+		if(!authors) {
+			return "";
+		}
+
+		return authors
+			.split(",")
+			.map(name => {
+				let trimmed = name.trim();
+				return trimmed.includes(surname) ? `<span class="me">${trimmed}</span>` : trimmed;
+			})
+			.join(", ");
+	});
+
+	// "magazine" is how publications are tagged in front matter; "Journal" is
+	// what the reader expects to see next to the venue.
+	eleventyConfig.addFilter("publicationKind", tags => {
+		return (tags || []).includes("magazine") ? "Journal" : "Conference";
+	});
 };

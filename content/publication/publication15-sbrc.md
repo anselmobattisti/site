@@ -1,5 +1,6 @@
 ---
 title: "SPEED - SFC Placement in Edge-Cloud Continuum: a Distributed Approach"
+authors: "A. L. É. Battisti, F. C. Delicato, D. C. Muchaluat-Saade"
 year: 2026
 date: 2026-01-01
 tags: ["conference"]

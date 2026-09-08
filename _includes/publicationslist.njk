@@ -1,17 +1,45 @@
-<p>List of some of publications published by Anselmo Luiz Éden Battisti
-  in co-authorship with other authors. I already publised <em>{{ publicationslist | length }}</em> papers in
-  peer-reviewed magazines and events. Some papers have the PDF available for download and the BibTeX citation.</p>
+{#- Renders a publication list.
+    `publicationslist`      — a collection of publications (required)
+    `publicationslistLimit` — render only the N most recent (optional)
+    `publicationslistFilter`— render the Journal/Conference filter (optional)
 
-<section class="patents">
-  {% for pub in publicationslist | sort(false, false, "data.date") | reverse %}
-    <div class="patent">
-      <h2 class="publication-title">
-        <a href="{{ pub.url }}">{{ pub.data.title }}</a>
-      </h2>
-      <p class="publication-meta">
-        <span class="publication-venue">{{ pub.data.event_magazine }}</span> /
-        <span class="publication-year">{{ pub.data.year }}</span>
+    Sorted newest first on the `date` field declared in each publication's
+    front matter, never on the file's mtime. -#}
+
+{%- set ordered = publicationslist | sort(false, false, "data.date") | reverse %}
+{%- if publicationslistLimit %}{% set ordered = ordered | head(publicationslistLimit) %}{% endif %}
+
+{%- if publicationslistFilter %}
+{%- set journals = [] %}
+{%- for pub in publicationslist %}{% if "magazine" in pub.data.tags %}{% set journals = (journals.push(pub), journals) %}{% endif %}{% endfor %}
+<div class="filters">
+  <span class="fl">Filter</span>
+  <button class="chip" type="button" data-filter="all" aria-pressed="true">All ({{ publicationslist | length }})</button>
+  <button class="chip" type="button" data-filter="journal" aria-pressed="false">Journal ({{ journals | length }})</button>
+  <button class="chip" type="button" data-filter="conference" aria-pressed="false">Conference ({{ (publicationslist | length) - (journals | length) }})</button>
+</div>
+{%- endif %}
+
+<ul class="entry-list"{% if publicationslistFilter %} id="publication-list"{% endif %}>
+{%- for pub in ordered %}
+  {%- set kind = pub.data.tags | publicationKind %}
+  <li class="entry" data-type="{{ kind | lower }}">
+    <div class="entry-year">{{ pub.data.year }}</div>
+    <div>
+      <h3 class="entry-title"><a href="{{ pub.url }}">{{ pub.data.title }}</a></h3>
+      {%- if pub.data.authors %}
+      <p class="entry-authors">{{ pub.data.authors | highlightAuthor | safe }}</p>
+      {%- endif %}
+      <p class="entry-meta">
+        <span class="venue">{{ pub.data.event_magazine }}</span><span class="kind">{{ kind }}</span>
+        <span class="entry-links">
+          {%- if pub.data.pdf_link %}<a href="{{ pub.data.pdf_link }}" target="_blank" rel="noopener">PDF</a>{% endif %}
+          {%- if pub.data.presentation_link %}<a href="{{ pub.data.presentation_link }}" target="_blank" rel="noopener">Slides</a>{% endif %}
+          {%- if pub.data.video_link %}<a href="{{ pub.data.video_link }}" target="_blank" rel="noopener">Video</a>{% endif %}
+          <a href="{{ pub.url }}">Details</a>
+        </span>
       </p>
     </div>
-  {% endfor %}
-</section>
+  </li>
+{%- endfor %}
+</ul>

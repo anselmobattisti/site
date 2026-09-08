@@ -1,5 +1,6 @@
 ---
 title: "Distributed Auction-Based SFC Placement in a Multi-domain 5G Environment"
+authors: "E. L. C. Macedo, A. L. É. Battisti, J. L. Vieira, J. Noce, P. F. Pires, D. C. Muchaluat-Saade, A. C. B. de Oliveira, F. C. Delicato"
 year: 2023
 date: 2023-01-01
 tags: ["magazine"]

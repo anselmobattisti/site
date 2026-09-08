@@ -1,5 +1,6 @@
 ---
 title: "AN ASSESSMENT OF THE INFLUENCE OF INNOVATIVENESS AND FINANCING ON THE OUTCOME IN WEB START-UPS BRAZILIAN"
+authors: "A. L. É. Battisti, C. O. Quandt"
 year: 2015
 date: 2015-06-01
 tags: ["conference"]

@@ -1,5 +1,6 @@
 ---
 title: "Enabling Internet of Media Things With Edge-Based Virtual Multimedia Sensors"
+authors: "A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato"
 year: 2021
 date: 2021-01-01
 tags: ["magazine"]

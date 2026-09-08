@@ -3,6 +3,7 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import pluginMermaid from "@kevingimbel/eleventy-plugin-mermaid";
 
 import pluginFilters from "./_config/filters.js";
 
@@ -55,6 +56,30 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 }
 	});
+	// Must come after pluginSyntaxHighlight: it wraps the markdown highlighter
+	// registered above, so Prism still handles every language but `mermaid`.
+	eleventyConfig.addPlugin(pluginMermaid, {
+		extra_classes: "diagram",
+		mermaid_config: {
+			startOnLoad: true,
+			securityLevel: "strict",
+			theme: "base",
+			fontFamily: "Roboto, system-ui, sans-serif",
+			themeVariables: {
+				background: "transparent",
+				fontSize: "14px",
+				textColor: "#2b2418",
+				primaryColor: "#f7f0dc",
+				primaryTextColor: "#2b2418",
+				primaryBorderColor: "#b8963c",
+				lineColor: "#7d7059",
+				clusterBkg: "#f7f0dc",
+				clusterBorder: "#ddd2b6",
+				edgeLabelBackground: "#fffdf7"
+			}
+		}
+	});
+
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);

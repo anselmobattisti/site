@@ -1,5 +1,6 @@
 ---
 title: "A Novel Method for SFC Segmentation in Edge-Cloud Environments"
+authors: "A. L. É. Battisti, F. C. Delicato, D. C. Muchaluat-Saade"
 year: 2024
 date: 2024-01-01
 tags: ["conference"]

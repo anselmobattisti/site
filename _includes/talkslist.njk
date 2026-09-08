@@ -1,0 +1,36 @@
+{#- Renders a talk list.
+    `talkslist` — a collection of talks (required, may be empty)
+    `talkslistLimit` — render only the N most recent (optional)
+
+    Collections arrive sorted oldest-first on the `date` field, so a single
+    reverse puts the newest talk at the top. -#}
+
+{%- set ordered = (talkslist or []) | reverse %}
+{%- if talkslistLimit %}{% set ordered = ordered | head(talkslistLimit) %}{% endif %}
+
+{%- if ordered | length %}
+<ul class="entry-list">
+{%- for talk in ordered %}
+  <li class="entry">
+    <div class="entry-year">{{ talk.date | readableDate("yyyy") }}</div>
+    <div>
+      <h3 class="entry-title"><a href="{{ talk.url }}">{{ talk.data.title }}</a></h3>
+      {%- if talk.data.location %}
+      <p class="entry-org">{{ talk.data.location }}</p>
+      {%- endif %}
+      <p class="entry-meta">
+        <span class="venue"><time datetime="{{ talk.date | htmlDateString }}">{{ talk.date | readableDate("dd LLL yyyy") }}</time></span>
+        {%- if talk.data.language %}<span class="kind">{{ talk.data.language }}</span>{% endif %}
+        <span class="entry-links">
+          {%- if talk.data.slides_link %}<a href="{{ talk.data.slides_link }}" target="_blank" rel="noopener">Slides</a>{% endif %}
+          {%- if talk.data.video_link %}<a href="{{ talk.data.video_link }}" target="_blank" rel="noopener">Video</a>{% endif %}
+          <a href="{{ talk.url }}">Details</a>
+        </span>
+      </p>
+    </div>
+  </li>
+{%- endfor %}
+</ul>
+{%- else %}
+<p class="empty-state">No talks published yet. Drop a Markdown file into <code>content/talks/</code> and it shows up here.</p>
+{%- endif %}

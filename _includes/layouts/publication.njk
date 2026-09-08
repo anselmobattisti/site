@@ -1,32 +1,48 @@
 ---
 layout: layouts/base.njk
 ---
+{# The BibTeX block in each publication needs a highlighter theme; keep it local
+   instead of pulling one from a third-party CDN. #}
+<style>{% include "node_modules/prismjs/themes/prism-tomorrow.css" %}</style>
+
 <article>
-  <h1>{{ title }}</h1>
+  <div class="hero">
+    <p class="eyebrow">{{ tags | publicationKind }} · {{ event_magazine }} · {{ year }}</p>
+    <h1>{{ title }}</h1>
+    {%- if authors %}
+    <p class="lede">{{ authors | highlightAuthor | safe }}</p>
+    {%- endif %}
 
-  <p><strong>Year:</strong> {{ year }}</p>
+    <div class="hero-actions">
+      {%- if pdf_link %}<a class="btn btn-solid" href="{{ pdf_link }}" target="_blank" rel="noopener">Read the paper (PDF)</a>{% endif %}
+      {%- if presentation_link %}<a class="btn" href="{{ presentation_link }}" target="_blank" rel="noopener">Presentation slides</a>{% endif %}
+      {%- if video_link %}<a class="btn" href="{{ video_link }}" target="_blank" rel="noopener">Watch the talk</a>{% endif %}
+    </div>
+  </div>
 
-  <p><strong>Event / Magazine:</strong> {{ event_magazine }}</p>
+  <ul class="publication-facts">
+    <li><span class="k">Venue</span><span>{{ event_magazine }}</span></li>
+    <li><span class="k">Year</span><span>{{ year }}</span></li>
+    <li><span class="k">Type</span><span>{{ tags | publicationKind }}</span></li>
+  </ul>
 
-    <p><strong>Document:</strong> 
-    <a href="{{ pdf_link }}" target="_blank" rel="noopener">Download</a>    
-  </p>
+  {%- if abstract %}
+  <div class="abstract">
+    <h2>Abstract</h2>
+    <p>{{ abstract }}</p>
+  </div>
+  {%- endif %}
 
-  {% if presentation_link %}
-    <p><strong>Presentation PDF:</strong> 
-      <a href="{{ presentation_link }}" target="_blank" rel="noopener">Download</a>    
-    </p>
-  {% endif %}
-
-  {% if video_link %}
-    <p><strong>Video Presentation:</strong> 
-      <a href="{{ video_link }}" target="_blank" rel="noopener">Watch</a>    
-    </p>
-  {% endif %}
-
-  <p style="text-align: justify;"><strong>Abstract:</strong> {{ abstract }}</p>  
-
-  <div>
+  <div class="section prose">
     {{ content | safe }}
   </div>
+
+  {%- set previousPost = collections.publications | getPreviousCollectionItem %}
+  {%- set nextPost = collections.publications | getNextCollectionItem %}
+  {%- if nextPost or previousPost %}
+  <ul class="links-nextprev">
+    {%- if previousPost %}<li class="links-nextprev-prev">← Earlier<br><a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
+    {%- if nextPost %}<li class="links-nextprev-next">Later →<br><a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
+  </ul>
+  {%- endif %}
 </article>

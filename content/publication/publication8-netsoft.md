@@ -1,5 +1,6 @@
 ---
 title: "Dynamic and Mobility-Aware VNF Placement in 5G-Edge Computing Environments"
+authors: "J. L. Vieira, A. L. É. Battisti, E. L. C. Macedo, P. F. Pires, D. C. Muchaluat-Saade, F. C. Delicato, A. C. B. de Oliveira"
 year: 2023
 date: 2023-01-01
 tags: ["conference"]

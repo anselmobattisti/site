@@ -1,5 +1,6 @@
 ---
 title: "Uma Proposta de Arquitetura para Virtualização de Sensores Multimídia na Borda da Rede"
+authors: "A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato"
 year: 2020
 date: 2020-01-01
 tags: ["conference"]

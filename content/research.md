@@ -4,17 +4,38 @@
     key: "Research",
     order: 3
   },
-  title: "Anselmo Luiz Éden Battisti - Research",
-  description: "Research projects, publications, and patents by Anselmo Luiz Éden Battisti."
+  title: "Research — Anselmo Luiz Éden Battisti",
+  description: "Research contributions of Anselmo Luiz Éden Battisti in computer networks, distributed systems and telecommunications: publications, patents and awards."
 }
 ---
 
+<div class="hero">
+  <p class="eyebrow">Computer networks · Distributed systems · Telecommunications</p>
+
 # Research
 
-This section highlights the academic and industrial research contributions of Anselmo Luiz Éden Battisti, focused on cutting-edge areas of computer networks, distributed systems, and telecommunications.
+  <p class="lede">Academic and industrial research on how virtualized network functions should be placed, migrated and scaled between the network edge and the cloud.</p>
+</div>
 
-Please select a category below to explore:
-
-*   [**Publications**](/publication/) — Peer-reviewed papers in prestigious scientific journals and conferences.
-*   [**Patents**](/patents/) — Intellectual property and patented innovations developed in collaboration with leading technology companies and research labs.
-*   [**Awards & Honors**](/awards/) — Academic and professional recognition received for research contributions.
+<ul class="cards">
+  <li class="card">
+    <h3><a href="/publication/">Publications</a></h3>
+    <p>{{ collections.publications | length }} peer-reviewed papers in scientific journals and conferences, with PDFs and BibTeX entries.</p>
+  </li>
+  <li class="card">
+    <h3><a href="/projects/">Projects</a></h3>
+    <p>Ongoing and past research projects, with the code and project sites where the work is public.</p>
+  </li>
+  <li class="card">
+    <h3><a href="/patents/">Patents</a></h3>
+    <p>Six US filings developed with Dell Products L.P. and EMC IP Holding Company LLC.</p>
+  </li>
+  <li class="card">
+    <h3><a href="/awards/">Awards &amp; Honors</a></h3>
+    <p>Academic and professional recognition received for research contributions.</p>
+  </li>
+  <li class="card">
+    <h3><a href="https://scholar.google.com/citations?user=vqylNDgAAAAJ&amp;hl=pt-BR" target="_blank" rel="noopener">Google Scholar</a></h3>
+    <p>Citation record and co-authored work, kept up to date automatically.</p>
+  </li>
+</ul>

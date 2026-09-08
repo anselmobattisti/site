@@ -2,83 +2,76 @@
 {
   eleventyNavigation: {
     key: "Background",
-    order: 4
+    order: 5
   },  
-  title: "Anselmo Luiz Éden Battisti - Academic Background",
-  description: "List of academic background pursued by Anselmo Luiz Éden Battisti. It covers the undergraduate, master's and doctoral degrees."
+  title: "Academic Background — Anselmo Luiz Éden Battisti",
+  description: "Academic background of Anselmo Luiz Éden Battisti: PhD and Master's in Computer Science at UFF, Master's in Strategic Business at PUC/PR, and undergraduate studies at Unioeste."
 }
 ---
 
+<div class="hero">
+  <p class="eyebrow">2003 — 2025 · Unioeste · PUC/PR · UFF</p>
+
 # Academic Background
 
-This page lists the academic background pursued by Anselmo Luiz Éden Battisti. It covers the undergraduate, master's and doctoral degrees. For a full description access my [Curriculum Lattes](https://lattes.cnpq.br/6937214674204474).
+  <p class="lede">Degrees, theses and advisors, newest first. The complete record — courses, projects and supervision — lives in my <a href="https://lattes.cnpq.br/6937214674204474" target="_blank" rel="noopener">Curriculum Lattes</a>.</p>
+</div>
 
-<section class="academic-formation">
-  <div class="formation">
-    <h3>2020 – 2025 · Ph.D. in Computer Science</h3>
-    <p><strong>Institution:</strong> Universidade Federal Fluminense (UFF), Brasil</p>
-    <p><strong>Title:</strong> SPEED - SFC Placement in Edge-Cloud Continuum: a Distributed Approach (2025)</p>
-    <p>
-		<strong>Advisor:</strong> Flávia Coimbra Delicato<br>
-        <strong>Coadvisor:</strong> Débora Christina Muchaluat Saade
-	</p>
-	<p>
-		<a href="https://github.com/anselmobattisti/publications/blob/main/docs/2025/Tese/tese.pdf">Read PhD’s Thesis</a> 
-	</p>
+<ul class="timeline">
+  <li class="tl-item">
+    <span class="tl-period">2020 — 2025</span>
+    <h3>Ph.D. in Computer Science</h3>
+    <p class="tl-org">Universidade Federal Fluminense (UFF) <span class="place">· Niterói/RJ, Brazil</span></p>
+    <p class="tl-desc"><em>SPEED — SFC Placement in Edge-Cloud Continuum: a Distributed Approach.</em><br>
+    Advisor: Flávia Coimbra Delicato · Co-advisor: Débora Christina Muchaluat-Saade</p>
+    <p class="entry-links">
+      <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2025/Tese/tese.pdf" target="_blank" rel="noopener">Thesis PDF</a>
+      <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2025/Tese/apresentacao-defesa.pdf" target="_blank" rel="noopener">Defense slides</a>
+    </p>
+  </li>
 
-  <p>
-    <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2025/Tese/apresentacao-defesa.pdf">Presentation</a>
-  </p>
+  <li class="tl-item">
+    <span class="tl-period">2018 — 2020</span>
+    <h3>Master’s in Computer Science</h3>
+    <p class="tl-org">Universidade Federal Fluminense (UFF) <span class="place">· Niterói/RJ, Brazil</span></p>
+    <p class="tl-desc"><em>V-PRISM: Uma Arquitetura para Virtualização na Edge de Sensores Multimídia em Ambientes de IoT.</em><br>
+    Advisor: Débora Christina Muchaluat-Saade · Co-advisor: Flávia Coimbra Delicato</p>
+    <p class="entry-links">
+      <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2020/2020-mestrado-comptuacao.pdf" target="_blank" rel="noopener">Dissertation PDF</a>
+      <a href="https://www.youtube.com/watch?v=LnwZzGuZkVM&t=1967s" target="_blank" rel="noopener">Defense video</a>
+    </p>
+  </li>
 
-  </div>
+  <li class="tl-item">
+    <span class="tl-period">2013 — 2015</span>
+    <h3>Master’s in Strategic Business Management</h3>
+    <p class="tl-org">Pontifícia Universidade Católica do Paraná (PUC/PR) <span class="place">· Curitiba/PR, Brazil</span></p>
+    <p class="tl-desc"><em>A influência da inovatividade e do financiamento sobre o resultado em web start-ups brasileiras.</em><br>
+    Advisor: Carlos Olavo Quandt</p>
+    <p class="entry-links">
+      <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2015/2015-mestrado-adm.pdf" target="_blank" rel="noopener">Dissertation PDF</a>
+    </p>
+  </li>
 
-  <div class="formation">
-    <h3>2018 – 2020 · Master’s in Computer Science</h3>
-    <p><strong>Institution:</strong> Universidade Federal Fluminense (UFF), Brasil</p>
-    <p><strong>Title:</strong> V-PRISM: Uma Arquitetura para Virtualização na Edge de Sensores Multimídia em Ambientes de IoT (2020)</p>
-    <p><strong>Advisor:</strong> Débora Christina Muchaluat Saade<br>
-       <strong>Coadvisor:</strong> Flávia Coimbra Delicato</p>
-	<p>
-		<a href="https://github.com/anselmobattisti/publications/blob/main/docs/2020/2020-mestrado-comptuacao.pdf">Read Master’s Thesis</a> 
-	</p>
-  <p>
-    <a href="https://www.youtube.com/watch?v=LnwZzGuZkVM&t=1967s">
-      Watch the Presentation
-    </a>
-  </p>
+  <li class="tl-item">
+    <span class="tl-period">2008 — 2009</span>
+    <h3>Specialization in Software Development and New Technologies</h3>
+    <p class="tl-org">Universidade Estadual do Oeste do Paraná (Unioeste) <span class="place">· Cascavel/PR, Brazil</span></p>
+    <p class="tl-desc"><em>ESPERTO — Uma Ferramenta Web para o Desenvolvimento Colaborativo e Uso de Sistemas Especialistas de Classificação.</em><br>
+    Advisor: Claudia Brandelero Rizzi</p>
+    <p class="entry-links">
+      <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2009/2009-especializacao.pdf" target="_blank" rel="noopener">Specialization paper</a>
+    </p>
+  </li>
 
-  </div>
-
-  <div class="formation">
-    <h3>2013 – 2015 · Master’s in Strategic Business</h3>
-    <p><strong>Institution:</strong> Pontifícia Universidade Católica do Paraná (PUC/PR), Brasil</p>
-    <p><strong>Title:</strong> A INFLUÊNCIA DA INOVATIVIDADE E DO FINANCIAMENTO SOBRE O RESULTADO EM WEB START-UPS BRASILEIRAS (2015)</p>
-    <p><strong>Advisor:</strong> Carlos Olavo Quandt</p>    
-    <p>
-		<a href="https://github.com/anselmobattisti/publications/blob/main/docs/2015/2015-mestrado-adm.pdf">Read Master’s Thesis</a> 
-	</p>
-
-  </div>
-
-  <div class="formation">
-    <h3>2008 – 2009 · Specialization in Software Development and New Technologies</h3>
-    <p><strong>Institution:</strong> Universidade Estadual do Oeste do Paraná (UNIOESTE), Brasil</p>
-    <p><strong>Title:</strong> ESPERTO - Uma Ferramenta Web Para o Desenvolvimento Colaborativo e Uso de Sistemas Especialistas de Classificação</p>
-    <p><strong>Advisor:</strong> Claudia Brandelero Rizzi</p>    
-	
-	  <p>
-		  <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2009/2009-especializacao.pdf">Read Specialization Paper</a> 
-	  </p>
-
-  </div>
-
-  <div class="formation">
-    <h3>2003 – 2007 · Graduation in Informatics (Computer Science)</h3>
-    <p><strong>Institution:</strong> Universidade Estadual do Oeste do Paraná (UNIOESTE), Brasil</p>
-    <p><strong>Title:</strong> Usabilidade em Sistemas Web - Um Estudo de Caso</p>
-    <p><strong>Advisor:</strong> Carlos José Maria Olguin</p>
-	<p>
-		<a href="https://github.com/anselmobattisti/publications/blob/main/docs/2007/2007-graduacao.pdf">Read Bachelor’s Thesis</a> 
-	</p>
-  </div>
-</section>
+  <li class="tl-item">
+    <span class="tl-period">2003 — 2007</span>
+    <h3>Bachelor’s in Informatics (Computer Science)</h3>
+    <p class="tl-org">Universidade Estadual do Oeste do Paraná (Unioeste) <span class="place">· Cascavel/PR, Brazil</span></p>
+    <p class="tl-desc"><em>Usabilidade em Sistemas Web — Um Estudo de Caso.</em><br>
+    Advisor: Carlos José Maria Olguin</p>
+    <p class="entry-links">
+      <a href="https://github.com/anselmobattisti/publications/blob/main/docs/2007/2007-graduacao.pdf" target="_blank" rel="noopener">Bachelor’s thesis</a>
+    </p>
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 ---
 title: "A Domain-Specific Language for Multimedia Service Function Chains based on Virtualization of Sensors"
+authors: "F. J. V. Quico, A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato"
 year: 2024
 date: 2024-01-01
 tags: ["conference"]

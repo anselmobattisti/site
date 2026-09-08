@@ -1,5 +1,6 @@
 ---
 title: "A Novel Strategy for VNF Placement in Edge Computing Environments"
+authors: "A. L. É. Battisti, E. L. C. Macedo, M. I. P. Josué, H. Barbalho, F. C. Delicato, D. C. Muchaluat-Saade, P. F. Pires, D. P. de Mattos, A. C. B. de Oliveira"
 year: 2022
 date: 2022-11-01
 tags: ["magazine"]

@@ -1,0 +1,36 @@
+{#- Renders a project list.
+    `projectslist`      — a collection of projects (required, may be empty)
+    `projectslistLimit` — render only the N most recent (optional)
+
+    Collections arrive sorted oldest-first, so a single reverse puts the most
+    recently started project at the top. -#}
+
+{%- set ordered = (projectslist or []) | reverse %}
+{%- if projectslistLimit %}{% set ordered = ordered | head(projectslistLimit) %}{% endif %}
+
+{%- if ordered | length %}
+<ul class="entry-list entry-list--period">
+{%- for project in ordered %}
+  <li class="entry">
+    <div class="entry-year">{{ project.data.period or project.date | readableDate("yyyy") }}</div>
+    <div>
+      <h3 class="entry-title"><a href="{{ project.url }}">{{ project.data.title }}</a></h3>
+      {%- if project.data.summary %}
+      <p class="entry-org">{{ project.data.summary }}</p>
+      {%- endif %}
+      <p class="entry-meta">
+        {%- if project.data.status %}<span class="venue">{{ project.data.status }}</span>{% endif %}
+        {%- if project.data.role %}<span class="kind">{{ project.data.role }}</span>{% endif %}
+        <span class="entry-links">
+          {%- if project.data.repo_link %}<a href="{{ project.data.repo_link }}" target="_blank" rel="noopener">Code</a>{% endif %}
+          {%- if project.data.site_link %}<a href="{{ project.data.site_link }}" target="_blank" rel="noopener">Site</a>{% endif %}
+          <a href="{{ project.url }}">Details</a>
+        </span>
+      </p>
+    </div>
+  </li>
+{%- endfor %}
+</ul>
+{%- else %}
+<p class="empty-state">No projects published yet. Drop a Markdown file into <code>content/projects/</code> and it shows up here.</p>
+{%- endif %}

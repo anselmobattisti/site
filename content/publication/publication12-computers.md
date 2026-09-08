@@ -1,5 +1,6 @@
 ---
 title: "Mobility-aware SFC migration in dynamic 5G-Edge networks"
+authors: "J. L. Vieira, E. L. C. Macedo, A. L. É. Battisti, J. Noce, P. F. Pires, D. C. Muchaluat-Saade, A. C. B. de Oliveira, F. C. Delicato"
 year: 2024
 date: 2024-01-01
 tags: ["magazine"]

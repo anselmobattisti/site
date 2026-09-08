@@ -1,5 +1,6 @@
 ---
 title: "A e-PARTICIPAÇÃO COMO FERRAMENTA DE TRANSFORMAÇÃO SOCIAL – UM ESTUDO DE CASO"
+authors: "A. L. É. Battisti, M. A. Cunha, M. R. da Fonseca"
 year: 2014
 date: 2014-05-01
 tags: ["conference"]

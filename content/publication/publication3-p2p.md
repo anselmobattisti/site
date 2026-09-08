@@ -1,5 +1,6 @@
 ---
 title: "A influência da inovatividade e do financiamento sobre o resultado em web startups brasileiras"
+authors: "A. L. É. Battisti, C. O. Quandt"
 year: 2018
 date: 2018-09-01
 tags: ["conference"]

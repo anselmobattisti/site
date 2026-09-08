@@ -1,5 +1,6 @@
 ---
 title: "V-PRISM: An Edge-Based IoT Architecture to Virtualize Multimedia Sensors"
+authors: "A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato"
 year: 2020
 date: 2020-01-01
 tags: ["conference"]
