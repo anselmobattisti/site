@@ -1491,6 +1491,62 @@ table th {
 	text-align: left;
 }
 
+/* The rail is 645px tall, so on a short window it used to grow a scrollbar of
+   its own. Rather than scroll it, give back space in the order the rail can
+   least afford to lose it: first the portrait shrinks, then the nav tightens,
+   and only on a very short window do the portrait and the secondary identity
+   lines go entirely. Navigation is the last thing to give. The overflow rule
+   above stays as a floor for windows shorter than anything handled here. */
+@media (min-width: 861px) and (max-height: 760px) {
+	.rail-inner {
+		gap: 1.1rem;
+	}
+
+	.identity img.avatar {
+		width: 112px;
+	}
+}
+
+@media (min-width: 861px) and (max-height: 690px) {
+	.rail {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+
+	.rail-inner {
+		top: 1.5rem;
+		max-height: calc(100vh - 3rem);
+		gap: 0.9rem;
+	}
+
+	.identity img.avatar {
+		width: 84px;
+	}
+
+	.nav-item > a,
+	.submenu-item a {
+		padding-block: 0.24rem;
+	}
+}
+
+@supports (height: 100dvh) {
+	@media (min-width: 861px) and (max-height: 690px) {
+		.rail-inner {
+			max-height: calc(100dvh - 3rem);
+		}
+	}
+}
+
+@media (min-width: 861px) and (max-height: 600px) {
+	.identity img.avatar {
+		display: none;
+	}
+
+	.rail-role .rail-detail {
+		display: none;
+	}
+}
+
 /* ==========================================================================
    Responsive: the rail folds into a header bar
    ========================================================================== */
