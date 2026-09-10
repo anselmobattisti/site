@@ -84,31 +84,34 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
-	// eleventyConfig.addPlugin(feedPlugin, {
-	// 	type: "atom", // or "rss", "json"
-	// 	outputPath: "/feed/feed.xml",
-	// 	stylesheet: "pretty-atom-feed.xsl",
-	// 	eleventyExcludeFromCollections: true,
-	// 	templateData: {
-	// 		eleventyNavigation: {
-	// 			key: "Feed",				
-	// 			order: 999
-	// 		}
-	// 	},
-	// 	collection: {
-	// 		name: "posts",
-	// 		limit: 10,
-	// 	},
-	// 	metadata: {
-	// 		language: "en",
-	// 		title: "Blog Title",
-	// 		subtitle: "This is a longer description about your blog.",
-	// 		base: "https://example.com/",
-	// 		author: {
-	// 			name: "Your Name"
-	// 		}
-	// 	}
-	// });
+	// Everything datable the site publishes, newest first, in one feed.
+	eleventyConfig.addCollection("updates", (collectionApi) => {
+		return [
+			...collectionApi.getFilteredByTag("publications"),
+			...collectionApi.getFilteredByTag("talks"),
+			...collectionApi.getFilteredByTag("projects"),
+		].sort((a, b) => a.date - b.date);
+	});
+
+	eleventyConfig.addPlugin(feedPlugin, {
+		type: "atom",
+		outputPath: "/feed.xml",
+		eleventyExcludeFromCollections: true,
+		collection: {
+			name: "updates",
+			limit: 20,
+		},
+		metadata: {
+			language: "en",
+			title: "Anselmo Luiz Éden Battisti",
+			subtitle: "Publications, talks and research projects.",
+			base: "https://battisti.com.br/",
+			author: {
+				name: "Anselmo Luiz Éden Battisti",
+				email: "anselmo@battisti.com.br",
+			},
+		},
+	});
 
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {

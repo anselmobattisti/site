@@ -33,6 +33,9 @@ layout: layouts/base.njk
     {%- if funding %}
     <li><span class="k">Funding</span><span>{{ funding }}</span></li>
     {%- endif %}
+    {%- if repo_note and not repo_link %}
+    <li><span class="k">Source</span><span>{{ repo_note }}</span></li>
+    {%- endif %}
   </ul>
 
   {%- if abstract %}

@@ -13,6 +13,7 @@ layout: layouts/base.njk
       {%- if pdf_link %}<a class="btn btn-solid" href="{{ pdf_link }}" target="_blank" rel="noopener">Read the paper (PDF)</a>{% endif %}
       {%- if presentation_link %}<a class="btn" href="{{ presentation_link }}" target="_blank" rel="noopener">Presentation slides</a>{% endif %}
       {%- if video_link %}<a class="btn" href="{{ video_link }}" target="_blank" rel="noopener">Watch the talk</a>{% endif %}
+      {%- if doi %}<a class="btn" href="https://doi.org/{{ doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
     </div>
   </div>
 
@@ -20,6 +21,9 @@ layout: layouts/base.njk
     <li><span class="k">Venue</span><span>{{ event_magazine }}</span></li>
     <li><span class="k">Year</span><span>{{ year }}</span></li>
     <li><span class="k">Type</span><span>{{ tags | publicationKind }}</span></li>
+    {%- if doi %}
+    <li><span class="k">DOI</span><span><a href="https://doi.org/{{ doi }}" target="_blank" rel="noopener">{{ doi }}</a></span></li>
+    {%- endif %}
   </ul>
 
   {%- if abstract %}

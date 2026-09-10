@@ -7,7 +7,9 @@ status: "active"
 summary: "An open-source, AI-powered conversational layer for libraries."
 institution: "IMPA Tech"
 students_note: "Undergraduate students at IMPA Tech."
-repo_link: "https://github.com/anselmobattisti/libvox"
+# Private while the project is being finalised — uncomment when it goes public.
+# repo_link: "https://github.com/anselmobattisti/libvox"
+repo_note: "Private while the project is being finalised."
 students:
   - "Vinícius Flesch Kern"
   - "Matheus Mota de Godoy"

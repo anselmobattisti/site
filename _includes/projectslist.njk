@@ -5,6 +5,7 @@
     Collections arrive sorted oldest-first, so a single reverse puts the most
     recently started project at the top. -#}
 
+{%- set hx = entryHeading or "h2" %}
 {%- set ordered = (projectslist or []) | reverse %}
 {%- if projectslistLimit %}{% set ordered = ordered | head(projectslistLimit) %}{% endif %}
 
@@ -14,7 +15,7 @@
   <li class="entry">
     <div class="entry-year">{{ project.data.period or project.date | readableDate("yyyy") }}</div>
     <div>
-      <h3 class="entry-title"><a href="{{ project.url }}">{{ project.data.title }}</a></h3>
+      <{{ hx }} class="entry-title"><a href="{{ project.url }}">{{ project.data.title }}</a></{{ hx }}>
       {%- if project.data.summary %}
       <p class="entry-org">{{ project.data.summary }}</p>
       {%- endif %}

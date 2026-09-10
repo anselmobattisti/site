@@ -941,6 +941,13 @@ dialog.lightbox::backdrop {
 	background-color: var(--surface);
 }
 
+.card :is(h2, h3) {
+	font-family: var(--font-family);
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
 .card p {
 	font-size: 0.88rem;
 	color: var(--muted);
@@ -951,12 +958,12 @@ dialog.lightbox::backdrop {
 	text-decoration: none;
 }
 
-.card h3 a::after {
+.card :is(h2, h3) a::after {
 	content: " →";
 	color: var(--accent-strong);
 }
 
-.card h3 a:hover {
+.card :is(h2, h3) a:hover {
 	text-decoration: underline;
 	text-underline-offset: 3px;
 }
@@ -1219,6 +1226,15 @@ dialog.lightbox::backdrop {
 
 .tl-item.now .tl-period {
 	color: var(--accent-ink);
+}
+
+/* A timeline entry is an <h2> for the document outline, but it sits at body
+   scale in the design. */
+.tl-title {
+	font-family: var(--font-family);
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.4;
 }
 
 .tl-org {

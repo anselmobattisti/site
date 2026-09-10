@@ -15,6 +15,12 @@
 		<meta name="description" content="{{ pageDescription }}">
 		<meta name="author" content="{{ metadata.author.name }}">
 		<link rel="canonical" href="{{ pageUrl }}">
+		{%- if doi %}
+		<meta name="citation_doi" content="{{ doi }}">
+		<meta name="citation_title" content="{{ title }}">
+		<meta name="citation_publication_date" content="{{ year }}">
+		{%- if event_magazine %}<meta name="citation_journal_title" content="{{ event_magazine }}">{% endif %}
+		{%- endif %}
 		<meta name="generator" content="{{ eleventy.generator }}">
 
 		{#- Link previews: the site is shared far more often than it is browsed. #}
@@ -38,6 +44,7 @@
 		<meta name="twitter:image" content="{{ shareImage }}">
 
 		<link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
+		<link rel="alternate" type="application/atom+xml" title="{{ metadata.author.name }}" href="{{ '/feed.xml' | absoluteUrl(metadata.url) }}">
 
 		{#- The face every page paints first: start it before layout reaches
 		    the text that needs it. #}

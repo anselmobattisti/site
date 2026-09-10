@@ -29,15 +29,6 @@ export default function(eleventyConfig) {
 		return Math.min.apply(null, numbers);
 	});
 
-	// Return the keys used in an object
-	eleventyConfig.addFilter("getKeys", target => {
-		return Object.keys(target);
-	});
-
-	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-		return (tags || []).filter(tag => ["all", "posts", "featuredPublications"].indexOf(tag) === -1);
-	});
-
 	// Minify a CSS string with Lightning CSS. The site inlines its stylesheet
 	// into every page rather than linking it, so minification has to happen on
 	// the string being inlined — a plugin that compiles `.css` files into
@@ -59,15 +50,6 @@ export default function(eleventyConfig) {
 		return minified.toString();
 	});
 
-	// Join a site base and a page path without doubling or dropping the slash.
-	eleventyConfig.addFilter("absoluteUrl", (path, base) => {
-		return new URL(path, base).href;
-	});
-
-	eleventyConfig.addFilter("sortAlphabetically", strings =>
-		(strings || []).sort((b, a) => b.localeCompare(a))
-	);
-
 	// Bold the site owner inside a comma-separated author list, so a reader
 	// scanning the publication list can spot his position in each byline.
 	eleventyConfig.addFilter("highlightAuthor", (authors, surname = "Battisti") => {
@@ -82,6 +64,11 @@ export default function(eleventyConfig) {
 				return trimmed.includes(surname) ? `<span class="me">${trimmed}</span>` : trimmed;
 			})
 			.join(", ");
+	});
+
+	// Join a site base and a page path without doubling or dropping the slash.
+	eleventyConfig.addFilter("absoluteUrl", (path, base) => {
+		return new URL(path, base).href;
 	});
 
 	// "magazine" is how publications are tagged in front matter; "Journal" is

@@ -20,7 +20,7 @@
 <ul class="timeline">
   <li class="tl-item">
     <span class="tl-period">2020 — 2025</span>
-    <h3>Ph.D. in Computer Science</h3>
+    <h2 class="tl-title">Ph.D. in Computer Science</h2>
     <p class="tl-org">Universidade Federal Fluminense (UFF) <span class="place">· Niterói/RJ, Brazil</span></p>
     <p class="tl-desc"><em>SPEED — SFC Placement in Edge-Cloud Continuum: a Distributed Approach.</em><br>
     Advisor: Flávia Coimbra Delicato · Co-advisor: Débora Christina Muchaluat-Saade</p>
@@ -32,7 +32,7 @@
 
   <li class="tl-item">
     <span class="tl-period">2018 — 2020</span>
-    <h3>Master’s in Computer Science</h3>
+    <h2 class="tl-title">Master’s in Computer Science</h2>
     <p class="tl-org">Universidade Federal Fluminense (UFF) <span class="place">· Niterói/RJ, Brazil</span></p>
     <p class="tl-desc"><em>V-PRISM: Uma Arquitetura para Virtualização na Edge de Sensores Multimídia em Ambientes de IoT.</em><br>
     Advisor: Débora Christina Muchaluat-Saade · Co-advisor: Flávia Coimbra Delicato</p>
@@ -44,7 +44,7 @@
 
   <li class="tl-item">
     <span class="tl-period">2013 — 2015</span>
-    <h3>Master’s in Strategic Business Management</h3>
+    <h2 class="tl-title">Master’s in Strategic Business Management</h2>
     <p class="tl-org">Pontifícia Universidade Católica do Paraná (PUCPR) <span class="place">· Curitiba/PR, Brazil</span></p>
     <p class="tl-desc"><em>A influência da inovatividade e do financiamento sobre o resultado em web start-ups brasileiras.</em><br>
     Advisor: Carlos Olavo Quandt</p>
@@ -55,7 +55,7 @@
 
   <li class="tl-item">
     <span class="tl-period">2008 — 2009</span>
-    <h3>Specialization in Software Development and New Technologies</h3>
+    <h2 class="tl-title">Specialization in Software Development and New Technologies</h2>
     <p class="tl-org">Universidade Estadual do Oeste do Paraná (Unioeste) <span class="place">· Cascavel/PR, Brazil</span></p>
     <p class="tl-desc"><em>ESPERTO — Uma Ferramenta Web para o Desenvolvimento Colaborativo e Uso de Sistemas Especialistas de Classificação.</em><br>
     Advisor: Claudia Brandelero Rizzi</p>
@@ -66,7 +66,7 @@
 
   <li class="tl-item">
     <span class="tl-period">2003 — 2007</span>
-    <h3>Bachelor’s in Informatics (Computer Science)</h3>
+    <h2 class="tl-title">Bachelor’s in Informatics (Computer Science)</h2>
     <p class="tl-org">Universidade Estadual do Oeste do Paraná (Unioeste) <span class="place">· Cascavel/PR, Brazil</span></p>
     <p class="tl-desc"><em>Usabilidade em Sistemas Web — Um Estudo de Caso.</em><br>
     Advisor: Carlos José Maria Olguin</p>

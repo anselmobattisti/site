@@ -6,6 +6,7 @@
     Sorted newest first on the `date` field declared in each publication's
     front matter, never on the file's mtime. -#}
 
+{%- set hx = entryHeading or "h2" %}
 {%- set ordered = publicationslist | sort(false, false, "data.date") | reverse %}
 {%- if publicationslistLimit %}{% set ordered = ordered | head(publicationslistLimit) %}{% endif %}
 
@@ -26,7 +27,7 @@
   <li class="entry" data-type="{{ kind | lower }}">
     <div class="entry-year">{{ pub.data.year }}</div>
     <div>
-      <h3 class="entry-title"><a href="{{ pub.url }}">{{ pub.data.title }}</a></h3>
+      <{{ hx }} class="entry-title"><a href="{{ pub.url }}">{{ pub.data.title }}</a></{{ hx }}>
       {%- if pub.data.authors %}
       <p class="entry-authors">{{ pub.data.authors | highlightAuthor | safe }}</p>
       {%- endif %}
@@ -34,6 +35,7 @@
         <span class="venue">{{ pub.data.event_magazine }}</span><span class="kind">{{ kind }}</span>
         <span class="entry-links">
           {%- if pub.data.pdf_link %}<a href="{{ pub.data.pdf_link }}" target="_blank" rel="noopener">PDF</a>{% endif %}
+          {%- if pub.data.doi %}<a href="https://doi.org/{{ pub.data.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
           {%- if pub.data.presentation_link %}<a href="{{ pub.data.presentation_link }}" target="_blank" rel="noopener">Slides</a>{% endif %}
           {%- if pub.data.video_link %}<a href="{{ pub.data.video_link }}" target="_blank" rel="noopener">Video</a>{% endif %}
           <a href="{{ pub.url }}">Details</a>
