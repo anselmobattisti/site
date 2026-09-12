@@ -1,14 +1,19 @@
 ---
 title: "A influência da inovatividade e do financiamento sobre o resultado em web startups brasileiras"
+authors: "A. L. É. Battisti, C. O. Quandt"
 year: 2018
 date: 2018-09-01
-tags: ["conference"]
+tags: ["magazine"]
 event_magazine: "P2P E INOVAÇÃO"
+doi: "10.21721/p2p.2018v5n1.p43-69"
+title_language: "pt-BR"
+abstract_language: "pt-BR"
+featured: true
 abstract: "A inovatividade e os resultados são cruciais para a sobrevivência das webs startups, empresas de base tecnológica. A obtenção de capital para o seu financiamento não é simples. Os mecanismos tradicionais de financiamento exigem garantias que raramente podem ser satisfeitas por estas organizações. Com isso, meios alternativos de financiamento surgiram para dar suporte as startups. Este trabalho visa investigar a relação existente entre a inovatividade, o financiamento e o resultado em startups. Esta pesquisa é correlacional-causal com corte transversal. A unidade de análise são startups brasileiras. Foi utilizado como instrumento de coleta de dados questionário estruturado. A análise dos dados foi quantitativa utilizando análise fatorial. Alguns resultados obtidos são que no Brasil as startups estruturam seu capital primeiramente pelo autofinanciamento, em seguida com os modelos alternativos e por fim utilizam o financiamento tradicionais, observou-se também que a inovatividade afeta positivamente a obtenção recursos que por sua vez influencia o resultado."
 pdf_link: "https://github.com/anselmobattisti/publications/blob/main/docs/2018/P2P/article.pdf"
 ---
 
-<strong>How to Cite:</strong>
+## How to cite
 
 {% highlight "bibtex" %}
 @article{Battisti2018,

@@ -1,120 +1,398 @@
 <!doctype html>
 <html lang="{{ metadata.language }}">
 	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2Z5QQ6Q24"></script>
-		{% raw %}
-		<script type="text/javascript" eleventy:ignore>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-V2Z5QQ6Q24');
-		</script>
-		{% endraw %}
-
 		<meta charset="utf-8">
-		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ title or metadata.title }}</title>
-		<meta name="description" content="{{ description or metadata.description }}">
 
-		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
+		{%- set pageTitle = title or metadata.title %}
+		{%- set pageDescription = description or metadata.description %}
+		{%- set pageUrl = page.url | absoluteUrl(metadata.url) %}
+		{#- Link previews need an absolute URL. A page can override the card with
+		    its own `image` in front matter. #}
+		{%- set shareImage = (image or "/img/share.jpg") | absoluteUrl(metadata.url) %}
+
+		<title>{{ pageTitle }}</title>
+		<meta name="description" content="{{ pageDescription }}">
+		<meta name="author" content="{{ metadata.author.name }}">
+		<link rel="canonical" href="{{ pageUrl }}">
+		{%- if doi %}
+		<meta name="citation_doi" content="{{ doi }}">
+		<meta name="citation_title" content="{{ title }}">
+		<meta name="citation_publication_date" content="{{ year }}">
+		{%- if event_magazine %}<meta name="citation_journal_title" content="{{ event_magazine }}">{% endif %}
+		{%- endif %}
 		<meta name="generator" content="{{ eleventy.generator }}">
 
-		{#-
-		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
-		1. CSS:
-			* Add to a per-page bundle using `{% css %}{% endcss %}`
-			* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-		2. Or for JavaScript:
-			* Add to a per-page bundle using `{% js %}{% endjs %}`
-			* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
-		3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-		#}
+		{#- Link previews: the site is shared far more often than it is browsed. #}
+		<meta property="og:type" content="{% if year %}article{% else %}website{% endif %}">
+		<meta property="og:site_name" content="{{ metadata.author.name }}">
+		<meta property="og:title" content="{{ pageTitle }}">
+		<meta property="og:description" content="{{ pageDescription }}">
+		<meta property="og:url" content="{{ pageUrl }}">
+		<meta property="og:locale" content="en_US">
+		<meta property="og:image" content="{{ shareImage }}">
+		<meta property="og:image:alt" content="{{ metadata.author.name }} — {{ metadata.role }}">
+		{%- if not image %}
+		{#- Dimensions belong to the default card only; a page-level `image`
+		    override would not be 1200x630. #}
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		{%- endif %}
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="{{ pageTitle }}">
+		<meta name="twitter:description" content="{{ pageDescription }}">
+		<meta name="twitter:image" content="{{ shareImage }}">
 
-		{#- Add CSS to the bundle #}
-		<style>/* This is an arbitrary CSS string added to the bundle */</style>
+		<link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
+		<link rel="alternate" type="application/atom+xml" title="{{ metadata.author.name }}" href="{{ '/feed.xml' | absoluteUrl(metadata.url) }}">
 
-		{#- Add the contents of a file to the bundle #}
-		<style>{% include "css/index.css" %}</style>
+		{#- The face every page paints first: start it before layout reaches
+		    the text that needs it. #}
+		<link rel="preload" href="{{ '/fonts/roboto-latin.woff2' | url }}" as="font" type="font/woff2" crossorigin>
 
-		{#- Or you can add from node_modules #}
-		{# <style>{% include "node_modules/something.css" %}</style> #}
+		{#- Fonts are served from this origin and inlined with the rest of the
+		    CSS. A <link> to fonts.googleapis.com would block the first render
+		    on a third-party round trip before a single byte of text appears. #}
+		{%- set siteCss %}{% include "css/fonts.css" %}{% include "css/index.css" %}{% endset %}
+		<style>{{ siteCss | cssmin | safe }}</style>
 
 		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
 		<style>{% getBundle "css" %}</style>
 
-		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
-
 		{#- Add the heading-anchors web component to the JavaScript bundle #}
 		<script type="module" eleventy:ignore>{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}</script>
 
-		<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-funky.css"
-			rel="stylesheet"
-		/>
+		{#- Tells Google Scholar, LinkedIn and friends who this site belongs to. #}
+		<script type="application/ld+json" eleventy:ignore>
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "{{ metadata.author.name }}",
+			"givenName": "Anselmo",
+			"familyName": "Battisti",
+			"email": "mailto:{{ metadata.author.email }}",
+			"url": "{{ metadata.url }}",
+			"jobTitle": "Professor",
+			"description": "{{ metadata.description }}",
+			"image": "{{ shareImage }}",
+			"affiliation": {
+				"@type": "CollegeOrUniversity",
+				"name": "IMPA Tech",
+				"url": "https://impatech.edu.br/",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "Av. Prof. Pereira Reis, 76 - Santo Cristo",
+					"addressLocality": "Rio de Janeiro",
+					"addressRegion": "RJ",
+					"postalCode": "20220-800",
+					"addressCountry": "BR"
+				}
+			},
+			"alumniOf": [
+				{ "@type": "CollegeOrUniversity", "name": "Universidade Federal Fluminense (UFF)" },
+				{ "@type": "CollegeOrUniversity", "name": "Pontifícia Universidade Católica do Paraná (PUCPR)" },
+				{ "@type": "CollegeOrUniversity", "name": "Universidade Estadual do Oeste do Paraná (Unioeste)" }
+			],
+			"knowsAbout": [
+				"Service Function Chain placement",
+				"Edge computing",
+				"Virtual Network Functions",
+				"5G networks",
+				"Internet of Media Things"
+			],
+			"sameAs": [
+				"{{ metadata.profiles.lattes }}",
+				"{{ metadata.profiles.scholar }}",
+				"{{ metadata.profiles.github }}",
+				"{{ metadata.profiles.youtube }}"
+			]
+		}
+		</script>
 	</head>
 	<body>
 		<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
 
-		<header>
-			<a href="/" class="home-link">Anselmo Luiz Éden Battisti</a>
+		<div class="shell">
 
-			<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" title="Toggle navigation">Menu</button>
+			{#- Identity rail: who he is, fixed on every page, so page content
+			    can be about the work instead of repeating the introduction. #}
+			<div class="rail">
+				<div class="rail-inner">
+					<div class="identity">
+						<a href="/" class="avatar-link" aria-label="Home">
+							<img class="avatar" src="{{ '/about/rosto.png' | url }}" alt="Portrait of {{ metadata.author.name }}" width="300" loading="eager" decoding="async">
+						</a>
+						<p class="rail-name"><a href="/">Anselmo Luiz <br>Éden Battisti</a></p>
+						{#- The degree and location lines are wrapped so the mobile bar can
+						    drop them and keep just the name and the role. #}
+						<p class="rail-role">
+							<strong>{{ metadata.role }}</strong>
+							<span class="rail-detail">{{ metadata.degree }}</span>
+							<span class="rail-detail">{{ metadata.location }}</span>
+						</p>
+					</div>
 
-			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-			<nav id="site-nav" aria-label="Primary">
-				<ul class="nav">
-				{%- for entry in collections.all | eleventyNavigation %}
-					<li class="nav-item">
-						<a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
-						{%- if entry.children and entry.children.length > 0 %}
-						<ul class="submenu">
-							{%- for child in entry.children %}
-							<li class="submenu-item">
-								<a href="{{ child.url }}"{% if child.url == page.url %} aria-current="page"{% endif %}>{{ child.title }}</a>
+					<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+					{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+					<nav id="site-nav" aria-label="Primary">
+						<ul class="nav">
+						{%- for entry in collections.all | eleventyNavigation %}
+							<li class="nav-item">
+								<a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
+								{%- if entry.children and entry.children.length > 0 %}
+								<ul class="submenu">
+									{%- for child in entry.children %}
+									<li class="submenu-item">
+										<a href="{{ child.url }}"{% if child.url == page.url %} aria-current="page"{% endif %}>{{ child.title }}</a>
+									</li>
+									{%- endfor %}
+								</ul>
+								{%- endif %}
 							</li>
-							{%- endfor %}
+						{%- endfor %}
 						</ul>
-						{%- endif %}
-					</li>
-				{%- endfor %}
-				</ul>
-			</nav>
-		</header>
+					</nav>
 
-		<main id="main">
-			<heading-anchors>
-				{{ content | safe }}
-			</heading-anchors>
-		</main>
+				</div>
+			</div>
 
-		<footer>
-			<hr/>			
-			<nav class="social" aria-label="Social links">
+			<main id="main" class="main">
+				<heading-anchors selector="h2">
+					{{ content | safe }}
+				</heading-anchors>
+			</main>
+
+			<footer class="site-footer">
+				<span>© {{ metadata.author.name }}</span>
+				<a href="mailto:{{ metadata.author.email }}">{{ metadata.author.email }}</a>
+
 				<ul class="social-links">
 					<li>
-						<a href="https://github.com/anselmobattisti" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+						<a href="{{ metadata.profiles.github }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
 							<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor">
 								<path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.24c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.28-1.23 3.28-1.23.66 1.65.25 2.87.13 3.17.77.84 1.23 1.9 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/>
 							</svg>
 						</a>
 					</li>
 					<li>
-						<a href="https://www.youtube.com/anselmobattisti" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+						<a href="{{ metadata.profiles.youtube }}" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
 							<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor">
 								<path d="M23.5 6.2a3.02 3.02 0 0 0-2.13-2.13C19.35 3.5 12 3.5 12 3.5s-7.35 0-9.37.57A3.02 3.02 0 0 0 .5 6.2C0 8.22 0 12 0 12s0 3.78.5 5.8a3.02 3.02 0 0 0 2.13 2.13C4.65 20.5 12 20.5 12 20.5s7.35 0 9.37-.57a3.02 3.02 0 0 0 2.13-2.13C24 15.78 24 12 24 12s0-3.78-.5-5.8ZM9.75 15.5v-7l6 3.5-6 3.5Z"/>
 							</svg>
 						</a>
-					</li>					
-					<li>						
-						<a href="https://lattes.cnpq.br/6937214674204474" target="_blank" rel="noopener" aria-label="Lattes" title="Lattes">							
+					</li>
+					<li>
+						<a href="{{ metadata.profiles.lattes }}" target="_blank" rel="noopener" aria-label="Lattes" title="Lattes">
 							<img src="{{ '/img/lattes-icon.png' | url }}" alt="Lattes" width="24" height="24" loading="lazy" decoding="async">
 						</a>
 					</li>
 				</ul>
-			</nav>			
-		</footer>
+			</footer>
+		</div>
+
+{%- if 'class="language-' in content %}
+		{#- One-click copy for the code blocks in an article — the BibTeX entry
+		    on a publication page. Only added when the clipboard API is there,
+		    so the block is never left with a button that does nothing. #}
+		<script type="text/javascript" eleventy:ignore>
+		(function () {
+		  var blocks = document.querySelectorAll('.prose pre[class*="language-"]');
+		  if (!blocks.length) return;
+
+		  var copyKey = navigator.userAgent.indexOf('Mac') > -1 ? '\u2318' : 'Ctrl';
+
+		  blocks.forEach(function (pre) {
+		    var code = pre.querySelector('code');
+		    if (!code) return;
+
+		    var button = document.createElement('button');
+		    button.type = 'button';
+		    button.className = 'copy-button';
+		    button.textContent = 'Copy';
+
+		    function flash(text) {
+		      button.textContent = text;
+		      button.classList.add('is-done');
+		      window.setTimeout(function () {
+		        button.textContent = 'Copy';
+		        button.classList.remove('is-done');
+		      }, 2200);
+		    }
+
+		    function selectInstead() {
+		      var range = document.createRange();
+		      range.selectNodeContents(code);
+		      var selection = window.getSelection();
+		      selection.removeAllRanges();
+		      selection.addRange(range);
+		      flash(copyKey + '+C');
+		    }
+
+		    button.addEventListener('click', function () {
+		      if (!navigator.clipboard) return selectInstead();
+		      navigator.clipboard.writeText(code.textContent).then(function () {
+		        flash('Copied');
+		      }, selectInstead);
+		    });
+
+		    pre.appendChild(button);
+		  });
+		})();
+		</script>
+		{%- endif %}
+
+{%- if 'class="diagram' in content %}
+		{#- Diagrams open in a larger view. Progressive enhancement: the control
+		    is only inserted when this runs, so a diagram still renders inline
+		    without JavaScript. The artwork is resolved at click time because a
+		    Mermaid diagram has not been drawn yet when this executes. #}
+		<script type="text/javascript" eleventy:ignore>
+		(function () {
+		  var diagrams = document.querySelectorAll('.diagram');
+		  if (!diagrams.length || typeof HTMLDialogElement === 'undefined') return;
+
+		  var dialog = document.createElement('dialog');
+		  dialog.className = 'lightbox';
+		  dialog.innerHTML =
+		    '<div class="lightbox-bar"><span class="lightbox-label"></span>' +
+		    '<span class="lightbox-tools">' +
+		    '<button type="button" class="lightbox-zoom" data-zoom="out" aria-label="Zoom out">&#8722;</button>' +
+		    '<button type="button" class="lightbox-zoom" data-zoom="in" aria-label="Zoom in">+</button>' +
+		    '<button type="button" class="lightbox-zoom" data-zoom="reset">Reset</button>' +
+		    '<button type="button" class="lightbox-close">Close</button>' +
+		    '</span></div>' +
+		    '<div class="lightbox-body"><div class="lightbox-stage"></div></div>';
+		  document.body.appendChild(dialog);
+
+		  var body = dialog.querySelector('.lightbox-body');
+		  var stage = dialog.querySelector('.lightbox-stage');
+		  var label = dialog.querySelector('.lightbox-label');
+
+		  // Pan and zoom, the way a diagram viewer is expected to behave: wheel to
+		  // zoom at the pointer, drag to pan, buttons and +/-/0 for the keyboard.
+		  var scale = 1, tx = 0, ty = 0;
+
+		  function apply() {
+		    stage.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+		  }
+
+		  function reset() {
+		    scale = 1; tx = 0; ty = 0;
+		    apply();
+		  }
+
+		  function zoomAt(factor, px, py) {
+		    var next = Math.min(8, Math.max(0.25, scale * factor));
+		    var k = next / scale;
+		    tx = px - k * (px - tx);
+		    ty = py - k * (py - ty);
+		    scale = next;
+		    apply();
+		  }
+
+		  function zoomCentre(factor) {
+		    var box = body.getBoundingClientRect();
+		    zoomAt(factor, box.width / 2, box.height / 2);
+		  }
+
+		  body.addEventListener('wheel', function (event) {
+		    event.preventDefault();
+		    var box = body.getBoundingClientRect();
+		    zoomAt(event.deltaY < 0 ? 1.15 : 1 / 1.15, event.clientX - box.left, event.clientY - box.top);
+		  }, { passive: false });
+
+		  var dragging = false, lastX = 0, lastY = 0;
+
+		  body.addEventListener('pointerdown', function (event) {
+		    dragging = true;
+		    lastX = event.clientX;
+		    lastY = event.clientY;
+		    body.setPointerCapture(event.pointerId);
+		    body.classList.add('is-panning');
+		  });
+
+		  body.addEventListener('pointermove', function (event) {
+		    if (!dragging) return;
+		    tx += event.clientX - lastX;
+		    ty += event.clientY - lastY;
+		    lastX = event.clientX;
+		    lastY = event.clientY;
+		    apply();
+		  });
+
+		  function endDrag() {
+		    dragging = false;
+		    body.classList.remove('is-panning');
+		  }
+		  body.addEventListener('pointerup', endDrag);
+		  body.addEventListener('pointercancel', endDrag);
+
+		  dialog.querySelectorAll('.lightbox-zoom').forEach(function (button) {
+		    button.addEventListener('click', function () {
+		      var mode = button.dataset.zoom;
+		      if (mode === 'reset') reset();
+		      else zoomCentre(mode === 'in' ? 1.3 : 1 / 1.3);
+		    });
+		  });
+
+		  dialog.addEventListener('keydown', function (event) {
+		    if (event.key === '+' || event.key === '=') { event.preventDefault(); zoomCentre(1.3); }
+		    else if (event.key === '-') { event.preventDefault(); zoomCentre(1 / 1.3); }
+		    else if (event.key === '0') { event.preventDefault(); reset(); }
+		  });
+
+		  diagrams.forEach(function (diagram) {
+		    function open() {
+		      var art = diagram.querySelector('img, svg');
+		      if (!art) return;
+		      var caption = diagram.querySelector('figcaption') || diagram.nextElementSibling;
+		      label.textContent = caption && caption.classList.contains('diagram-caption')
+		        ? caption.textContent.trim()
+		        : (diagram.querySelector('figcaption') ? diagram.querySelector('figcaption').textContent.trim() : '');
+		      var clone = art.cloneNode(true);
+		      if (clone.tagName.toLowerCase() === 'svg') {
+		        clone.style.maxWidth = 'none';
+		        clone.removeAttribute('width');
+		        clone.removeAttribute('height');
+		      }
+		      stage.innerHTML = '';
+		      stage.appendChild(clone);
+		      reset();
+		      dialog.showModal();
+		    }
+
+		    diagram.classList.add('is-zoomable');
+		    diagram.addEventListener('click', function (event) {
+		      if (event.target.closest('figcaption, a, button')) return;
+		      open();
+		    });
+
+		    var trigger = document.createElement('button');
+		    trigger.type = 'button';
+		    trigger.className = 'diagram-zoom';
+		    trigger.textContent = 'Enlarge';
+		    trigger.addEventListener('click', open);
+		    var after = diagram.nextElementSibling;
+		    if (after && after.classList.contains('diagram-caption')) {
+		      after.insertAdjacentElement('afterend', trigger);
+		    } else {
+		      diagram.insertAdjacentElement('afterend', trigger);
+		    }
+		  });
+
+		  dialog.querySelector('.lightbox-close').addEventListener('click', function () {
+		    dialog.close();
+		  });
+		  dialog.addEventListener('click', function (event) {
+		    if (event.target === dialog) dialog.close();
+		  });
+		  dialog.addEventListener('close', function () {
+		    stage.innerHTML = '';
+		  });
+		})();
+		</script>
+		{%- endif %}
 
 		<script type="text/javascript" eleventy:ignore>
 		(function() {
@@ -128,5 +406,23 @@
 		})();
 		</script>
 
+
+		{#- The starter's `js` bundle swallows every <script> that is not marked
+		    `eleventy:ignore`, and the plugin cannot mark its own output — so
+		    capture the tag and add the attribute before printing it. #}
+		{%- if mermaid %}
+		{%- set mermaidScript %}{% mermaid_js %}{% endset %}
+		{{ mermaidScript | replace('<script type="module" async>', '<script type="module" async eleventy:ignore>') | safe }}
+		{%- endif %}
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2Z5QQ6Q24"></script>
+		{% raw %}
+		<script type="text/javascript" eleventy:ignore>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-V2Z5QQ6Q24');
+		</script>
+		{% endraw %}
 	</body>
 </html>

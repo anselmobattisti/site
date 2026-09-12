@@ -1,0 +1,37 @@
+<!--
+  Source for /img/share.jpg, the site's default Open Graph image.
+
+  To re-render after changing the name, role or portrait:
+    1. npm start
+    2. cp content/about/rosto.png _site/sharecard/rosto.png
+       cp tools/share-card.html _site/sharecard/index.html
+    3. google-chrome --headless --window-size=1200,630 \
+         --force-device-scale-factor=1 --hide-scrollbars \
+         --screenshot=share.png http://localhost:8080/sharecard/
+    4. Convert to JPEG (quality 88) and replace public/img/share.jpg
+       PNG is ~360 KB for this artwork, JPEG ~92 KB with no visible artefacts.
+-->
+<!doctype html><meta charset="utf-8">
+<style>
+@font-face{font-family:'Roboto';src:url('/fonts/roboto-latin.woff2') format('woff2');font-weight:100 900;font-display:block}
+@font-face{font-family:'Roboto';src:url('/fonts/roboto-latin-ext.woff2') format('woff2');font-weight:100 900;font-display:block;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+*{box-sizing:border-box;margin:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:#f0eade;font-family:'Roboto',Arial,sans-serif;color:#2b2418;
+  display:grid;grid-template-columns:1fr 600px;align-items:center;
+  padding:0 0 0 82px;position:relative}
+.bar{position:absolute;left:0;top:0;bottom:0;width:14px;background:#decc96}
+h1{font-size:66px;line-height:1.08;font-weight:700;letter-spacing:-.015em;max-width:11ch}
+.role{margin-top:26px;font-size:27px;line-height:1.45;color:#4f4531;font-weight:500}
+.role span{display:block;color:#7d7059;font-weight:400;font-size:24px}
+.url{margin-top:44px;font-size:21px;letter-spacing:.06em;color:#7a5f13;font-weight:500}
+.art{height:630px;display:flex;align-items:flex-end;justify-content:center}
+.art img{width:600px;height:auto;display:block}
+</style>
+<div class="bar"></div>
+<div>
+  <h1>Anselmo Luiz Éden Battisti</h1>
+  <p class="role">Professor, IMPA Tech<span>Ph.D. in Computer Science, UFF</span></p>
+  <p class="url">battisti.com.br</p>
+</div>
+<div class="art"><img src="rosto.png" alt=""></div>

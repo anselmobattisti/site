@@ -5,14 +5,36 @@
 		parent: "Research",
 		order: 1,	
 	},
-	title: "Anselmo Luiz Éden Battisti - List of Publications",
-	description: "List of some of publications published by Anselmo Luiz Éden Battisti in co-authorship with other authors in magazines and scientific events." 
+	title: "Publications — Anselmo Luiz Éden Battisti",
+	description: "Peer-reviewed journal articles and conference papers by Anselmo Luiz Éden Battisti on SFC placement, VNF placement, edge computing, 5G and the Internet of Media Things." 
 }
 ---
-<h1>Publications</h1>
+<div class="hero">
+	<p class="eyebrow">{{ collections.publications | length }} peer-reviewed papers · 2014 — {{ (collections.publications | last).data.year }}</p>
+	<h1>Publications</h1>
+	<p class="lede">Journal articles and conference papers written with co-authors from UFF, UFRN and Dell Research, newest first. PDFs, slides and video recordings are linked where available.</p>
+</div>
 
-{# Sorted newest first inside publicationslist.njk, using the `date` field
-   declared in each publication's front matter (never the file's mtime). #}
 {% set publicationslist = collections.publications %}
-
+{% set publicationslistFilter = true %}
 {% include "publicationslist.njk" %}
+
+<script type="text/javascript" eleventy:ignore>
+(function () {
+  var chips = document.querySelectorAll('.filters .chip');
+  var list = document.getElementById('publication-list');
+  if (!chips.length || !list) return;
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var wanted = chip.dataset.filter;
+      chips.forEach(function (other) {
+        other.setAttribute('aria-pressed', String(other === chip));
+      });
+      list.querySelectorAll('.entry').forEach(function (entry) {
+        entry.hidden = !(wanted === 'all' || entry.dataset.type === wanted);
+      });
+    });
+  });
+})();
+</script>

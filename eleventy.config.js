@@ -3,6 +3,7 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import pluginMermaid from "@kevingimbel/eleventy-plugin-mermaid";
 
 import pluginFilters from "./_config/filters.js";
 
@@ -26,6 +27,9 @@ export default async function(eleventyConfig) {
 			"./public/": "/"
 		});
 
+	// Documents attached to a talk, kept next to it in content/talks/<slug>/.
+	eleventyConfig.addPassthroughCopy("content/talks/*/*");
+
 	// Run Eleventy when these files change:
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
@@ -33,6 +37,8 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addWatchTarget("css/**/*.css");
 	// Watch images for the image pipeline.
 	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpg,jpeg,gif}");
+	// So dropping a document into a talk folder rebuilds the page.
+	eleventyConfig.addWatchTarget("content/talks/*/*");
 
 	// Per-page bundles, see https://github.com/11ty/eleventy-plugin-bundle
 	// Bundle <style> content and adds a {% css %} paired shortcode
@@ -55,35 +61,62 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 }
 	});
+	// Must come after pluginSyntaxHighlight: it wraps the markdown highlighter
+	// registered above, so Prism still handles every language but `mermaid`.
+	eleventyConfig.addPlugin(pluginMermaid, {
+		extra_classes: "diagram",
+		mermaid_config: {
+			startOnLoad: true,
+			securityLevel: "strict",
+			theme: "base",
+			fontFamily: "Roboto, system-ui, sans-serif",
+			themeVariables: {
+				background: "transparent",
+				fontSize: "14px",
+				textColor: "#2b2418",
+				primaryColor: "#f7f0dc",
+				primaryTextColor: "#2b2418",
+				primaryBorderColor: "#b8963c",
+				lineColor: "#7d7059",
+				clusterBkg: "#f7f0dc",
+				clusterBorder: "#ddd2b6",
+				edgeLabelBackground: "#fffdf7"
+			}
+		}
+	});
+
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
-	// eleventyConfig.addPlugin(feedPlugin, {
-	// 	type: "atom", // or "rss", "json"
-	// 	outputPath: "/feed/feed.xml",
-	// 	stylesheet: "pretty-atom-feed.xsl",
-	// 	eleventyExcludeFromCollections: true,
-	// 	templateData: {
-	// 		eleventyNavigation: {
-	// 			key: "Feed",				
-	// 			order: 999
-	// 		}
-	// 	},
-	// 	collection: {
-	// 		name: "posts",
-	// 		limit: 10,
-	// 	},
-	// 	metadata: {
-	// 		language: "en",
-	// 		title: "Blog Title",
-	// 		subtitle: "This is a longer description about your blog.",
-	// 		base: "https://example.com/",
-	// 		author: {
-	// 			name: "Your Name"
-	// 		}
-	// 	}
-	// });
+	// Everything datable the site publishes, newest first, in one feed.
+	eleventyConfig.addCollection("updates", (collectionApi) => {
+		return [
+			...collectionApi.getFilteredByTag("publications"),
+			...collectionApi.getFilteredByTag("talks"),
+			...collectionApi.getFilteredByTag("projects"),
+		].sort((a, b) => a.date - b.date);
+	});
+
+	eleventyConfig.addPlugin(feedPlugin, {
+		type: "atom",
+		outputPath: "/feed.xml",
+		eleventyExcludeFromCollections: true,
+		collection: {
+			name: "updates",
+			limit: 20,
+		},
+		metadata: {
+			language: "en",
+			title: "Anselmo Luiz Éden Battisti",
+			subtitle: "Publications, talks and research projects.",
+			base: "https://battisti.com.br/",
+			author: {
+				name: "Anselmo Luiz Éden Battisti",
+				email: "anselmo@battisti.com.br",
+			},
+		},
+	});
 
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
@@ -113,6 +146,11 @@ export default async function(eleventyConfig) {
 		// by default we use Eleventy’s built-in `slugify` filter:
 		// slugify: eleventyConfig.getFilter("slugify"),
 		// selector: "h1,h2,h3,h4,h5,h6", // default
+	});
+
+	// Publications flagged `featured: true` in front matter, for the home page.
+	eleventyConfig.addCollection("featuredPublications", (collectionApi) => {
+		return collectionApi.getFilteredByTag("publications").filter((item) => item.data.featured);
 	});
 
 	eleventyConfig.addShortcode("currentBuildDate", () => {

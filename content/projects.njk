@@ -1,0 +1,19 @@
+---js
+{
+	eleventyNavigation: {
+		key: "Projects",
+		parent: "Research",
+		order: 2
+	},
+	title: "Research Projects — Anselmo Luiz Éden Battisti",
+	description: "Research projects led or co-developed by Anselmo Luiz Éden Battisti in edge computing, network function virtualization and multimedia systems."
+}
+---
+{%- set projectslist = collections.projects or [] %}
+<div class="hero">
+	<p class="eyebrow">Ongoing and past research</p>
+	<h1>Projects</h1>
+	<p class="lede">Research projects I lead or take part in, newest first. Where the work is public, the code and the project site are linked.</p>
+</div>
+
+{% include "projectslist.njk" %}

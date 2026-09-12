@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://battisti.com.br/sitemap.xml

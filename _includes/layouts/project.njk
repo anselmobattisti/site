@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+---
+<article>
+  <div class="hero">
+    <p class="eyebrow">Research project{% if period %} · {{ period }}{% endif %}</p>
+    <h1>{{ title }}</h1>
+    {%- if summary %}
+    <p class="lede">{{ summary }}</p>
+    {%- endif %}
+
+    {%- if repo_link or site_link %}
+    <div class="hero-actions">
+      {%- if site_link %}<a class="btn btn-solid" href="{{ site_link }}" target="_blank" rel="noopener">Project site</a>{% endif %}
+      {%- if repo_link %}<a class="btn" href="{{ repo_link }}" target="_blank" rel="noopener">Source code</a>{% endif %}
+    </div>
+    {%- endif %}
+  </div>
+
+  <ul class="publication-facts">
+    {%- if period %}
+    <li><span class="k">Period</span><span>{{ period }}</span></li>
+    {%- endif %}
+    {%- if status %}
+    <li><span class="k">Status</span><span class="lang-tag">{{ status }}</span></li>
+    {%- endif %}
+    {%- if role %}
+    <li><span class="k">Role</span><span>{{ role }}</span></li>
+    {%- endif %}
+    {%- if institution %}
+    <li><span class="k">Institution</span><span>{{ institution }}</span></li>
+    {%- endif %}
+    {%- if funding %}
+    <li><span class="k">Funding</span><span>{{ funding }}</span></li>
+    {%- endif %}
+    {%- if repo_note and not repo_link %}
+    <li><span class="k">Source</span><span>{{ repo_note }}</span></li>
+    {%- endif %}
+  </ul>
+
+  {%- if abstract %}
+  <div class="abstract">
+    <h2>About the project</h2>
+    <p>{{ abstract }}</p>
+  </div>
+  {%- endif %}
+
+  <div class="section prose">
+    {{ content | safe }}
+  </div>
+
+  {%- if students %}
+  <div class="section">
+    <div class="section-head">
+      <h2>Students</h2>
+    </div>
+    {%- if students_note %}
+    <p class="section-note">{{ students_note }}</p>
+    {%- endif %}
+    <ul class="people">
+      {%- for student in students %}
+      <li>{{ student }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+
+  {%- set previousProject = collections.projects | getPreviousCollectionItem %}
+  {%- set nextProject = collections.projects | getNextCollectionItem %}
+  {%- if nextProject or previousProject %}
+  <ul class="links-nextprev">
+    {%- if previousProject %}<li class="links-nextprev-prev">← Earlier<br><a href="{{ previousProject.url }}">{{ previousProject.data.title }}</a></li>{% endif %}
+    {%- if nextProject %}<li class="links-nextprev-next">Later →<br><a href="{{ nextProject.url }}">{{ nextProject.data.title }}</a></li>{% endif %}
+  </ul>
+  {%- endif %}
+</article>

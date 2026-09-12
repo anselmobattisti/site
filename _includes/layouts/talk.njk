@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+---
+{#- `language` is a BCP-47 tag (e.g. pt-BR): it labels the talk in the UI and
+   tells assistive tech which language the page content is in. -#}
+<article{% if language %} lang="{{ language }}"{% endif %}>
+  <div class="hero">
+    <p class="eyebrow">Talk · {{ page.date | readableDate("dd LLLL yyyy") }}</p>
+    <h1>{{ title }}</h1>
+    {%- if location %}
+    <p class="lede">{{ location }}</p>
+    {%- endif %}
+
+    {%- if slides_link or video_link %}
+    <div class="hero-actions">
+      {%- if video_link %}<a class="btn btn-solid" href="{{ video_link }}" target="_blank" rel="noopener">Watch the talk</a>{% endif %}
+      {%- if slides_link %}<a class="btn" href="{{ slides_link }}" target="_blank" rel="noopener">Slides</a>{% endif %}
+    </div>
+    {%- endif %}
+  </div>
+
+  <ul class="publication-facts">
+    <li><span class="k">Date</span><span><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></span></li>
+    {%- if location %}
+    <li><span class="k">Where</span><span>{{ location }}</span></li>
+    {%- endif %}
+    {%- if language %}
+    <li><span class="k">Language</span><span class="lang-tag">{{ language }}</span></li>
+    {%- endif %}
+  </ul>
+
+  {%- if abstract %}
+  <div class="abstract">
+    <h2>Abstract</h2>
+    <p>{{ abstract }}</p>
+  </div>
+  {%- endif %}
+
+  <div class="section prose">
+    {{ content | safe }}
+  </div>
+
+  {%- set docs = talkDocuments[page.fileSlug] %}
+  {%- if docs %}
+  <div class="section">
+    <div class="section-head">
+      <h2>Documents</h2>
+    </div>
+    <ul class="docs">
+      {%- for doc in docs | sortDocuments(documents) %}
+      <li>
+        <a href="{{ doc.url }}" target="_blank" rel="noopener">
+          <span class="doc-name">{{ documents[doc.file] or doc.file }}</span>
+          <span class="doc-meta">{{ doc.ext }} · {{ doc.bytes | fileSize }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+
+  {%- set previousTalk = collections.talks | getPreviousCollectionItem %}
+  {%- set nextTalk = collections.talks | getNextCollectionItem %}
+  {%- if nextTalk or previousTalk %}
+  <ul class="links-nextprev">
+    {%- if previousTalk %}<li class="links-nextprev-prev">← Earlier<br><a href="{{ previousTalk.url }}">{{ previousTalk.data.title }}</a></li>{% endif %}
+    {%- if nextTalk %}<li class="links-nextprev-next">Later →<br><a href="{{ nextTalk.url }}">{{ nextTalk.data.title }}</a></li>{% endif %}
+  </ul>
+  {%- endif %}
+</article>

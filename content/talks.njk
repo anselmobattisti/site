@@ -1,0 +1,18 @@
+---js
+{
+	eleventyNavigation: {
+		key: "Talks",
+		order: 4
+	},
+	title: "Talks — Anselmo Luiz Éden Battisti",
+	description: "Talks, lectures and conference presentations given by Anselmo Luiz Éden Battisti, with slides and video recordings where available."
+}
+---
+{%- set talkslist = collections.talks or [] %}
+<div class="hero">
+	<p class="eyebrow">Lectures · Conference presentations · Seminars</p>
+	<h1>Talks</h1>
+	<p class="lede">Talks and lectures I have given, newest first. Slides and video recordings are linked where available.</p>
+</div>
+
+{% include "talkslist.njk" %}
