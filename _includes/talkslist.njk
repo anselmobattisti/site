@@ -15,7 +15,7 @@
   <li class="entry">
     <div class="entry-year">{{ talk.date | readableDate("yyyy") }}</div>
     <div>
-      <{{ hx }} class="entry-title"><a href="{{ talk.url }}">{{ talk.data.title }}</a></{{ hx }}>
+      <{{ hx }} class="entry-title"><a href="{{ talk.url }}"{% if talk.data.language %} lang="{{ talk.data.language }}"{% endif %}>{{ talk.data.title }}</a></{{ hx }}>
       {%- if talk.data.location %}
       <p class="entry-org">{{ talk.data.location }}</p>
       {%- endif %}

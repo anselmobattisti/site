@@ -27,7 +27,7 @@
   <li class="entry" data-type="{{ kind | lower }}">
     <div class="entry-year">{{ pub.data.year }}</div>
     <div>
-      <{{ hx }} class="entry-title"><a href="{{ pub.url }}">{{ pub.data.title }}</a></{{ hx }}>
+      <{{ hx }} class="entry-title"><a href="{{ pub.url }}"{% if pub.data.title_language %} lang="{{ pub.data.title_language }}"{% endif %}>{{ pub.data.title }}</a></{{ hx }}>
       {%- if pub.data.authors %}
       <p class="entry-authors">{{ pub.data.authors | highlightAuthor | safe }}</p>
       {%- endif %}

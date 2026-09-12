@@ -40,6 +40,25 @@ layout: layouts/base.njk
     {{ content | safe }}
   </div>
 
+  {%- set docs = talkDocuments[page.fileSlug] %}
+  {%- if docs %}
+  <div class="section">
+    <div class="section-head">
+      <h2>Documents</h2>
+    </div>
+    <ul class="docs">
+      {%- for doc in docs | sortDocuments(documents) %}
+      <li>
+        <a href="{{ doc.url }}" target="_blank" rel="noopener">
+          <span class="doc-name">{{ documents[doc.file] or doc.file }}</span>
+          <span class="doc-meta">{{ doc.ext }} · {{ doc.bytes | fileSize }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+
   {%- set previousTalk = collections.talks | getPreviousCollectionItem %}
   {%- set nextTalk = collections.talks | getNextCollectionItem %}
   {%- if nextTalk or previousTalk %}

@@ -847,6 +847,48 @@ dialog.lightbox::backdrop {
 	color: var(--muted);
 }
 
+/* Documents attached to a talk: one row each, name left, format and weight
+   right, the whole row a download link. */
+.docs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid var(--rule-soft);
+}
+
+.docs li {
+	border-bottom: 1px solid var(--rule-soft);
+}
+
+.docs a {
+	display: flex;
+	align-items: baseline;
+	gap: 0.7rem;
+	padding: 0.8rem 0;
+	text-decoration: none;
+	color: var(--ink);
+}
+
+.docs a:hover .doc-name {
+	color: var(--accent-ink);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.doc-name {
+	font-size: 0.95rem;
+	font-weight: 500;
+}
+
+.doc-meta {
+	margin-left: auto;
+	font-family: var(--font-family-data);
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	color: var(--muted);
+	white-space: nowrap;
+}
+
 /* People: students on a project, listed two-up */
 .people {
 	list-style: none;

@@ -66,6 +66,33 @@ export default function(eleventyConfig) {
 			.join(", ");
 	});
 
+	// Order documents by the label the reader actually sees, which is the front
+	// matter title when there is one and the filename otherwise — sorting on the
+	// filename alone would misplace anything that was given a title.
+	// Locale-aware so "Página" files next to "palestra", and numeric so doc2
+	// comes before doc10.
+	eleventyConfig.addFilter("sortDocuments", (documents, titles) => {
+		const label = (doc) => (titles && titles[doc.file]) || doc.file;
+
+		return [...(documents || [])].sort((a, b) =>
+			label(a).localeCompare(label(b), "pt-BR", { numeric: true, sensitivity: "base" })
+		);
+	});
+
+	// Byte count to something a reader can judge a download by.
+	eleventyConfig.addFilter("fileSize", (bytes) => {
+		if (!bytes) {
+			return "";
+		}
+		if (bytes < 1024) {
+			return `${bytes} B`;
+		}
+		if (bytes < 1024 * 1024) {
+			return `${Math.round(bytes / 1024)} KB`;
+		}
+		return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+	});
+
 	// Join a site base and a page path without doubling or dropping the slash.
 	eleventyConfig.addFilter("absoluteUrl", (path, base) => {
 		return new URL(path, base).href;

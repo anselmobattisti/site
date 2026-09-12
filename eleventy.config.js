@@ -27,6 +27,9 @@ export default async function(eleventyConfig) {
 			"./public/": "/"
 		});
 
+	// Documents attached to a talk, kept next to it in content/talks/<slug>/.
+	eleventyConfig.addPassthroughCopy("content/talks/*/*");
+
 	// Run Eleventy when these files change:
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
@@ -34,6 +37,8 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addWatchTarget("css/**/*.css");
 	// Watch images for the image pipeline.
 	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpg,jpeg,gif}");
+	// So dropping a document into a talk folder rebuilds the page.
+	eleventyConfig.addWatchTarget("content/talks/*/*");
 
 	// Per-page bundles, see https://github.com/11ty/eleventy-plugin-bundle
 	// Bundle <style> content and adds a {% css %} paired shortcode
