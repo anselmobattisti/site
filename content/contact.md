@@ -2,7 +2,7 @@
 {
   eleventyNavigation: {
     key: "Contact",
-    order: 6
+    order: 7
   },
   title: "Contact — Anselmo Luiz Éden Battisti",
   description: "Contact Anselmo Luiz Éden Battisti by email, or find his profiles on Lattes, Google Scholar, GitHub, YouTube and Google Patents."

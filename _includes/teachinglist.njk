@@ -1,0 +1,41 @@
+{#- Course offerings grouped by semester, most recent first.
+    `teachinglist`      — a collection of courses (required, may be empty)
+    `entryHeading`      — heading level for a course title (default h3, since the
+                          semester above it is already an h2) -#}
+
+{%- set hx = entryHeading or "h3" %}
+{%- set terms = teachinglist | groupBySemester %}
+
+{%- if terms | length %}
+{%- for term in terms %}
+<section class="section">
+  <div class="section-head">
+    <h2>{{ term.semester }}</h2>
+    <span class="more">{{ term.items | length }} course{% if term.items | length != 1 %}s{% endif %}</span>
+  </div>
+
+  <ul class="entry-list entry-list--plain">
+  {%- for course in term.items %}
+    <li class="entry">
+      <div>
+        <{{ hx }} class="entry-title"><a href="{{ course.url }}"{% if course.data.title_language %} lang="{{ course.data.title_language }}"{% endif %}>{{ course.data.title }}</a></{{ hx }}>
+        {%- if course.data.summary %}
+        <p class="entry-org">{{ course.data.summary }}</p>
+        {%- endif %}
+        <p class="entry-meta">
+          {%- if course.data.institution %}<span class="venue">{{ course.data.institution }}</span>{% endif %}
+          {%- if course.data.program %}<span class="kind"{% if course.data.language %} lang="{{ course.data.language }}"{% endif %}>{{ course.data.program }}</span>{% endif %}
+          <span class="entry-links">
+            {%- if course.data.hours %}<span class="entry-hours">{{ course.data.hours }} h</span>{% endif %}
+            <a href="{{ course.url }}">Details</a>
+          </span>
+        </p>
+      </div>
+    </li>
+  {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
+{%- else %}
+<p class="empty-state">No courses published yet. Drop a Markdown file into <code>content/teaching/</code> and it shows up here.</p>
+{%- endif %}

@@ -1,0 +1,79 @@
+---
+layout: layouts/base.njk
+---
+<article>
+  <div class="hero">
+    <p class="eyebrow">Course{% if semester %} · {{ semester }}{% endif %}</p>
+    <h1{% if title_language %} lang="{{ title_language }}"{% endif %}>{{ title }}</h1>
+    {%- if summary %}
+    <p class="lede"{% if title_language %} lang="{{ title_language }}"{% endif %}>{{ summary }}</p>
+    {%- endif %}
+  </div>
+
+  <ul class="publication-facts">
+    {%- if semester %}
+    <li><span class="k">Semester</span><span>{{ semester }}</span></li>
+    {%- endif %}
+    {%- if institution %}
+    <li><span class="k">Institution</span><span>{{ institution }}</span></li>
+    {%- endif %}
+    {%- if program %}
+    <li><span class="k">Programme</span><span{% if language %} lang="{{ language }}"{% endif %}>{{ program }}</span></li>
+    {%- endif %}
+    {%- if level %}
+    <li><span class="k">Level</span><span>{{ level }}</span></li>
+    {%- endif %}
+    {%- if hours %}
+    <li><span class="k">Hours</span><span>{{ hours }} h</span></li>
+    {%- endif %}
+    {%- if language %}
+    <li><span class="k">Language</span><span class="lang-tag">{{ language }}</span></li>
+    {%- endif %}
+  </ul>
+
+  {%- if content | trim %}
+  <div class="section">
+    <div class="section-head">
+      <h2>Syllabus</h2>
+    </div>
+    <div class="prose"{% if language %} lang="{{ language }}"{% endif %}>
+      {{ content | safe }}
+    </div>
+  </div>
+  {%- endif %}
+
+  {%- if bibliography %}
+  <div class="section">
+    <div class="section-head">
+      <h2>Recommended reading</h2>
+    </div>
+    <ul class="bibliography"{% if language %} lang="{{ language }}"{% endif %}>
+      {%- for reference in bibliography %}
+      <li>{{ reference }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+
+  {%- if bibliography_extra %}
+  <div class="section">
+    <div class="section-head">
+      <h2>Further reading</h2>
+    </div>
+    <ul class="bibliography"{% if language %} lang="{{ language }}"{% endif %}>
+      {%- for reference in bibliography_extra %}
+      <li>{{ reference }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+
+  {%- set previousCourse = collections.teaching | getPreviousCollectionItem %}
+  {%- set nextCourse = collections.teaching | getNextCollectionItem %}
+  {%- if nextCourse or previousCourse %}
+  <ul class="links-nextprev">
+    {%- if previousCourse %}<li class="links-nextprev-prev">← Earlier<br><a href="{{ previousCourse.url }}"{% if previousCourse.data.title_language %} lang="{{ previousCourse.data.title_language }}"{% endif %}>{{ previousCourse.data.title }}</a></li>{% endif %}
+    {%- if nextCourse %}<li class="links-nextprev-next">Later →<br><a href="{{ nextCourse.url }}"{% if nextCourse.data.title_language %} lang="{{ nextCourse.data.title_language }}"{% endif %}>{{ nextCourse.data.title }}</a></li>{% endif %}
+  </ul>
+  {%- endif %}
+</article>

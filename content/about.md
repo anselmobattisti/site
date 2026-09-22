@@ -12,7 +12,7 @@
 
 <div class="hero">
 
-<p class="eyebrow eyebrow--names">Unioeste · PUCPR · UFF · IMPA Tech</p>
+<p class="eyebrow eyebrow--names">Unioeste → PUCPR → UFF → IMPA Tech</p>
 
 # Anselmo Luiz Éden Battisti
 

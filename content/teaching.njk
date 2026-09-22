@@ -1,0 +1,18 @@
+---js
+{
+	eleventyNavigation: {
+		key: "Teaching",
+		order: 4
+	},
+	title: "Teaching — Anselmo Luiz Éden Battisti",
+	description: "Courses taught by Anselmo Luiz Éden Battisti, by semester, with the syllabus and recommended reading for each offering."
+}
+---
+{%- set teachinglist = collections.teaching or [] %}
+<div class="hero">
+	<p class="eyebrow">Courses by semester</p>
+	<h1>Teaching</h1>
+	<p class="lede">Every course I have taught, kept as it was offered: each semester holds its own syllabus and reading list, so an older page still describes what that group actually covered. Slides live in the course's virtual learning environment, not here.</p>
+</div>
+
+{% include "teachinglist.njk" %}

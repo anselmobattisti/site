@@ -79,6 +79,38 @@ export default function(eleventyConfig) {
 		);
 	});
 
+	// Course offerings grouped into semesters, most recent first. "2026.2" is
+	// split into year and term and compared as numbers: as strings, "2026.10"
+	// would sort before "2026.2".
+	eleventyConfig.addFilter("groupBySemester", (courses) => {
+		const parse = (semester) => {
+			const [year, term] = String(semester || "").split(".");
+			return { year: Number(year) || 0, term: Number(term) || 0 };
+		};
+
+		const terms = new Map();
+		for (const course of courses || []) {
+			const semester = course.data.semester || "Undated";
+			if (!terms.has(semester)) {
+				terms.set(semester, []);
+			}
+			terms.get(semester).push(course);
+		}
+
+		return [...terms.entries()]
+			.map(([semester, items]) => ({
+				semester,
+				items: items.sort((a, b) =>
+					String(a.data.title).localeCompare(String(b.data.title), "pt-BR")
+				),
+			}))
+			.sort((a, b) => {
+				const left = parse(a.semester);
+				const right = parse(b.semester);
+				return right.year - left.year || right.term - left.term;
+			});
+	});
+
 	// Byte count to something a reader can judge a download by.
 	eleventyConfig.addFilter("fileSize", (bytes) => {
 		if (!bytes) {

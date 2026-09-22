@@ -536,13 +536,18 @@ h2:focus-within .ha-placeholder {
 .section-head .more {
 	margin-left: auto;
 	font-family: var(--font-family-data);
+	font-family: var(--font-family-data);
 	font-size: 0.74rem;
 	text-decoration: none;
 	white-space: nowrap;
 }
 
-.section-head .more:hover {
+.section-head a.more:hover {
 	text-decoration: underline;
+}
+
+.section-head span.more {
+	color: var(--muted);
 }
 
 /* Hero */
@@ -847,6 +852,33 @@ dialog.lightbox::backdrop {
 	color: var(--muted);
 }
 
+/* Bibliography: a hanging indent, the way a reference list is set on paper, so
+   the author's surname starts each entry and the rest tucks under it. */
+.bibliography {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	max-width: 68ch;
+}
+
+.bibliography li {
+	padding-left: 1.6rem;
+	text-indent: -1.6rem;
+	margin-bottom: 0.7rem;
+	font-size: 0.95rem;
+	hyphens: manual;
+}
+
+.bibliography li:last-child {
+	margin-bottom: 0;
+}
+
+.entry-hours {
+	font-family: var(--font-family-data);
+	font-size: 0.72rem;
+	color: var(--muted);
+}
+
 /* Documents attached to a talk: one row each, name left, format and weight
    right, the whole row a download link. */
 .docs {
@@ -1030,6 +1062,19 @@ dialog.lightbox::backdrop {
 	gap: 0 1.1rem;
 	padding: 0.95rem 0;
 	border-bottom: 1px solid var(--rule-soft);
+}
+
+/* A list whose grouping heading already carries the date needs no gutter, and
+   no rules of its own: the heading above each group already draws one, and
+   another under every row only competed with it. Spacing separates the rows. */
+.entry-list--plain {
+	border-top: none;
+}
+
+.entry-list--plain .entry {
+	grid-template-columns: 1fr;
+	border-bottom: none;
+	padding: 0.65rem 0 1.15rem;
 }
 
 /* A period ("2026 — present") needs more room than a bare year. */

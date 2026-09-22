@@ -94,6 +94,7 @@ export default async function(eleventyConfig) {
 		return [
 			...collectionApi.getFilteredByTag("publications"),
 			...collectionApi.getFilteredByTag("talks"),
+			...collectionApi.getFilteredByTag("teaching"),
 			...collectionApi.getFilteredByTag("projects"),
 		].sort((a, b) => a.date - b.date);
 	});

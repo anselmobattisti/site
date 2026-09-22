@@ -2,7 +2,7 @@
 {
   eleventyNavigation: {
     key: "Background",
-    order: 5
+    order: 6
   },  
   title: "Academic Background — Anselmo Luiz Éden Battisti",
   description: "Academic background of Anselmo Luiz Éden Battisti: PhD and Master's in Computer Science at UFF, Master's in Strategic Business at PUCPR, and undergraduate studies at Unioeste."
@@ -10,7 +10,7 @@
 ---
 
 <div class="hero">
-  <p class="eyebrow eyebrow--names">2003 — 2025 · Unioeste · PUCPR · UFF</p>
+  <p class="eyebrow eyebrow--names">2003 — 2025 · Unioeste → PUCPR → UFF</p>
 
 # Academic Background
 
