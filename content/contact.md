@@ -10,7 +10,6 @@
 ---
 
 <div class="hero">
-  <p class="eyebrow">Research collaborations · Mentoring · Speaking</p>
 
 # Get in touch
 

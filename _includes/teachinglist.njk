@@ -10,7 +10,7 @@
 {%- for term in terms %}
 <section class="section">
   <div class="section-head">
-    <h2>{{ term.semester }}</h2>
+    <h2 class="term-heading">{{ term.semester }}</h2>
     <span class="more">{{ term.items | length }} course{% if term.items | length != 1 %}s{% endif %}</span>
   </div>
 

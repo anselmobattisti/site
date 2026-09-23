@@ -13,8 +13,7 @@ repo_note: "Private while the project is being finalised."
 students:
   - "Vinícius Flesch Kern"
   - "Matheus Mota de Godoy"
-  - "Jonathas David de Lima Santos"
-  - "Gabriel Souza Vieira"
+  
 abstract: "LibVox is an open-source, AI-powered conversational layer designed specifically for libraries. By leveraging Large Language Models (LLMs) and the Model Context Protocol (MCP), LibVox acts as an intelligent, conversational bridge that simplifies public access to complex library collections managed by open-source Integrated Library Systems (ILS) such as Koha and FOLIO."
 ---
 

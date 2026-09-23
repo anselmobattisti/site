@@ -11,7 +11,6 @@
 ---
 
 <div class="hero">
-  <p class="eyebrow">Recognition</p>
 
 # Awards &amp; Honors
 
