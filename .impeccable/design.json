@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T00:00:00.000Z",
+  "title": "Design System: battisti.com.br",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "Parchment", "canonical": "oklch(93.8% 0.017 84.6)", "tonalRamp": ["#0f0b04","#29241c","#464138","#666156","#878277","#aaa499","#cec8bd","#f4eee2"] },
+      "surface": { "role": "neutral", "displayName": "Paper", "canonical": "oklch(99.4% 0.008 91.5)", "tonalRamp": ["#0c0b07","#262521","#43423d","#63615c","#84827d","#a7a59f","#cbc9c3","#f0eee8"] },
+      "surface-2": { "role": "neutral", "displayName": "Warm Paper", "canonical": "oklch(95.9% 0.020 87.5)", "tonalRamp": ["#0f0b03","#29251a","#464236","#666155","#878275","#aaa597","#cec9bb","#f4eee0"] },
+      "ink": { "role": "neutral", "displayName": "Soot", "canonical": "oklch(26.4% 0.023 80.8)", "tonalRamp": ["#100a02","#2b2418","#484134","#686052","#8a8173","#ada495","#d1c8b8","#f7eddd"] },
+      "ink-soft": { "role": "neutral", "displayName": "Soft Soot", "canonical": "oklch(39.5% 0.034 84.3)", "tonalRamp": ["#120a00","#2d2411","#4b412d","#6a604b","#8c816b","#afa48d","#d4c8b0","#f9edd5"] },
+      "muted": { "role": "neutral", "displayName": "Ash", "canonical": "oklch(55.1% 0.038 81.8)", "tonalRamp": ["#130900","#2e230e","#4c402b","#6c5f49","#8e8169","#b1a38b","#d6c7ae","#fbedd3"] },
+      "rule": { "role": "neutral", "displayName": "Rule", "canonical": "oklch(86.5% 0.039 89.1)", "tonalRamp": ["#120a00","#2d240d","#4a4129","#6a6048","#8c8268","#afa489","#d3c8ad","#f9eed1"] },
+      "rule-soft": { "role": "neutral", "displayName": "Soft Rule", "canonical": "oklch(91.4% 0.029 89.6)", "tonalRamp": ["#100a00","#2b2414","#484130","#68614e","#89826f","#aca591","#d1c9b4","#f6eed9"] },
+      "accent": { "role": "primary", "displayName": "Parchment Gold", "canonical": "oklch(84.7% 0.073 91.8)", "tonalRamp": ["#160800","#322300","#504007","#70602c","#92814e","#b6a46f","#dac892","#ffeeb7"] },
+      "accent-strong": { "role": "primary", "displayName": "Burnished Gold", "canonical": "oklch(68.7% 0.115 88.1)", "tonalRamp": ["#1e0200","#3c1d00","#5b3c00","#7c5c00","#9f7d1d","#c3a148","#e8c56d","#ffeb92"] },
+      "accent-ink": { "role": "primary", "displayName": "Olive Gold", "canonical": "oklch(50.0% 0.095 87.4)", "tonalRamp": ["#1b0400","#381f00","#573d00","#785d10","#9a7f39","#bea25c","#e3c680","#ffeba4"] },
+      "accent-deep": { "role": "primary", "displayName": "Deep Olive", "canonical": "oklch(38.4% 0.073 85.5)", "tonalRamp": ["#180600","#352100","#533e08","#745e2d","#967f4e","#baa270","#dfc693","#ffecb7"] },
+      "accent-mark": { "role": "primary", "displayName": "Structural Gold", "canonical": "oklch(62.3% 0.110 86.6)", "tonalRamp": ["#1e0200","#3c1d00","#5b3c00","#7c5c00","#9f7d26","#c3a04d","#e8c572","#ffea97"] },
+      "accent-wash": { "role": "primary", "displayName": "Gold Wash", "canonical": "oklch(95.5% 0.027 90.9)", "tonalRamp": ["#0f0b01","#2a2515","#474231","#676150","#888270","#aba592","#d0c9b5","#f5eeda"] },
+      "accent-contrast": { "role": "neutral", "displayName": "Soot on Gold", "canonical": "oklch(26.4% 0.023 80.8)", "tonalRamp": ["#100a02","#2b2418","#484134","#686052","#8a8173","#ada495","#d1c8b8","#f7eddd"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The single h1 on a page. Fluid from 2.25rem to 3rem, slightly tightened tracking." },
+      "headline": { "displayName": "Headline", "purpose": "The h2 inside a section head, above the hairline rule and its 2.5rem gold bar." },
+      "title": { "displayName": "Title", "purpose": "An entry title in an accumulating list, the page lede, and the name in the rail." },
+      "body": { "displayName": "Body", "purpose": "Running prose, justified with automatic hyphenation, capped at 62ch." },
+      "label": { "displayName": "Label", "purpose": "Uppercase tracked micro-type: eyebrows, stat labels, filter legends, chips, footer. Also the 0.875rem metadata register for authors, venue and DOI, without the uppercase." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "state-color", "value": "0.15s ease", "purpose": "The only transition in the system. Applies to color, background-color, border-color and opacity — never to position, size or shadow." },
+      { "name": "reduced-motion-clamp", "value": "0.01ms !important", "purpose": "Under prefers-reduced-motion: reduce, every transition and animation duration collapses to this." },
+      { "name": "view-transition", "value": "@view-transition { navigation: auto }", "purpose": "Native cross-document transition between pages; no JS router, no custom keyframes." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "620px" },
+      { "name": "rail-collapse", "value": "860px" },
+      { "name": "short-viewport-1", "value": "max-height: 760px (with min-width: 861px)" },
+      { "name": "short-viewport-2", "value": "max-height: 690px (with min-width: 861px)" },
+      { "name": "short-viewport-3", "value": "max-height: 640px (with min-width: 861px)" },
+      { "name": "shell-max", "value": "1160px" },
+      { "name": "rail-width", "value": "268px" },
+      { "name": "measure", "value": "62ch" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "The primary action. One per action row, and the only button that carries a fill.",
+      "html": "<a class=\"ds-btn ds-btn-solid\" href=\"#\">Academic background</a>",
+      "css": ".ds-btn { display: inline-block; font-family: var(--font-family); font-size: var(--text-sm); font-weight: 500; text-decoration: none; padding: 0.5rem 0.95rem; border: 1px solid var(--accent-strong); border-radius: 2px; color: var(--accent-ink); transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-solid { background-color: var(--accent); color: var(--accent-contrast); } .ds-btn-solid:hover, .ds-btn-solid:focus-visible { background-color: var(--accent-strong); color: var(--accent-contrast); } .ds-btn:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Every secondary action. Outline at rest; hover floods it with Gold Wash rather than changing the text colour.",
+      "html": "<a class=\"ds-btn ds-btn-outline\" href=\"#\">PhD thesis (PDF)</a>",
+      "css": ".ds-btn-outline { display: inline-block; font-family: var(--font-family); font-size: var(--text-sm); font-weight: 500; text-decoration: none; padding: 0.5rem 0.95rem; border: 1px solid var(--accent-strong); border-radius: 2px; color: var(--accent-ink); background-color: transparent; transition: background-color 0.15s ease, color 0.15s ease; } .ds-btn-outline:hover, .ds-btn-outline:focus-visible { background-color: var(--accent-wash); color: var(--accent-ink); } .ds-btn-outline:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Toggles a facet on the publications and teaching lists. Pressed state is one of only two solid accent fills in the system.",
+      "html": "<div><button class=\"ds-chip\" type=\"button\" aria-pressed=\"true\">All</button> <button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">Journal</button> <button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">Conference</button></div>",
+      "css": ".ds-chip { font-family: var(--font-family-data); font-size: var(--text-xs); cursor: pointer; background-color: var(--surface); color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 2px; padding: 0.22rem 0.6rem; margin-right: 0.4rem; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease; } .ds-chip:hover { border-color: var(--accent-strong); } .ds-chip[aria-pressed=\"true\"] { background-color: var(--accent); border-color: var(--accent); color: var(--accent-contrast); } .ds-chip:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; }"
+    },
+    {
+      "name": "Entry List Row",
+      "kind": "custom",
+      "refersTo": "entry-year",
+      "description": "The signature component. A fixed 62px tabular ordering key in Olive Gold, then title, byline and metadata. The site owner's own name is lifted inside the byline so a reader can find his author position while scanning.",
+      "html": "<ul class=\"ds-entry-list\"><li class=\"ds-entry\"><span class=\"ds-entry-year\">2026</span><div><h3 class=\"ds-entry-title\"><a href=\"#\">SPEED: a distributed approach to SFC placement on the edge&ndash;cloud continuum</a></h3><p class=\"ds-entry-authors\">A. Battisti, <span class=\"ds-me\">A. L. E. Battisti</span>, F. C. Delicato, D. C. Muchaluat-Saade</p><p class=\"ds-entry-id\">doi:10.1109/ACCESS.2026.0000000</p></div></li><li class=\"ds-entry\"><span class=\"ds-entry-year\">2024</span><div><h3 class=\"ds-entry-title\"><a href=\"#\">Auto-scaling of virtual network functions at the edge</a></h3><p class=\"ds-entry-authors\">A. L. E. Battisti, F. C. Delicato</p></div></li></ul>",
+      "css": ".ds-entry-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-soft); } .ds-entry { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 0 1.1rem; padding: 0.95rem 0; border-bottom: 1px solid var(--rule-soft); } .ds-entry-year { font-family: var(--font-family-data); font-size: var(--text-sm); font-variant-numeric: tabular-nums; font-weight: 500; color: var(--accent-ink); padding-top: 0.14rem; } .ds-entry-title { font-family: var(--font-family-display); font-size: var(--text-md); font-weight: 600; line-height: 1.35; margin: 0; } .ds-entry-title a { color: var(--ink); text-decoration: none; } .ds-entry-title a:hover { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; } .ds-entry-authors { font-family: var(--font-family); font-size: var(--text-sm); color: var(--muted); margin: 0.25rem 0 0; text-align: left; } .ds-entry-authors .ds-me { color: var(--ink-soft); font-weight: 600; } .ds-entry-id { font-family: var(--font-family-data); font-size: var(--text-xs); color: var(--accent-ink); margin: 0.3rem 0 0; }"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "entry-year",
+      "description": "Opens every section: headline, an optional trailing link, a hairline rule, and a 2.5rem Structural Gold bar sitting on top of that rule at the left edge.",
+      "html": "<div class=\"ds-section-head\"><h2 class=\"ds-section-h\">Selected publications</h2><a class=\"ds-more\" href=\"#\">All 16 &rarr;</a></div>",
+      "css": ".ds-section-head { position: relative; display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; margin-bottom: 1.1rem; } .ds-section-head::after { content: \"\"; position: absolute; left: 0; bottom: -1px; width: 2.5rem; height: 2px; background-color: var(--accent-mark); } .ds-section-h { font-family: var(--font-family-display); font-weight: 600; font-size: var(--text-lg); line-height: 1.3; margin: 0; color: var(--ink); } .ds-more { margin-left: auto; font-family: var(--font-family-data); font-size: var(--text-xs); text-decoration: none; white-space: nowrap; color: var(--accent-ink); } .ds-more:hover { text-decoration: underline; color: var(--accent-deep); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The card catalogue in the rail. A 6px hollow bullet per row; the current page fills its bullet with Burnished Gold and is the only 'you are here' signal.",
+      "html": "<ul class=\"ds-nav\"><li><a href=\"#\">About</a></li><li><a href=\"#\" aria-current=\"page\">Publications</a></li><li><a href=\"#\">Teaching</a></li><li><a href=\"#\">Talks</a></li></ul>",
+      "css": ".ds-nav { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; } .ds-nav a { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.38rem 0; font-family: var(--font-family); font-size: var(--text-sm); color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color 0.15s ease; } .ds-nav a::before { content: \"\"; width: 6px; height: 6px; flex: none; border-radius: 50%; border: 1px solid var(--rule); transform: translateY(-2px); } .ds-nav a:hover { color: var(--accent-ink); } .ds-nav a[aria-current=\"page\"] { color: var(--ink); font-weight: 600; } .ds-nav a[aria-current=\"page\"]::before { background-color: var(--accent-strong); border-color: var(--accent-strong); } .ds-nav a:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Used for current positions and similar short blocks. Outlined on Paper, never shadowed; the heading link appends a gold arrow.",
+      "html": "<ul class=\"ds-cards\"><li class=\"ds-card\"><span class=\"ds-tl-period\">2026 &mdash; present</span><h3 class=\"ds-card-h\">Professor &middot; <a href=\"#\">IMPA Tech</a></h3><p>Teaching computer science, software engineering and modern software development in IMPA&rsquo;s first undergraduate program, in Rio de Janeiro.</p></li></ul>",
+      "css": ".ds-cards { list-style: none; margin: 0; padding: 0; } .ds-card { border: 1px solid var(--rule); border-radius: 2px; padding: 1rem 1.15rem; background-color: var(--surface); } .ds-tl-period { display: block; font-family: var(--font-family-data); font-size: var(--text-xs); color: var(--muted); text-align: left; } .ds-card-h { font-family: var(--font-family); font-size: var(--text-base); font-weight: 600; line-height: 1.4; margin: 0.2rem 0 0; color: var(--ink); } .ds-card-h a { color: var(--ink); text-decoration: none; } .ds-card-h a::after { content: \" \\2192\"; color: var(--accent-strong); } .ds-card-h a:hover { text-decoration: underline; text-underline-offset: 3px; } .ds-card p { font-family: var(--font-family); font-size: var(--text-sm); color: var(--muted); margin: 0.35rem 0 0; text-align: justify; hyphens: auto; }"
+    },
+    {
+      "name": "Award Callout",
+      "kind": "custom",
+      "refersTo": "award-callout",
+      "description": "The loudest object in the system, and it works because it is rare. Gold Wash ground, Burnished Gold border thickened to 3px on the left, uppercase tag above the heading.",
+      "html": "<div class=\"ds-award\"><span class=\"ds-award-tag\">2026 &middot; Recognition</span><h2 class=\"ds-award-h\">Finalist, Ph.D. Thesis Contest (CTD) &mdash; SBRC 2026</h2><p>The Brazilian Symposium on Computer Networks and Distributed Systems selects the outstanding doctoral theses in the field each year.</p></div>",
+      "css": ".ds-award { border: 1px solid var(--accent-strong); border-left-width: 3px; border-radius: 2px; background-color: var(--accent-wash); padding: 1rem 1.15rem; } .ds-award-tag { display: block; font-family: var(--font-family-data); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 0.35rem; } .ds-award-h { font-family: var(--font-family-display); font-size: var(--text-lg); font-weight: 600; line-height: 1.3; margin: 0; color: var(--ink); } .ds-award p { font-family: var(--font-family); font-size: var(--text-sm); color: var(--ink-soft); max-width: 62ch; margin: 0.35rem 0 0; text-align: justify; hyphens: auto; }"
+    },
+    {
+      "name": "Stats Band",
+      "kind": "custom",
+      "refersTo": "entry-year",
+      "description": "Three equal cells on a hairline grid. Large tabular numbers over tracked uppercase labels; the numbers come from collection counts, never from prose.",
+      "html": "<ul class=\"ds-stats\"><li class=\"ds-stat\"><span class=\"ds-n\">16</span><span class=\"ds-l\">Publications</span></li><li class=\"ds-stat\"><span class=\"ds-n\">06</span><span class=\"ds-l\">US patents</span></li><li class=\"ds-stat\"><span class=\"ds-n\">10+</span><span class=\"ds-l\">Years teaching</span></li></ul>",
+      "css": ".ds-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); margin: 0; padding: 0; list-style: none; } .ds-stat { border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule-soft); padding: 0.85rem 1rem 0.9rem; } .ds-stat:last-child { border-right: none; } .ds-n { display: block; font-family: var(--font-family-display); font-size: var(--text-xl); font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink); } .ds-l { display: block; margin-top: 0.3rem; font-family: var(--font-family-data); font-size: var(--text-xs); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reading Room",
+    "overview": "A quiet reading room, lit warm. The left rail is the card catalogue — portrait, name, role, and a column of entries you scan with a finger. The content well is the open volume on the table. Nothing floats above the table, nothing glows, nothing asks for attention; the silence is the primary material and the light is warm rather than white.\n\nThe register is sober and precise. Authority here comes from rigour, not volume: every value is in its place, every number is tabular, every list is ordered by the key a reader would actually scan. The visitor is a peer who arrived knowing the name and wanting the artifact. The design's job is to hand it over without a detour and without a performance.\n\nThe warmth is deliberate and it is where the whole system departs from an institutional PDF. The ground is parchment (#f0eade), not white; the accent is a gold drawn out of that same paper rather than applied on top of it. Someone lives in this room. But the warmth never becomes decoration: it is the colour temperature of the paper, not an ornament laid over it.",
+    "keyCharacteristics": [
+      "One typeface (Roboto) carrying display, body, data and label alike.",
+      "A seven-step type scale; no font-size outside it.",
+      "Parchment ground, three tonal surfaces, hairline rules — and no shadows anywhere.",
+      "A single radius: 2px on everything rectangular.",
+      "Gold reserved for structure: where you are, and by what key the list is ordered.",
+      "Justified prose with automatic hyphenation; metadata rows forced back to the left.",
+      "A rail that responds to viewport height as well as width."
+    ],
+    "rules": [
+      { "name": "The Ramp Inversion Rule", "body": "#decc96 is the site's tone but never its text colour on paper. On the light ground the accent ramp darkens away from it (Burnished → Olive → Deep Olive); in the dark theme the ramp inverts and lightens (accent-strong becomes #cbb87c, accent-ink becomes #e3d3a2, accent-deep becomes #f0e5c4). A new surface picks the sibling that meets contrast on its own ground — never accent itself for text.", "section": "colors" },
+      { "name": "The Structural Accent Rule", "body": "Gold marks two things and nothing else: where you are (the current nav bullet, the focus ring) and by what key this list is ordered (the year column, the semester heading, the bar under a section head). It never colours running prose, never fills a decorative area, never tints a whole section.", "section": "colors" },
+      { "name": "The Two-Surface Rule", "body": "There are exactly three tonal levels — Parchment behind, Paper for the shell, Warm Paper for the rail and framed figures. A fourth surface tone is not available; anything that needs to read as separate takes a hairline, not a new tint.", "section": "colors" },
+      { "name": "The One Face Rule", "body": "Roboto carries display, body, data and label alike. Role is signalled by size, weight, tracking and case, never by a second family. The --font-family-display and --font-family-data tokens exist as seams so a display face could be swapped in from one place — both currently resolve to Roboto, and a new surface does not get to fill them on its own initiative.", "section": "typography" },
+      { "name": "The Seven Steps Rule", "body": "Every font-size comes from the seven scale tokens (--text-xs 0.75rem through --text-2xl). Exactly two exceptions exist in the codebase and no third is authorized: the body anchor at 16px, and the labels inside the SVG diagram, which are measured in viewBox units rather than rem.", "section": "typography" },
+      { "name": "The Justified Column Rule", "body": "Prose is justified with hyphens: auto — the lede, card and award copy, timeline descriptions, abstracts. Metadata rows are then forced back to text-align: left with hyphens: manual: authors, venue, period, organisation, handle, figure captions, footer. Justification is for sentences; a data row that gets justified grows rivers and stops scanning. This preference is settled — do not revert it.", "section": "typography" },
+      { "name": "The Height Tier Rule", "body": "The rail responds to viewport height, not only width. At max-height: 760px the stack gap tightens and the portrait drops to 112px; at 690px the rail padding, sticky offset and nav rhythm all compress and the portrait drops to 84px; at 640px the portrait and the role detail disappear entirely. Nothing may be added to the rail without re-checking all three tiers — the failure mode is a scrollbar appearing inside the rail on a short laptop screen, and it has happened twice.", "section": "layout" },
+      { "name": "The Ordering Key Column Rule", "body": "Every accumulating list puts its ordering key in a fixed 62px left column — the year for publications, patents and awards; the semester for courses. The key is tabular (font-variant-numeric: tabular-nums) so the digits line up down the page. A list without a meaningful key uses .entry-list--plain and drops the column rather than filling it with something decorative.", "section": "layout" },
+      { "name": "The 62ch Rule", "body": "Running prose never exceeds 62 characters per line, on any viewport. Width is spent on lists, diagrams and metadata, never on longer measure.", "section": "layout" },
+      { "name": "The 2px Rule", "body": "Every rectangular thing takes 2px. It reads as cut paper rather than as a software control, and it is what keeps a chip, a card and a button feeling like the same material. A new component adopts 2px; it does not introduce a second step.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do take every font-size from the seven scale tokens, and every radius from 2px.",
+      "Do put the ordering key — year, semester — in the fixed 62px left column with tabular numerals, for any list that accumulates.",
+      "Do pick the accent sibling that meets contrast on its ground: Olive Gold (#7a5f13) for text on paper, Structural Gold (#a4822c) for a graphic element, Parchment Gold (#decc96) only as a fill.",
+      "Do keep running prose justified with hyphens: auto, and force metadata rows back to text-align: left with hyphens: manual.",
+      "Do separate things with a 1px hairline before reaching for a gap, a fill or a box.",
+      "Do verify a rail change at all three height tiers (760 / 690 / 640px) before calling it done.",
+      "Do write viewport-unit fallbacks as 100vh first and 100dvh/100svh inside an @supports block, so minification cannot drop the pair.",
+      "Do hold 4.5:1 for text and 3:1 for graphic elements in both themes — the dark palette is a full redefinition of the tokens, not an afterthought."
+    ],
+    "donts": [
+      "Don't introduce a second typeface. Role is size, weight, tracking and case.",
+      "Don't colour running prose with gold, or tint a whole section with it. Gold marks position and ordering key only.",
+      "Don't use --accent (#decc96) as a text colour on a light ground — it cannot carry contrast there.",
+      "Don't add a fourth surface tone. Three tonal levels plus two rule weights is the whole depth vocabulary.",
+      "Don't let this read as a SaaS landing page: no gradients, no floating cards, no coloured icon in a circle, no testimonial section, no oversized CTA.",
+      "Don't let this read as a university institutional page: no carousel, no corporate blue, no stock banner of people pointing at a monitor, no breadcrumb on everything.",
+      "Don't let this read as a dev portfolio template: no neon-on-black, no monospace everywhere, no typing animation, no row of technology logos.",
+      "Don't let it collapse back into a raw Lattes dump either: a flat table at one weight with no hierarchy is the opposite failure, and the ordering-key column, the bolded author name and the section rules exist precisely to prevent it.",
+      "Don't animate position or size. Colour only, 0.15s ease.",
+      "Don't add a third exception to the type scale, or a spacing value that no other component uses."
+    ]
+  }
+}
