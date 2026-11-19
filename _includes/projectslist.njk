@@ -1,6 +1,8 @@
 {#- Renders a project list.
     `projectslist`      — a collection of projects (required, may be empty)
     `projectslistLimit` — render only the N most recent (optional)
+    `projectslistEmpty` — empty-state HTML, for lists that are not research
+                          projects (optional)
 
     Collections arrive sorted oldest-first, so a single reverse puts the most
     recently started project at the top. -#}
@@ -33,5 +35,5 @@
 {%- endfor %}
 </ul>
 {%- else %}
-<p class="empty-state">No projects published yet. Drop a Markdown file into <code>content/projects/</code> and it shows up here.</p>
+<p class="empty-state">{{ (projectslistEmpty or "No projects published yet. Drop a Markdown file into <code>content/projects/</code> and it shows up here.") | safe }}</p>
 {%- endif %}

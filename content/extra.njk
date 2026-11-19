@@ -1,0 +1,18 @@
+---js
+{
+	eleventyNavigation: {
+		key: "Extra",
+		order: 7
+	},
+	title: "Extra — Anselmo Luiz Éden Battisti",
+	description: "Side projects by Anselmo Luiz Éden Battisti: things built outside research and teaching, for fun or for the family."
+}
+---
+{%- set projectslist = collections.extra or [] %}
+{%- set projectslistEmpty = "No extra projects published yet. Drop a Markdown file into <code>content/extra/</code> and it shows up here." %}
+<div class="hero">
+	<h1>Extra</h1>
+	<p class="lede">Side projects, newest first: things I build outside research and teaching, mostly for fun.</p>
+</div>
+
+{% include "projectslist.njk" %}

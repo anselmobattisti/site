@@ -125,6 +125,14 @@ export default function(eleventyConfig) {
 		return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 	});
 
+	// A URL as a reader would write it down: no scheme, no trailing slash. The
+	// href keeps the real address; this is only what gets printed on the page.
+	eleventyConfig.addFilter("displayUrl", (url) => {
+		return String(url || "")
+			.replace(/^https?:\/\//, "")
+			.replace(/\/$/, "");
+	});
+
 	// Join a site base and a page path without doubling or dropping the slash.
 	eleventyConfig.addFilter("absoluteUrl", (path, base) => {
 		return new URL(path, base).href;
