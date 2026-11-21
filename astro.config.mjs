@@ -1,0 +1,56 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import paginasMarkdown from './integracoes/paginas-markdown.mjs';
+import idsTitulos from './integracoes/ids-titulos.mjs';
+import { readFileSync } from 'node:fs';
+
+// Endereços antigos → novos: o 301 de verdade é feito no nginx (nginx-ploi.conf, com a mesma lista). O site em 11ty
+// já usava os mesmos endereços, então a lista está vazia. Grupos que começam com "_" são comentários.
+const redirecionamentos = Object.assign(
+  {},
+  ...Object.entries(JSON.parse(readFileSync('redirecionamentos.json', 'utf8')))
+    .filter(([grupo]) => !grupo.startsWith('_'))
+    .map(([, regras]) => regras),
+);
+
+// Blocos de código do Markdown, como o site em 11ty gerava:
+//  - ```mermaid vira <pre class="mermaid diagram"> com o texto do diagrama (desenhado no navegador, Mermaid.astro);
+//  - os demais (o BibTeX de cada publicação) ganham a classe language-* também no <pre>, que é onde o CSS a procura.
+// Sem coloração de sintaxe: não existe gramática de BibTeX, e o bloco é só texto bem composto.
+function blocosDeCodigo() {
+  const visitar = (no) => {
+    for (const filho of no.children ?? []) {
+      const codigo = filho.tagName === 'pre' && filho.children?.find((c) => c.tagName === 'code');
+      const linguagem = codigo && (codigo.properties?.className ?? []).find((c) => String(c).startsWith('language-'));
+      if (linguagem === 'language-mermaid') {
+        filho.properties = { className: ['mermaid', 'diagram'] };
+        filho.children = codigo.children;
+      } else if (linguagem) {
+        filho.properties = { ...filho.properties, className: [linguagem] };
+      } else visitar(filho);
+    }
+  };
+  return visitar;
+}
+
+export default defineConfig({
+  site: 'https://battisti.com.br',
+  trailingSlash: 'always',
+  // Site 100% estático: o servidor (Ploi) não roda Node.
+  integrations: [
+    // id em cada título do <main> (para links diretos a uma seção), como o IdAttributePlugin do 11ty fazia.
+    idsTitulos(),
+    // Versão .md de cada página para agentes de IA (/work/ → /work.md), gerada no fim do build.
+    paginasMarkdown(),
+    // Fora do sitemap: só a 404. Regra: toda página com noindex fica fora do sitemap, e vice-versa.
+    // Sem <lastmod>: o site não guarda a data de atualização das páginas, e a data do build faria o Google
+    // desconfiar do campo.
+    sitemap({ filter: (pagina) => new URL(pagina).pathname !== '/404/' }),
+  ],
+  redirects: redirecionamentos,
+  // smartypants desligado: o texto sai como foi escrito (o site antigo não trocava aspas nem travessões).
+  markdown: { syntaxHighlight: false, smartypants: false, rehypePlugins: [blocosDeCodigo] },
+  // CSS pequeno: embutir no HTML elimina a requisição que bloqueia a renderização.
+  build: { inlineStylesheets: 'always' },
+});

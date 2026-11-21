@@ -1,0 +1,51 @@
+---
+// Página 404 (/404.html), servida pelo nginx em qualquer endereço que não existe (error_page 404 /404.html).
+// Em vez de um beco sem saída, leva para as seções do site e para o e-mail. Sem índice (noindex) e sem canonical
+// (Base.astro), fora do sitemap e das versões .md.
+import Base from '../layouts/Base.astro';
+import { autor } from '../data/autor';
+import { itens } from '../data/colecoes';
+
+const publicacoes = (await itens('publication')).length;
+const disciplinas = (await itens('teaching')).length;
+const atalhos = [
+  { titulo: 'Publications', texto: `${publicacoes} papers and books, with PDFs, DOIs and BibTeX entries.`, href: '/publication/' },
+  { titulo: 'Teaching', texto: `${disciplinas} course offerings since 2012, each with its syllabus and reading list.`, href: '/teaching/' },
+  { titulo: 'Talks', texto: 'Talks and lectures, with slides where available.', href: '/talks/' },
+  { titulo: 'Patents', texto: 'US filings on VNF placement, SFC migration and predictive scaling.', href: '/patents/' },
+  { titulo: 'Academic background', texto: 'Degrees, theses and advisors, with the PhD thesis PDF.', href: '/background/' },
+  { titulo: 'Contact', texto: 'Email, address and profiles on Lattes, Scholar and GitHub.', href: '/contact/' },
+];
+---
+
+<Base
+  title={`Page not found — ${autor.nome}`}
+  description="The page you are looking for does not exist or has been moved."
+  semIndice
+>
+  <div class="hero">
+    <p class="erro-numero" aria-hidden="true">404</p>
+    <p class="eyebrow">Error 404</p>
+    <h1>Page not found</h1>
+    <p class="lede">The page you are looking for does not exist or has been moved. The sections below are where most visitors were headed.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="/">Home page</a>
+      <a class="btn" href="/publication/">Publications</a>
+      <a class="btn" href={`mailto:${autor.email}`}>{autor.email}</a>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Where to go from here</h2>
+    </div>
+    <ul class="cards">
+      {atalhos.map((atalho) => (
+        <li class="card">
+          <h3><a href={atalho.href}>{atalho.titulo}</a></h3>
+          <p>{atalho.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

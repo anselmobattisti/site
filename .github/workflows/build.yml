@@ -1,0 +1,97 @@
+# Build do site a cada push na main e manualmente
+# (Actions > Build e deploy > Run workflow).
+#
+# Build e publicação no mesmo job, sem artefato: o dist/ passava do job "build" para o "publicar" como artefato
+# (~60 MB cada), e o plano da organização inclui só 0,5 GB de armazenamento do Actions por mês; a cota estourou
+# em 29/10/2026 (site da Guaçu Tur) e o upload passou a falhar ("Artifact storage quota has been hit").
+#
+# Publicação (Ploi): os passos finais gravam o dist/ em public/ no branch "publicado" (um commit por publicação) e chamam
+# o webhook de deploy da Ploi, que atualiza o servidor a partir desse branch. O servidor não roda Node: o build
+# acontece só aqui. Mesmo modelo dos sites da Webgenium e da Guaçu Tur. Configuração no README.
+name: Build e deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Um push novo cancela o build anterior que ainda estiver rodando.
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    # O ambiente "producao" guarda o webhook da Ploi.
+    environment: producao
+    permissions:
+      contents: write # para gravar o branch "publicado"
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Cache das imagens otimizadas (AVIF/WebP). Sem ele, o build gera tudo de novo (~3 min, mais a cada foto nova);
+      # com ele, só as imagens novas ou alteradas. Restaurado depois do npm ci, que apaga node_modules/.
+      - name: Cache das imagens otimizadas
+        uses: actions/cache@v6
+        with:
+          path: node_modules/.astro
+          key: astro-imagens-${{ hashFiles('src/assets/**', 'src/content/**', 'public/**') }}
+          restore-keys: astro-imagens-
+
+      - name: Build
+        run: npm run build
+
+      # O branch "publicado" tem só o site pronto, em public/ (o diretório web padrão da Ploi).
+      # O .env da Ploi fica na raiz do site, ao lado de public/, e é ignorado pelo git.
+      # Cada publicação é um commit novo em cima do anterior, para o deploy da Ploi ser sempre fast-forward.
+      # Antes de copiar, tudo o que não é public/ ou .gitignore sai do branch: nele só pode existir o site pronto.
+      - name: Gravar o branch "publicado"
+        if: github.ref == 'refs/heads/main'
+        env:
+          REPO: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+        run: |
+          if ! git clone -q --depth 1 --branch publicado "$REPO" publicado 2>/dev/null; then
+            git init -q -b publicado publicado
+            git -C publicado remote add origin "$REPO"
+          fi
+          cd publicado
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -r ../dist public
+          printf '.env\n' > .gitignore
+          # Trava: o servidor só pode receber o site pronto. Código-fonte, CLAUDE.md, README, scripts e .env nunca
+          # entram no branch "publicado" (se aparecerem, a publicação para aqui, sem commit).
+          extras=$(find . -mindepth 1 -maxdepth 1 ! -name .git ! -name public ! -name .gitignore)
+          fonte=$(find public \( -iname 'CLAUDE.md' -o -iname 'README.md' -o -name 'package*.json' -o -name '*.py' -o -name '.env*' -o -name '*.astro' -o -name '*.ts' \) -print)
+          if [ -n "$extras$fonte" ]; then
+            echo "::error::Arquivos que não são do site pronto no branch publicado: $extras $fonte"
+            exit 1
+          fi
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nada mudou no site; nada a publicar."
+          else
+            git commit -q -m "Site publicado a partir de ${GITHUB_SHA::7}"
+            git push -q origin publicado
+          fi
+
+      - name: Deploy na Ploi
+        if: github.ref == 'refs/heads/main'
+        env:
+          PLOI_WEBHOOK_URL: ${{ secrets.PLOI_WEBHOOK_URL }}
+        run: |
+          if [ -z "$PLOI_WEBHOOK_URL" ]; then
+            echo "::warning::Secret PLOI_WEBHOOK_URL não definido: o branch foi gravado, mas o deploy na Ploi não foi acionado."
+            exit 0
+          fi
+          curl -fsS -X POST "$PLOI_WEBHOOK_URL" > /dev/null && echo "Deploy na Ploi acionado."

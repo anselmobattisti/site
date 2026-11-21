@@ -1,0 +1,69 @@
+---
+// Política de Cookies (em inglês, o idioma do site). Cookies de análise (Google Analytics) só com consentimento, pelo
+// aviso de cookies (src/components/AvisoCookies.astro). O site não tem cookies necessários: não há formulário nem
+// Turnstile. Se entrar mapa, vídeo incorporado ou parecido, atualizar este texto e o aviso.
+import Legal from '../layouts/Legal.astro';
+import { autor } from '../data/autor';
+---
+
+<Legal
+  title={`Cookie Policy — ${autor.nome}`}
+  description={`Which cookies the website of ${autor.nome} uses, what they are for, and how to accept, decline or control them in your browser.`}
+  titulo="Cookie Policy"
+  href="/cookie-policy/"
+  atualizado="2026-11-21"
+>
+  <p>
+    This policy explains what cookies are, which ones this site uses and how you can control them. It complements the
+    <a href="/privacy-policy/">Privacy Policy</a>.
+  </p>
+
+  <h2>What cookies are</h2>
+  <p>
+    Cookies are small files that a website stores in your browser to remember information from one page to the next.
+  </p>
+
+  <h2>Which cookies this site uses</h2>
+  <p>
+    The site <strong>uses no advertising cookies</strong> and builds no browsing profiles. Fonts, scripts and images
+    are served from this site itself, not from third parties. The only cookies are these:
+  </p>
+  <ul>
+    <li>
+      <strong>Analytics: Google Analytics, only if you accept.</strong> With your consent, Google Analytics stores the
+      cookies <code>_ga</code> and <code>_ga_*</code> (for up to 2 years) to count visits and show which pages are
+      viewed most, where visitors come from and how they move through the site. The data is used in aggregate. It is
+      processed by Google, under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google’s privacy policy</a>.
+    </li>
+  </ul>
+  <p>
+    Your choice in the cookie notice is also kept in your browser (in <code>localStorage</code>, not in a cookie), so
+    that the question is not asked again on every page.
+  </p>
+
+  <h2>How to accept or decline</h2>
+  <p>
+    On your first visit, a notice asks whether you accept analytics cookies. Google Analytics is only loaded after you
+    click <strong>Accept</strong>. To change your choice at any time, use
+    <button type="button" class="link-button" data-preferencias-cookies>Cookie preferences</button>
+    (the same link is in the footer of every page). When you decline, the Google Analytics cookies are deleted.
+  </p>
+
+  <h2>Links to other sites</h2>
+  <p>
+    Links to papers, DOIs, GitHub, YouTube, Google Scholar, Google Patents, Lattes and other sites take you away from
+    this one. From there on, the privacy and cookie policies of each of those services apply.
+  </p>
+
+  <h2>How to control cookies</h2>
+  <p>
+    You can view, block or delete cookies in your browser settings (Chrome, Safari, Firefox, Edge and others). The
+    site works the same with all cookies blocked.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If other kinds of cookies come into use, this page and the cookie notice will be updated, and your consent will be
+    asked before they are activated. The date of the last update is always at the top of the page.
+  </p>
+</Legal>

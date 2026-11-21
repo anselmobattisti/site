@@ -1,0 +1,89 @@
+---
+// Página de uma publicação: dados, resumo, capa (livros), como citar (BibTeX) e os links para o PDF e o DOI.
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import AnteriorProximo from '../../components/AnteriorProximo.astro';
+import { itens, tiposPublicacao, autoresComDestaque, resumir } from '../../data/colecoes';
+
+export async function getStaticPaths() {
+  return (await itens('publication')).map((publicacao) => ({ params: { slug: publicacao.id }, props: { publicacao } }));
+}
+
+const { publicacao } = Astro.props;
+const p = publicacao.data;
+const { Content } = await render(publicacao);
+const tipo = tiposPublicacao[p.tipo];
+const livro = p.tipo === 'livro';
+// O resumo e a capa ficam lado a lado só quando existe capa.
+const Moldura = p.capa ? 'div' : Fragment;
+---
+
+<Base
+  title={p.titulo}
+  description={resumir(p.resumo)}
+  trilha={[{ nome: 'Research', href: '/research/' }, { nome: 'Publications', href: '/publication/' }, { nome: p.titulo, href: Astro.url.pathname }]}
+  artigo
+  codigo
+>
+  {/* O Google Scholar lê estas metas para indexar o artigo. */}
+  <Fragment slot="head">
+    {p.doi && (
+      <>
+        <meta name="citation_doi" content={p.doi} />
+        <meta name="citation_title" content={p.titulo} />
+        <meta name="citation_publication_date" content={String(p.ano)} />
+        <meta name="citation_journal_title" content={p.veiculo} />
+      </>
+    )}
+  </Fragment>
+
+  <article>
+    <div class="hero">
+      <p class="eyebrow">{tipo} · {p.veiculo} · {p.ano}</p>
+      <h1 lang={p.idiomaTitulo}>{p.titulo}</h1>
+      <p class="lede" set:html={autoresComDestaque(p.autores)} />
+
+      {/* Um livro sem cópia na internet não tem botão nenhum, e uma linha vazia ainda ocuparia a margem. */}
+      {(p.linkPdf || p.linkSlides || p.linkVideo || p.doi) && (
+        <div class="hero-actions">
+          {p.linkPdf && <a class="btn btn-solid" href={p.linkPdf} target="_blank" rel="noopener">{livro ? 'Read the book (PDF)' : 'Read the paper (PDF)'}</a>}
+          {p.linkSlides && <a class="btn" href={p.linkSlides} target="_blank" rel="noopener">Presentation slides</a>}
+          {p.linkVideo && <a class="btn" href={p.linkVideo} target="_blank" rel="noopener">Watch the talk</a>}
+          {p.doi && <a class="btn" href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">DOI</a>}
+        </div>
+      )}
+    </div>
+
+    <ul class="publication-facts">
+      <li><span class="k">{livro ? 'Publisher' : 'Venue'}</span><span>{p.veiculo}</span></li>
+      <li><span class="k">Year</span><span>{p.ano}</span></li>
+      <li><span class="k">Type</span><span>{tipo}</span></li>
+      {p.edicao && <li><span class="k">Edition</span><span>{p.edicao}</span></li>}
+      {p.paginas && <li><span class="k">Pages</span><span>{p.paginas}</span></li>}
+      {p.isbn && <li><span class="k">ISBN</span><span>{p.isbn}</span></li>}
+      {p.doi && <li><span class="k">DOI</span><span><a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.doi}</a></span></li>}
+    </ul>
+
+    <Moldura class={p.capa ? 'abstract-cover' : undefined}>
+      <div class="abstract">
+        <h2>{livro ? 'About this book' : 'Abstract'}</h2>
+        <p lang={p.idiomaResumo}>{p.resumo}</p>
+      </div>
+
+      {/* Servida com 480 px e mostrada com a metade, para ficar nítida em tela retina. Largura e altura declaradas
+          seguram o layout enquanto a imagem carrega. */}
+      {p.capa && (
+        <figure class="book-cover">
+          <Image src={p.capa} alt={p.capaAlt ?? ''} width={480} loading="eager" />
+        </figure>
+      )}
+    </Moldura>
+
+    <div class="section prose">
+      <Content />
+    </div>
+
+    <AnteriorProximo colecao="publication" id={publicacao.id} />
+  </article>
+</Base>

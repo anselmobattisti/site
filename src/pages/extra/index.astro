@@ -1,0 +1,19 @@
+---
+// Projetos paralelos (fora da pesquisa e das aulas), do mais recente para o mais antigo.
+import Base from '../../layouts/Base.astro';
+import ListaProjetos from '../../components/ListaProjetos.astro';
+import { recentes } from '../../data/colecoes';
+---
+
+<Base
+  title="Extra — Anselmo Luiz Éden Battisti"
+  description="Side projects by Anselmo Luiz Éden Battisti: things built outside research and teaching, for fun or for the family."
+  trilha={[{ nome: 'Extra', href: '/extra/' }]}
+>
+  <div class="hero">
+    <h1>Extra</h1>
+    <p class="lede">Side projects, newest first: things I build outside research and teaching, mostly for fun.</p>
+  </div>
+
+  <ListaProjetos colecao="extra" projetos={await recentes('extra')} vazio="No extra projects published yet." />
+</Base>

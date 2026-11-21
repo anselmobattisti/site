@@ -1,0 +1,50 @@
+---
+// Disciplinas, agrupadas por semestre (o mais recente primeiro). O semestre é um h2 e cada disciplina, um h3.
+import Base from '../../layouts/Base.astro';
+import { itens, porSemestre, url } from '../../data/colecoes';
+
+const semestres = porSemestre(await itens('teaching'));
+---
+
+<Base
+  title="Teaching — Anselmo Luiz Éden Battisti"
+  description="Courses taught by Anselmo Luiz Éden Battisti, by semester, with the syllabus and recommended reading for each offering."
+  trilha={[{ nome: 'Teaching', href: '/teaching/' }]}
+>
+  <div class="hero">
+    <h1>Teaching</h1>
+    <p class="lede">Every course I have taught, kept as it was offered: each semester holds its own syllabus and reading list, so an older page still describes what that group actually covered. Slides live in the course's virtual learning environment, not here.</p>
+  </div>
+
+  {semestres.length ? (
+    semestres.map(({ semestre, lista }) => (
+      <section class="section">
+        <div class="section-head">
+          <h2 class="term-heading">{semestre}</h2>
+          <span class="more">{lista.length} course{lista.length !== 1 && 's'}</span>
+        </div>
+
+        <ul class="entry-list entry-list--plain">
+          {lista.map(({ id, data: d }) => (
+            <li class="entry">
+              <div>
+                <h3 class="entry-title"><a href={url('teaching', id)} lang={d.idiomaTitulo}>{d.titulo}</a></h3>
+                {d.chamada && <p class="entry-org">{d.chamada}</p>}
+                <p class="entry-meta">
+                  <span class="venue">{d.instituicao}</span>
+                  <span class="kind" lang={d.idioma}>{d.curso}</span>
+                  <span class="entry-links">
+                    <span class="entry-hours">{d.horas} h</span>
+                    <a href={url('teaching', id)}>Details</a>
+                  </span>
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  ) : (
+    <p class="empty-state">No courses published yet.</p>
+  )}
+</Base>

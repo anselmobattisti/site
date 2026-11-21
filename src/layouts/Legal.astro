@@ -1,0 +1,24 @@
+---
+// Páginas de texto corrido (políticas): topo padrão das páginas internas e o texto numa coluna de leitura.
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  titulo: string;
+  href: string;
+  // Data da última revisão do texto, no formato AAAA-MM-DD.
+  atualizado: string;
+}
+
+const { title, description, titulo, href, atualizado } = Astro.props;
+const dataAtualizacao = new Date(`${atualizado}T12:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base title={title} description={description} trilha={[{ nome: titulo, href }]}>
+  <div class="hero">
+    <p class="eyebrow">Privacy · Last updated <time datetime={atualizado}>{dataAtualizacao}</time></p>
+    <h1>{titulo}</h1>
+  </div>
+  <div class="section prose"><slot /></div>
+</Base>

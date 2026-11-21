@@ -1,0 +1,25 @@
+---
+// Todas as publicações, da mais recente para a mais antiga, com o filtro por tipo.
+import Base from '../../layouts/Base.astro';
+import ListaPublicacoes from '../../components/ListaPublicacoes.astro';
+import { recentes } from '../../data/colecoes';
+
+const publicacoes = await recentes('publication');
+const livros = publicacoes.filter((p) => p.data.tipo === 'livro').length;
+const artigos = publicacoes.length - livros;
+const anoMaisRecente = publicacoes[0].data.ano;
+---
+
+<Base
+  title="Publications — Anselmo Luiz Éden Battisti"
+  description="Peer-reviewed journal articles and conference papers by Anselmo Luiz Éden Battisti on SFC placement, VNF placement, edge computing, 5G and the Internet of Media Things, plus published course textbooks."
+  trilha={[{ nome: 'Research', href: '/research/' }, { nome: 'Publications', href: '/publication/' }]}
+>
+  <div class="hero">
+    <p class="eyebrow">{artigos} peer-reviewed papers{livros > 0 && ` · ${livros} book${livros > 1 ? 's' : ''}`} · 2014 — {anoMaisRecente}</p>
+    <h1>Publications</h1>
+    <p class="lede">Journal articles and conference papers written with co-authors from UFF, UFRN and Dell Research{livros > 0 && ', together with course textbooks'} — newest first. PDFs, slides and video recordings are linked where available.</p>
+  </div>
+
+  <ListaPublicacoes publicacoes={publicacoes} filtro />
+</Base>

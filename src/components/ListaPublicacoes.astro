@@ -1,0 +1,76 @@
+---
+// Lista de publicações, na ordem recebida (as páginas passam a mais recente primeiro).
+// filtro: mostra os botões Journal / Conference / Book (só na página /publication/).
+// titulo: nível do título de cada item (h2 nas listas, h3 quando a seção já tem um h2).
+import type { CollectionEntry } from 'astro:content';
+import { url, tiposPublicacao, autoresComDestaque } from '../data/colecoes';
+
+interface Props {
+  publicacoes: CollectionEntry<'publication'>[];
+  filtro?: boolean;
+  titulo?: 'h2' | 'h3';
+}
+
+const { publicacoes, filtro = false, titulo: Titulo = 'h2' } = Astro.props;
+// Cada quantidade é contada, não deduzida: com livros na lista, "conferências = total - periódicos" deixa de valer.
+const quantos = (tipo: keyof typeof tiposPublicacao) => publicacoes.filter((p) => p.data.tipo === tipo).length;
+---
+
+{filtro && (
+  <div class="filters">
+    <span class="fl">Filter</span>
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All ({publicacoes.length})</button>
+    <button class="chip" type="button" data-filter="journal" aria-pressed="false">Journal ({quantos('periodico')})</button>
+    <button class="chip" type="button" data-filter="conference" aria-pressed="false">Conference ({quantos('conferencia')})</button>
+    {quantos('livro') > 0 && <button class="chip" type="button" data-filter="book" aria-pressed="false">Book ({quantos('livro')})</button>}
+  </div>
+)}
+
+<ul class="entry-list" id={filtro ? 'publication-list' : undefined}>
+  {publicacoes.map(({ id, data: p }) => {
+    const tipo = tiposPublicacao[p.tipo];
+    const href = url('publication', id);
+    return (
+      <li class="entry" data-type={tipo.toLowerCase()}>
+        <div class="entry-year">{p.ano}</div>
+        <div>
+          <Titulo class="entry-title"><a href={href} lang={p.idiomaTitulo}>{p.titulo}</a></Titulo>
+          <p class="entry-authors" set:html={autoresComDestaque(p.autores)} />
+          <p class="entry-meta">
+            <span class="venue">{p.veiculo}</span><span class="kind">{tipo}</span>
+            <span class="entry-links">
+              {p.linkPdf && <a href={p.linkPdf} target="_blank" rel="noopener">PDF</a>}
+              {p.doi && <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">DOI</a>}
+              {p.linkSlides && <a href={p.linkSlides} target="_blank" rel="noopener">Slides</a>}
+              {p.linkVideo && <a href={p.linkVideo} target="_blank" rel="noopener">Video</a>}
+              <a href={href}>Details</a>
+            </span>
+          </p>
+        </div>
+      </li>
+    );
+  })}
+</ul>
+
+{filtro && (
+  <script is:inline>
+    // Filtro por tipo: esconde os itens dos outros tipos. Sem JavaScript, a lista aparece inteira.
+    (function () {
+      var botoes = document.querySelectorAll('.filters .chip');
+      var lista = document.getElementById('publication-list');
+      if (!botoes.length || !lista) return;
+
+      botoes.forEach(function (botao) {
+        botao.addEventListener('click', function () {
+          var escolhido = botao.dataset.filter;
+          botoes.forEach(function (outro) {
+            outro.setAttribute('aria-pressed', String(outro === botao));
+          });
+          lista.querySelectorAll('.entry').forEach(function (item) {
+            item.hidden = !(escolhido === 'all' || item.dataset.type === escolhido);
+          });
+        });
+      });
+    })();
+  </script>
+)}

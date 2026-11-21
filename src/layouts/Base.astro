@@ -1,0 +1,237 @@
+---
+// Moldura de todas as páginas: <head> (SEO, Open Graph, schema), a coluna de identidade com o menu, o conteúdo e o
+// rodapé. Mesmo HTML e mesmas classes do site antigo (11ty, _includes/layouts/base.njk), para o CSS valer igual.
+import { readFileSync } from 'node:fs';
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+import { autor, menu } from '../data/autor';
+import rosto from '../assets/rosto.png';
+import iconeLattes from '../assets/lattes.png';
+import AvisoCookies from '../components/AvisoCookies.astro';
+import CopiarCodigo from '../components/CopiarCodigo.astro';
+import VisorDiagrama from '../components/VisorDiagrama.astro';
+import Mermaid from '../components/Mermaid.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  // Caminho até a página, depois da home, para o schema BreadcrumbList. A última é a própria página.
+  trilha?: { nome: string; href: string }[];
+  // Publicações: og:type "article".
+  artigo?: boolean;
+  // Páginas que não devem aparecer no Google (404). Também ficam fora do sitemap (astro.config.mjs).
+  semIndice?: boolean;
+  // Página com bloco de código (o BibTeX): botão de copiar.
+  codigo?: boolean;
+  // Página com diagrama (.diagram): abre num visor com zoom.
+  diagrama?: boolean;
+  // Página com diagrama em Mermaid: carrega a biblioteca.
+  mermaid?: boolean;
+}
+
+const { title, description, trilha = [], artigo = false, semIndice = false, codigo = false, diagrama = false, mermaid = false } = Astro.props;
+const caminho = Astro.url.pathname;
+const canonical = new URL(caminho, Astro.site);
+// A página 404 é servida em qualquer endereço inexistente: sem canonical.
+const paginaDeErro = caminho.startsWith('/404');
+// Imagem de compartilhamento (1200×630), no mesmo endereço do site antigo: links já compartilhados continuam com a prévia.
+const og = new URL('/img/share.jpg', Astro.site);
+const ogAlt = `${autor.nome} — ${autor.cargo}`;
+const { instituicao, perfis } = autor;
+
+// Diz ao Google Scholar, ao LinkedIn e aos buscadores de quem é o site.
+const pessoa = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${autor.url}/#pessoa`,
+  name: autor.nome,
+  givenName: 'Anselmo',
+  familyName: 'Battisti',
+  email: `mailto:${autor.email}`,
+  url: `${autor.url}/`,
+  jobTitle: 'Professor',
+  description: autor.descricao,
+  image: og.href,
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: instituicao.nome,
+    url: instituicao.url,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: instituicao.rua,
+      addressLocality: instituicao.cidade,
+      addressRegion: instituicao.uf,
+      postalCode: instituicao.cep,
+      addressCountry: 'BR',
+    },
+  },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Universidade Federal Fluminense (UFF)' },
+    { '@type': 'CollegeOrUniversity', name: 'Pontifícia Universidade Católica do Paraná (PUCPR)' },
+    { '@type': 'CollegeOrUniversity', name: 'Universidade Estadual do Oeste do Paraná (Unioeste)' },
+  ],
+  knowsAbout: ['Service Function Chain placement', 'Edge computing', 'Virtual Network Functions', '5G networks', 'Internet of Media Things'],
+  sameAs: [perfis.lattes, perfis.scholar, perfis.github, perfis.youtube],
+};
+
+const trilhaSchema = trilha.length > 0 && {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [{ nome: 'Home', href: '/' }, ...trilha].map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.nome,
+    item: new URL(item.href, Astro.site).href,
+  })),
+};
+
+// Componente <heading-anchors> (o "#" ao lado dos títulos de seção): pequeno, vai embutido no HTML, sem requisição.
+const ancorasDosTitulos = readFileSync('node_modules/@zachleat/heading-anchors/heading-anchors.js', 'utf8');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={autor.nome} />
+    {semIndice && <meta name="robots" content="noindex" />}
+    {!paginaDeErro && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/atom+xml" title={autor.nome} href={new URL('/feed.xml', Astro.site)} />
+    <!-- Preload da fonte, como no site antigo (exceção à regra do modelo): mesmo com a fonte de reserva medida, o
+         texto justificado quebrava as linhas em outro ponto quando a Roboto chegava (CLS 0,03 na home, medido). Com
+         o preload ela chega antes da primeira pintura e o CLS volta a zero. -->
+    <link rel="preload" href="/fonts/roboto-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content={artigo ? 'article' : 'website'} />
+    <meta property="og:site_name" content={autor.nome} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    <meta name="twitter:image:alt" content={ogAlt} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(pessoa)} />
+    {trilhaSchema && <script type="application/ld+json" set:html={JSON.stringify(trilhaSchema)} />}
+    <script type="module" set:html={ancorasDosTitulos} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
+
+    <div class="shell">
+      {/* Coluna de identidade: quem ele é, fixa em todas as páginas, para o conteúdo falar só do trabalho. */}
+      <div class="rail">
+        <div class="rail-inner">
+          <div class="identity">
+            <a href="/" class="avatar-link" aria-label="Home">
+              <Image class="avatar" src={rosto} alt={`Portrait of ${autor.nome}`} width={300} loading="eager" fetchpriority="high" />
+            </a>
+            <p class="rail-name"><a href="/">{autor.nomeCurto}</a></p>
+            {/* Titulação e cidade em span próprio: a barra do celular fica só com o nome e o cargo. */}
+            <p class="rail-role">
+              <strong>{autor.cargo}</strong>
+              <span class="rail-detail">{autor.titulacao}</span>
+              <span class="rail-detail">{autor.cidade}</span>
+            </p>
+          </div>
+
+          <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+          <nav id="site-nav" aria-label="Primary">
+            <ul class="nav">
+              {menu.map((item) => (
+                <li class="nav-item">
+                  <a href={item.href} aria-current={item.href === caminho ? 'page' : undefined}>{item.nome}</a>
+                  {item.filhos && (
+                    <ul class="submenu">
+                      {item.filhos.map((filho) => (
+                        <li class="submenu-item">
+                          <a href={filho.href} aria-current={filho.href === caminho ? 'page' : undefined}>{filho.nome}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <main id="main" class="main">
+        <heading-anchors selector="h2">
+          <slot />
+        </heading-anchors>
+      </main>
+
+      {/*
+        data-nosnippet: o Google não usa o texto do rodapé como trecho do resultado de busca. Fica nas div, e não na
+        <footer>: o Google só lê o atributo em span, div e section.
+      */}
+      <footer class="site-footer">
+        <div class="footer-row" data-nosnippet>
+          <span>© {autor.nome}</span>
+          <a href={`mailto:${autor.email}`}>{autor.email}</a>
+
+          <ul class="social-links">
+            <li>
+              <a href={perfis.github} target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor">
+                  <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.24c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.28-1.23 3.28-1.23.66 1.65.25 2.87.13 3.17.77.84 1.23 1.9 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href={perfis.youtube} target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor">
+                  <path d="M23.5 6.2a3.02 3.02 0 0 0-2.13-2.13C19.35 3.5 12 3.5 12 3.5s-7.35 0-9.37.57A3.02 3.02 0 0 0 .5 6.2C0 8.22 0 12 0 12s0 3.78.5 5.8a3.02 3.02 0 0 0 2.13 2.13C4.65 20.5 12 20.5 12 20.5s7.35 0 9.37-.57a3.02 3.02 0 0 0 2.13-2.13C24 15.78 24 12 24 12s0-3.78-.5-5.8ZM9.75 15.5v-7l6 3.5-6 3.5Z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href={perfis.lattes} target="_blank" rel="noopener" aria-label="Lattes" title="Lattes">
+                <Image src={iconeLattes} alt="" width={24} height={24} loading="lazy" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-row footer-legal" data-nosnippet>
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/cookie-policy/">Cookie Policy</a>
+          <button type="button" class="link-button" data-preferencias-cookies>Cookie preferences</button>
+        </div>
+      </footer>
+    </div>
+
+    <AvisoCookies />
+    {codigo && <CopiarCodigo />}
+    {diagrama && <VisorDiagrama />}
+    {mermaid && <Mermaid />}
+
+    <script is:inline>
+      // Menu do celular: o botão abre e fecha a lista.
+      (function () {
+        const botao = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('site-nav');
+        if (!botao || !nav) return;
+        botao.addEventListener('click', function () {
+          const aberto = nav.classList.toggle('is-open');
+          botao.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

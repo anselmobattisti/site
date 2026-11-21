@@ -1,0 +1,23 @@
+---
+// Links "Earlier" / "Later" no fim da página de um item: o anterior e o seguinte na ordem das datas.
+import { itens, url, type Colecao } from '../data/colecoes';
+
+interface Props {
+  colecao: Colecao;
+  id: string;
+}
+
+const { colecao, id } = Astro.props;
+const lista = await itens(colecao);
+const posicao = lista.findIndex((item) => item.id === id);
+const anterior = lista[posicao - 1];
+const proximo = lista[posicao + 1];
+const idiomaDoTitulo = (item: (typeof lista)[number]) => ('idiomaTitulo' in item.data ? item.data.idiomaTitulo : undefined);
+---
+
+{(anterior || proximo) && (
+  <ul class="links-nextprev">
+    {anterior && <li class="links-nextprev-prev">← Earlier<br /><a href={url(colecao, anterior.id)} lang={idiomaDoTitulo(anterior)}>{anterior.data.titulo}</a></li>}
+    {proximo && <li class="links-nextprev-next">Later →<br /><a href={url(colecao, proximo.id)} lang={idiomaDoTitulo(proximo)}>{proximo.data.titulo}</a></li>}
+  </ul>
+)}

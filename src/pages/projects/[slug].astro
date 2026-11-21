@@ -1,0 +1,74 @@
+---
+// Página de um projeto de pesquisa: dados, resumo, texto (com o diagrama) e alunos.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AnteriorProximo from '../../components/AnteriorProximo.astro';
+import { itens, resumir, urlCurta } from '../../data/colecoes';
+
+export async function getStaticPaths() {
+  return (await itens('projects')).map((projeto) => ({ params: { slug: projeto.id }, props: { projeto } }));
+}
+
+const { projeto } = Astro.props;
+const p = projeto.data;
+const { Content } = await render(projeto);
+---
+
+<Base
+  title={p.titulo}
+  description={resumir(p.resumo ?? p.chamada ?? p.titulo)}
+  trilha={[{ nome: 'Research', href: '/research/' }, { nome: 'Projects', href: '/projects/' }, { nome: p.titulo, href: Astro.url.pathname }]}
+  diagrama={p.mermaid}
+  mermaid={p.mermaid}
+>
+  <article>
+    <div class="hero">
+      <p class="eyebrow">Research project{p.periodo && ` · ${p.periodo}`}</p>
+      <h1>{p.titulo}</h1>
+      {p.chamada && <p class="lede">{p.chamada}</p>}
+
+      {(p.linkCodigo || p.linkSite) && (
+        <div class="hero-actions">
+          {p.linkSite && <a class="btn btn-solid" href={p.linkSite} target="_blank" rel="noopener">Project site</a>}
+          {p.linkCodigo && <a class="btn" href={p.linkCodigo} target="_blank" rel="noopener">Source code</a>}
+        </div>
+      )}
+    </div>
+
+    <ul class="publication-facts">
+      {p.periodo && <li><span class="k">Period</span><span>{p.periodo}</span></li>}
+      {p.situacao && <li><span class="k">Status</span><span class="lang-tag">{p.situacao}</span></li>}
+      {p.papel && <li><span class="k">Role</span><span>{p.papel}</span></li>}
+      {p.instituicao && <li><span class="k">Institution</span><span>{p.instituicao}</span></li>}
+      {/* O botão do topo some na impressão: o endereço só chega ao papel se estiver escrito aqui. */}
+      {p.linkSite && <li><span class="k">Website</span><span><a href={p.linkSite} target="_blank" rel="noopener">{urlCurta(p.linkSite)}</a></span></li>}
+      {p.financiamento && <li><span class="k">Funding</span><span>{p.financiamento}</span></li>}
+      {p.notaCodigo && !p.linkCodigo && <li><span class="k">Source</span><span>{p.notaCodigo}</span></li>}
+    </ul>
+
+    {p.resumo && (
+      <div class="abstract">
+        <h2>About the project</h2>
+        <p>{p.resumo}</p>
+      </div>
+    )}
+
+    <div class="section prose">
+      <Content />
+    </div>
+
+    {p.alunos.length > 0 && (
+      <div class="section">
+        <div class="section-head">
+          <h2>Students</h2>
+        </div>
+        {p.notaAlunos && <p class="section-note">{p.notaAlunos}</p>}
+        <ul class="people">
+          {p.alunos.map((aluno) => <li>{aluno}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <AnteriorProximo colecao="projects" id={projeto.id} />
+  </article>
+</Base>

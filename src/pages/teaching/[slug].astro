@@ -1,0 +1,75 @@
+---
+// Página de uma disciplina, como foi oferecida naquele semestre: dados, ementa (o texto do .md) e bibliografia.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AnteriorProximo from '../../components/AnteriorProximo.astro';
+import { itens } from '../../data/colecoes';
+
+export async function getStaticPaths() {
+  return (await itens('teaching')).map((disciplina) => ({ params: { slug: disciplina.id }, props: { disciplina } }));
+}
+
+const { disciplina } = Astro.props;
+const d = disciplina.data;
+const { Content } = await render(disciplina);
+// A mesma disciplina foi dada em vários anos: o semestre e a instituição no <title> deixam cada página com um título só seu.
+const temEmenta = Boolean(disciplina.body?.trim());
+---
+
+<Base
+  title={`${d.titulo} (${d.semestre}) — ${d.instituicao}`}
+  description={`${d.titulo}: course taught by Anselmo Luiz Éden Battisti at ${d.instituicao} in ${d.semestre} (${d.curso}, ${d.horas} h), with the syllabus and recommended reading.`}
+  trilha={[{ nome: 'Teaching', href: '/teaching/' }, { nome: `${d.titulo} (${d.semestre})`, href: Astro.url.pathname }]}
+>
+  <article>
+    <div class="hero">
+      <p class="eyebrow">Course · {d.semestre}</p>
+      <h1 lang={d.idiomaTitulo}>{d.titulo}</h1>
+      {d.chamada && <p class="lede" lang={d.idiomaTitulo}>{d.chamada}</p>}
+    </div>
+
+    <ul class="publication-facts">
+      <li><span class="k">Semester</span><span>{d.semestre}</span></li>
+      <li><span class="k">Institution</span><span>{d.instituicao}</span></li>
+      <li><span class="k">Programme</span><span lang={d.idioma}>{d.curso}</span></li>
+      <li><span class="k">Level</span><span>{d.nivel}</span></li>
+      <li><span class="k">Hours</span><span>{d.horas} h</span></li>
+      {d.idioma && <li><span class="k">Language</span><span class="lang-tag">{d.idioma}</span></li>}
+    </ul>
+
+    {temEmenta && (
+      <div class="section">
+        <div class="section-head">
+          <h2>Syllabus</h2>
+        </div>
+        <div class="prose" lang={d.idioma}>
+          <Content />
+        </div>
+      </div>
+    )}
+
+    {d.bibliografia.length > 0 && (
+      <div class="section">
+        <div class="section-head">
+          <h2>Recommended reading</h2>
+        </div>
+        <ul class="bibliography" lang={d.idioma}>
+          {d.bibliografia.map((referencia) => <li>{referencia}</li>)}
+        </ul>
+      </div>
+    )}
+
+    {d.bibliografiaComplementar.length > 0 && (
+      <div class="section">
+        <div class="section-head">
+          <h2>Further reading</h2>
+        </div>
+        <ul class="bibliography" lang={d.idioma}>
+          {d.bibliografiaComplementar.map((referencia) => <li>{referencia}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <AnteriorProximo colecao="teaching" id={disciplina.id} />
+  </article>
+</Base>

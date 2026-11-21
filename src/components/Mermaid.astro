@@ -1,0 +1,30 @@
+---
+// Desenha os diagramas escritos em Mermaid (<pre class="mermaid diagram">, vindos dos blocos ```mermaid do Markdown).
+// A biblioteca é servida pelo próprio site (/_astro/), nunca por CDN, e só entra nas páginas com "mermaid: true".
+// Mesmo tema do site antigo.
+---
+
+<script>
+  import mermaid from 'mermaid';
+
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'strict',
+    theme: 'base',
+    fontFamily: 'Roboto, system-ui, sans-serif',
+    themeVariables: {
+      background: 'transparent',
+      fontSize: '14px',
+      textColor: '#2b2418',
+      primaryColor: '#f7f0dc',
+      primaryTextColor: '#2b2418',
+      primaryBorderColor: '#b8963c',
+      lineColor: '#7d7059',
+      clusterBkg: '#f7f0dc',
+      clusterBorder: '#ddd2b6',
+      edgeLabelBackground: '#fffdf7',
+    },
+  });
+  // Espera a fonte: o Mermaid mede o texto para dimensionar as caixas.
+  (document.fonts?.ready ?? Promise.resolve()).then(() => mermaid.run({ querySelector: 'pre.mermaid' }));
+</script>

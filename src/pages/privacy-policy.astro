@@ -1,0 +1,111 @@
+---
+// Política de Privacidade (em inglês, o idioma do site). Escrita com base na LGPD (Lei 13.709/2018) e no que este
+// site realmente faz: não tem formulário nem cadastro; o contato é por e-mail; o Analytics só roda com consentimento.
+// Revisar sempre que entrar um formulário, uma ferramenta ou um serviço novo.
+import Legal from '../layouts/Legal.astro';
+import { autor } from '../data/autor';
+---
+
+<Legal
+  title={`Privacy Policy — ${autor.nome}`}
+  description={`What personal data the website of ${autor.nome} processes, why, who it is shared with and how to exercise your rights under the Brazilian data protection law (LGPD).`}
+  titulo="Privacy Policy"
+  href="/privacy-policy/"
+  atualizado="2026-11-21"
+>
+  <p>
+    This policy explains how this website handles the personal data of its visitors. It follows the Brazilian General
+    Data Protection Law (LGPD, Law 13.709/2018).
+  </p>
+
+  <h2>Who is responsible for your data</h2>
+  <p>
+    This is the personal and academic website of <strong>{autor.nome}</strong>, who is the controller of the personal
+    data processed here. For any matter concerning your personal data, write to
+    <a href={`mailto:${autor.email}`}>{autor.email}</a>.
+  </p>
+
+  <h2>What data is collected</h2>
+  <ul>
+    <li>
+      <strong>No forms, no accounts.</strong> The site has no contact form, newsletter, comments or sign-up. It does not
+      ask for your name, email or any other information.
+    </li>
+    <li>
+      <strong>Email.</strong> If you write to the address on the contact page, your message and email address are
+      used to reply to you.
+    </li>
+    <li>
+      <strong>Server data.</strong> To deliver the pages, the web server processes your IP address, the date and time
+      of the request and basic browser information, and may record them in technical logs.
+    </li>
+    <li>
+      <strong>Visit statistics, only with your consent.</strong> If you accept analytics cookies, Google Analytics
+      collects the pages viewed, where the visit came from, the type of device and the approximate city.
+    </li>
+  </ul>
+  <p>The site does not ask for sensitive data, such as health information, religion or political opinion.</p>
+
+  <h2>Why the data is used</h2>
+  <ul>
+    <li><strong>To answer your message</strong>, when you get in touch by email (legitimate interest, art. 7, IX, of the LGPD).</li>
+    <li><strong>To keep the site working and secure</strong>, protecting it against attacks and abuse (legitimate interest, art. 7, IX).</li>
+    <li>
+      <strong>To understand how the site is used</strong>, through aggregate visit statistics, only if you accept
+      analytics cookies (consent, art. 7, I).
+    </li>
+    <li><strong>To comply with legal obligations</strong>, when the law requires records to be kept (art. 7, II).</li>
+  </ul>
+  <p>Personal data is never sold or rented.</p>
+
+  <h2>Who the data is shared with</h2>
+  <ul>
+    <li><strong>The hosting provider</strong> that runs the server where the site is published.</li>
+    <li><strong>Google</strong>, through Google Analytics, if you accept analytics cookies.</li>
+    <li><strong>Public authorities</strong>, when there is a court order or a legal obligation.</li>
+  </ul>
+  <p>
+    Some of these providers may process data outside Brazil. In those cases the transfer follows the rules of the
+    LGPD (art. 33).
+  </p>
+
+  <h2>How long the data is kept</h2>
+  <ul>
+    <li><strong>Emails:</strong> for as long as needed to reply and follow up on the conversation.</li>
+    <li><strong>Technical server logs:</strong> for up to 6 months.</li>
+    <li><strong>Google Analytics cookies:</strong> for up to 2 years, or until you decline them.</li>
+  </ul>
+
+  <h2>Your rights</h2>
+  <p>Under the LGPD (art. 18), you may ask at any time for:</p>
+  <ul>
+    <li>confirmation that your data is processed, and access to it;</li>
+    <li>the correction of incomplete, inaccurate or outdated data;</li>
+    <li>the anonymisation, blocking or deletion of unnecessary data, or of data processed against the law;</li>
+    <li>the portability of your data;</li>
+    <li>information about who your data has been shared with;</li>
+    <li>the withdrawal of your consent, where the processing depends on it.</li>
+  </ul>
+  <p>
+    To exercise these rights, write to <a href={`mailto:${autor.email}`}>{autor.email}</a>. You may also lodge a
+    complaint with the Brazilian National Data Protection Authority (ANPD).
+  </p>
+
+  <h2>Security</h2>
+  <p>The site is served over an encrypted connection (HTTPS), and it stores no visitor database.</p>
+
+  <h2>Cookies</h2>
+  <p>
+    Analytics cookies (Google Analytics) are only used if you accept them in the cookie notice. Learn more and change
+    your choice in the <a href="/cookie-policy/">Cookie Policy</a>.
+  </p>
+
+  <h2>Children and teenagers</h2>
+  <p>The site is not directed at children and does not knowingly collect their data.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    This policy may be updated to reflect changes to the site or to the law. The date of the last update is always at
+    the top of the page.
+  </p>
+</Legal>

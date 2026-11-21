@@ -1,49 +1,21 @@
 {
-	"name": "battisti-site",
-	"version": "1.0.0",
-	"private": true,
-	"description": "Personal and academic website of Anselmo Luiz Éden Battisti — publications, patents, research and work experience. Built with Eleventy.",
-	"type": "module",
-	"scripts": {
-		"build": "npx @11ty/eleventy",
-		"build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
-		"start": "npx @11ty/eleventy --serve --quiet",
-		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
-		"debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
-		"benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/anselmobattisti/site.git"
-	},
-	"author": {
-		"name": "Anselmo Luiz Éden Battisti",
-		"email": "anselmo@battisti.com.br",
-		"url": "https://battisti.com.br/"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": ">=20"
-	},
-	"bugs": {
-		"url": "https://github.com/anselmobattisti/site/issues"
-	},
-	"homepage": "https://battisti.com.br/",
-	"devDependencies": {
-		"@11ty/eleventy": "^3.1.2",
-		"@11ty/eleventy-img": "^6.0.4",
-		"@11ty/eleventy-navigation": "^1.0.4",
-		"@11ty/eleventy-plugin-rss": "^2.0.4",
-		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
-		"@kevingimbel/eleventy-plugin-mermaid": "^3.0.1",
-		"cross-env": "^7.0.3",
-		"lightningcss": "^1.33.0",
-		"luxon": "^3.6.1",
-		"prismjs": "^1.30.0",
-		"zod": "^3.25.67",
-		"zod-validation-error": "^3.5.2"
-	},
-	"dependencies": {
-		"@zachleat/heading-anchors": "^1.0.3"
-	}
+  "name": "battisti",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.10",
+    "@astrojs/sitemap": "^3.7.4",
+    "@zachleat/heading-anchors": "^1.0.3",
+    "astro": "7.4.1",
+    "mermaid": "^11.17.2",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
 }

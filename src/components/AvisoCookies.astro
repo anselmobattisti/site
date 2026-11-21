@@ -1,0 +1,107 @@
+---
+// Aviso de cookies (LGPD) e Google Analytics. O Analytics só é carregado depois que a pessoa clica em "Accept";
+// a escolha fica guardada no navegador (localStorage, não em cookie). Qualquer botão com [data-preferencias-cookies]
+// (no rodapé e na Política de Cookies) reabre o aviso.
+// Em desenvolvimento (npm run dev) o aviso aparece, mas o Analytics não é carregado.
+// O site antigo carregava o Analytics direto, sem perguntar: aqui ele depende do consentimento.
+import { autor } from '../data/autor';
+
+const analytics = import.meta.env.PROD ? autor.googleAnalytics : '';
+---
+
+<div class="cookies" id="aviso-cookies" role="region" aria-label="Cookie notice" data-analytics={analytics} hidden>
+  <p>
+    This site uses analytics cookies (Google Analytics) to understand how it is used. You choose whether to accept them. <a href="/cookie-policy/">Cookie Policy</a>
+  </p>
+  <div class="cookies-botoes">
+    <button type="button" data-cookies="aceito">Accept</button>
+    <button type="button" data-cookies="recusado">Decline</button>
+  </div>
+</div>
+
+<script>
+  const CHAVE = 'consentimento-cookies';
+  const aviso = document.getElementById('aviso-cookies') as HTMLElement;
+  const idAnalytics = aviso.dataset.analytics;
+
+  // localStorage pode não existir (navegação privada, bloqueio de dados): sem ele, o aviso aparece a cada página.
+  const ler = () => { try { return localStorage.getItem(CHAVE); } catch { return null; } };
+  const gravar = (valor: string) => { try { localStorage.setItem(CHAVE, valor); } catch { /* sem armazenamento */ } };
+
+  const carregarAnalytics = () => {
+    if (!idAnalytics || (window as any).gtag) return;
+    const w = window as any;
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () { w.dataLayer.push(arguments); };
+    w.gtag('js', new Date());
+    w.gtag('config', idAnalytics);
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${idAnalytics}`;
+    document.head.append(s);
+  };
+
+  // Aberto, o aviso cobre o fim da página: a classe no <html> dá uma folga do tamanho dele (global.css), para o rodapé
+  // poder ser rolado para cima do aviso. A medida é lida no quadro seguinte, fora do carregamento.
+  const mostrar = (visivel: boolean) => {
+    aviso.hidden = !visivel;
+    document.documentElement.classList.toggle('aviso-aberto', visivel);
+    if (visivel) requestAnimationFrame(() =>
+      document.documentElement.style.setProperty('--altura-aviso', `${aviso.offsetHeight + 32}px`));
+  };
+
+  if (ler() === 'aceito') carregarAnalytics();
+  // Só aparece depois que a fonte do site carrega: se surgisse com a fonte do sistema, mudaria de altura na troca.
+  // A caixa é fixa (fora do fluxo), então não empurra a página (CLS zero).
+  // Sem ID do Analytics configurado (autor.ts), não há o que consentir: o aviso não aparece.
+  else if (idAnalytics && ler() !== 'recusado') (document.fonts?.ready ?? Promise.resolve()).then(() => mostrar(true));
+
+  aviso.querySelectorAll<HTMLButtonElement>('[data-cookies]').forEach((botao) =>
+    botao.addEventListener('click', () => {
+      const escolha = botao.dataset.cookies!;
+      gravar(escolha);
+      mostrar(false);
+      if (escolha === 'aceito') carregarAnalytics();
+      else {
+        // Recusou depois de ter aceitado: apaga os cookies do Analytics (_ga, _ga_*); o script para na próxima página.
+        document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((nome) => nome.startsWith('_ga'))
+          .forEach((nome) => {
+            const dominio = location.hostname.replace(/^www\./, '');
+            document.cookie = `${nome}=; Max-Age=0; path=/; domain=.${dominio}`;
+            document.cookie = `${nome}=; Max-Age=0; path=/`;
+          });
+      }
+    }),
+  );
+
+  document.querySelectorAll('[data-preferencias-cookies]').forEach((botao) =>
+    botao.addEventListener('click', () => {
+      mostrar(true);
+      aviso.querySelector<HTMLButtonElement>('[data-cookies="aceito"]')?.focus();
+    }),
+  );
+</script>
+
+<style>
+  .cookies {
+    position: fixed; z-index: 45; left: 16px; right: 16px; bottom: 16px;
+    display: grid; gap: 0.85rem; max-width: 520px; padding: 1rem 1.15rem;
+    border: 1px solid var(--rule); border-radius: 2px; background: var(--surface);
+    box-shadow: 0 8px 28px rgb(0 0 0 / 0.16);
+    font-size: var(--text-sm); color: var(--ink);
+  }
+  .cookies[hidden] { display: none; }
+  .cookies p { margin: 0; max-width: none; text-align: left; hyphens: manual; }
+  .cookies a { font-weight: 500; white-space: nowrap; }
+  .cookies-botoes { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  /* Aceitar e recusar com o mesmo tamanho e o mesmo peso: recusar tem de ser tão fácil quanto aceitar. */
+  .cookies button {
+    flex: 1 1 8rem; min-height: 40px; padding: 0.5rem 0.95rem;
+    font: inherit; font-size: var(--text-sm); font-weight: 500; cursor: pointer;
+    border: 1px solid var(--accent-strong); border-radius: 2px;
+    background-color: var(--accent); color: var(--accent-contrast);
+    transition: background-color 0.15s ease;
+  }
+  .cookies button:hover { background-color: var(--accent-strong); }
+  @media print { .cookies { display: none; } }
+</style>

@@ -1,0 +1,44 @@
+---
+// Lista de projetos (de pesquisa ou paralelos), na ordem recebida (o mais recente primeiro).
+import type { CollectionEntry } from 'astro:content';
+import { url, ano } from '../data/colecoes';
+
+interface Props {
+  colecao: 'projects' | 'extra';
+  projetos: CollectionEntry<'projects'>[] | CollectionEntry<'extra'>[];
+  // Texto para quando a lista está vazia.
+  vazio: string;
+}
+
+const { colecao, projetos, vazio } = Astro.props;
+---
+
+{projetos.length ? (
+  <ul class="entry-list entry-list--period">
+    {projetos.map((projeto) => {
+      const p = projeto.data;
+      const href = url(colecao, projeto.id);
+      const papel = 'papel' in p ? p.papel : undefined;
+      return (
+        <li class="entry">
+          <div class="entry-year">{p.periodo ?? ano(p.data)}</div>
+          <div>
+            <h2 class="entry-title"><a href={href}>{p.titulo}</a></h2>
+            {p.chamada && <p class="entry-org">{p.chamada}</p>}
+            <p class="entry-meta">
+              {p.situacao && <span class="venue">{p.situacao}</span>}
+              {papel && <span class="kind">{papel}</span>}
+              <span class="entry-links">
+                {p.linkCodigo && <a href={p.linkCodigo} target="_blank" rel="noopener">Code</a>}
+                {p.linkSite && <a href={p.linkSite} target="_blank" rel="noopener">Site</a>}
+                <a href={href}>Details</a>
+              </span>
+            </p>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+) : (
+  <p class="empty-state">{vazio}</p>
+)}

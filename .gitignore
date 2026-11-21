@@ -1,7 +1,32 @@
-_site/
+# Dependências e build (gerados pelo npm e pelo Astro)
 node_modules/
-.cache
-.impeccable/config.local.json
-.impeccable/live/sessions/
-.impeccable/live/roots.json
-.impeccable/live/inject-journal.json
+dist/
+.astro/
+
+# Credenciais: só o .env.example vai para o repositório
+.env
+.env.*
+!.env.example
+
+# Material do cliente (exportações do site antigo, áudios, artes): pode ter dados pessoais
+docs/*.xml
+docs/*.ogg
+
+# Arquivos temporários e de teste
+tmp/
+*.tmp
+*.log
+*.bak
+*.orig
+*.swp
+*~
+__pycache__/
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+*:Zone.Identifier
+.vscode/
+.idea/
+.claude/

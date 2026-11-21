@@ -1,0 +1,43 @@
+---
+// Palestras, da mais recente para a mais antiga.
+import Base from '../../layouts/Base.astro';
+import { recentes, url, ano, dataCurta, dataIso } from '../../data/colecoes';
+
+const palestras = await recentes('talks');
+---
+
+<Base
+  title="Talks — Anselmo Luiz Éden Battisti"
+  description="Talks, lectures and conference presentations given by Anselmo Luiz Éden Battisti, with slides and video recordings where available."
+  trilha={[{ nome: 'Talks', href: '/talks/' }]}
+>
+  <div class="hero">
+    <h1>Talks</h1>
+    <p class="lede">Talks and lectures I have given, newest first. Slides and video recordings are linked where available.</p>
+  </div>
+
+  {palestras.length ? (
+    <ul class="entry-list">
+      {palestras.map(({ id, data: p }) => (
+        <li class="entry">
+          <div class="entry-year">{ano(p.data)}</div>
+          <div>
+            <h2 class="entry-title"><a href={url('talks', id)} lang={p.idioma}>{p.titulo}</a></h2>
+            {p.local && <p class="entry-org">{p.local}</p>}
+            <p class="entry-meta">
+              <span class="venue"><time datetime={dataIso(p.data)}>{dataCurta(p.data)}</time></span>
+              {p.idioma && <span class="kind">{p.idioma}</span>}
+              <span class="entry-links">
+                {p.linkSlides && <a href={p.linkSlides} target="_blank" rel="noopener">Slides</a>}
+                {p.linkVideo && <a href={p.linkVideo} target="_blank" rel="noopener">Video</a>}
+                <a href={url('talks', id)}>Details</a>
+              </span>
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="empty-state">No talks published yet.</p>
+  )}
+</Base>

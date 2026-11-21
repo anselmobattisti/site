@@ -1,0 +1,51 @@
+---
+// Botão "Copy" nos blocos de código de um artigo (na prática, o BibTeX de cada publicação). O botão só é criado
+// pelo script: sem JavaScript, o bloco fica sem um botão que não faria nada.
+---
+
+<script is:inline>
+  (function () {
+    var blocos = document.querySelectorAll('.prose pre[class*="language-"]');
+    if (!blocos.length) return;
+
+    var teclaCopiar = navigator.userAgent.indexOf('Mac') > -1 ? '⌘' : 'Ctrl';
+
+    blocos.forEach(function (pre) {
+      var codigo = pre.querySelector('code');
+      if (!codigo) return;
+
+      var botao = document.createElement('button');
+      botao.type = 'button';
+      botao.className = 'copy-button';
+      botao.textContent = 'Copy';
+
+      function avisar(texto) {
+        botao.textContent = texto;
+        botao.classList.add('is-done');
+        window.setTimeout(function () {
+          botao.textContent = 'Copy';
+          botao.classList.remove('is-done');
+        }, 2200);
+      }
+
+      // Sem a área de transferência (http, navegador antigo): seleciona o texto para a pessoa copiar pelo teclado.
+      function selecionar() {
+        var faixa = document.createRange();
+        faixa.selectNodeContents(codigo);
+        var selecao = window.getSelection();
+        selecao.removeAllRanges();
+        selecao.addRange(faixa);
+        avisar(teclaCopiar + '+C');
+      }
+
+      botao.addEventListener('click', function () {
+        if (!navigator.clipboard) return selecionar();
+        navigator.clipboard.writeText(codigo.textContent).then(function () {
+          avisar('Copied');
+        }, selecionar);
+      });
+
+      pre.appendChild(botao);
+    });
+  })();
+</script>

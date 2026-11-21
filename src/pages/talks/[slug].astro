@@ -1,0 +1,75 @@
+---
+// Página de uma palestra: data, local, resumo e os documentos (tudo o que estiver em public/talks/<arquivo>/).
+// "idioma" é uma etiqueta BCP-47 (ex.: pt-BR): aparece na página e diz aos leitores de tela em que língua ler.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AnteriorProximo from '../../components/AnteriorProximo.astro';
+import { itens, resumir, dataPorExtenso, dataIso, documentosDaPalestra } from '../../data/colecoes';
+
+export async function getStaticPaths() {
+  return (await itens('talks')).map((palestra) => ({ params: { slug: palestra.id }, props: { palestra } }));
+}
+
+const { palestra } = Astro.props;
+const p = palestra.data;
+const { Content } = await render(palestra);
+const documentos = documentosDaPalestra(palestra);
+---
+
+<Base
+  title={p.titulo}
+  description={resumir(p.resumo ?? `${p.titulo}${p.local ? ` — ${p.local}` : ''}, ${dataPorExtenso(p.data)}.`)}
+  trilha={[{ nome: 'Talks', href: '/talks/' }, { nome: p.titulo, href: Astro.url.pathname }]}
+>
+  <article lang={p.idioma}>
+    <div class="hero">
+      <p class="eyebrow">Talk · {dataPorExtenso(p.data)}</p>
+      <h1>{p.titulo}</h1>
+      {p.local && <p class="lede">{p.local}</p>}
+
+      {(p.linkSlides || p.linkVideo) && (
+        <div class="hero-actions">
+          {p.linkVideo && <a class="btn btn-solid" href={p.linkVideo} target="_blank" rel="noopener">Watch the talk</a>}
+          {p.linkSlides && <a class="btn" href={p.linkSlides} target="_blank" rel="noopener">Slides</a>}
+        </div>
+      )}
+    </div>
+
+    <ul class="publication-facts">
+      <li><span class="k">Date</span><span><time datetime={dataIso(p.data)}>{dataPorExtenso(p.data)}</time></span></li>
+      {p.local && <li><span class="k">Where</span><span>{p.local}</span></li>}
+      {p.idioma && <li><span class="k">Language</span><span class="lang-tag">{p.idioma}</span></li>}
+    </ul>
+
+    {p.resumo && (
+      <div class="abstract">
+        <h2>Abstract</h2>
+        <p>{p.resumo}</p>
+      </div>
+    )}
+
+    <div class="section prose">
+      <Content />
+    </div>
+
+    {documentos.length > 0 && (
+      <div class="section">
+        <div class="section-head">
+          <h2>Documents</h2>
+        </div>
+        <ul class="docs">
+          {documentos.map((doc) => (
+            <li>
+              <a href={doc.href} target="_blank" rel="noopener">
+                <span class="doc-name">{doc.nome}</span>
+                <span class="doc-meta">{doc.extensao} · {doc.tamanho}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <AnteriorProximo colecao="talks" id={palestra.id} />
+  </article>
+</Base>

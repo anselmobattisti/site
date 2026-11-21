@@ -1,0 +1,4 @@
+{
+  "_comentario": "Endereços antigos → novos, por grupo. O mesmo 301 vai no nginx-ploi.conf. Ex.: \"paginas\": { \"/cv\": \"/background/\" }. Vazio: o site em 11ty já usava os mesmos endereços.",
+  "paginas": {}
+}
