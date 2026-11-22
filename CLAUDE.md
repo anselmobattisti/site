@@ -91,7 +91,7 @@ estão na seção indicada entre parênteses.
 - Domínio: https://battisti.com.br · Staging: PENDENTE · Hospedagem: **Ploi** (nginx, sem Node e sem PHP), deploy pelo
   GitHub Actions (branch `publicado`).
 - **Dados do dono:** `src/data/autor.ts` (nome, cargo, e-mail, endereço de trabalho, perfis, ID do Analytics e o menu).
-- **Conteúdo:** um `.md` por item em `src/content/` (`publication`, `teaching`, `talks`, `projects`, `extra`), com os
+- **Conteúdo:** um `.md` por item em `src/content/` (`publication`, `teaching`, `talks`, `projects`, `extra`, `blog`), com os
   esquemas em `src/content.config.ts` e as funções de leitura em `src/data/colecoes.ts`. O nome do arquivo é o
   endereço. As páginas fixas (home, work, research, patents, awards, background, contact) são `.astro` em `src/pages/`.
   - Documentos de uma palestra: soltar o arquivo em `public/talks/<arquivo da palestra>/`; ele aparece na página.
@@ -99,6 +99,10 @@ estão na seção indicada entre parênteses.
     título, descrição e arquivo) no cabeçalho do `.md`; os PDFs ficam em `public/<pastaAulas>/`. Arquivo que não
     existe derruba o build. Campo novo no esquema que não aparece no `npm run dev` (mesmo depois de reiniciar):
     o servidor ficou com o esquema antigo; salvar o `content.config.ts` de novo, com uma mudança de verdade, resolve.
+  - Blog (`/blog/`, criado em 22/11/2026): um `.md` por post em `src/content/blog/` (a pasta só existe quando há
+    post), com `titulo`, `resumo`, `data` e, se quiser, `atualizado`, `idioma`, `tags`, `mermaid` e `rascunho`.
+    `rascunho: true` aparece no `npm run dev` e não vira página no build. O post entra sozinho no feed, no
+    `llms.txt` (seção `## Blog`) e no sitemap, com `lastmod` (a data de `atualizado` ou a de publicação).
   - Diagrama em Mermaid: bloco ```mermaid no `.md` e `mermaid: true` no cabeçalho (a biblioteca só entra nessas páginas).
   - Publicação em destaque na home: `destaque: true`.
 - **Visual:** `src/styles/global.css` é o CSS do site antigo (tokens `--ground`, `--surface`, `--accent`…, Roboto, texto

@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import paginasMarkdown from './integracoes/paginas-markdown.mjs';
 import idsTitulos from './integracoes/ids-titulos.mjs';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 
 // Endereços antigos → novos: o 301 de verdade é feito no nginx (nginx-ploi.conf, com a mesma lista). O site em 11ty
 // já usava os mesmos endereços, então a lista está vazia. Grupos que começam com "_" são comentários.
@@ -34,6 +34,20 @@ function blocosDeCodigo() {
   return visitar;
 }
 
+// Data de cada post do blog, para o <lastmod> do sitemap: a de atualização ou, sem ela, a de publicação. Lida direto
+// dos .md, porque este arquivo não tem acesso às coleções. As outras páginas ficam sem <lastmod>: o site não guarda a
+// data de atualização delas, e a data do build faria o Google desconfiar do campo.
+const pastaBlog = 'src/content/blog';
+const datasDoBlog = Object.fromEntries(
+  (existsSync(pastaBlog) ? readdirSync(pastaBlog) : [])
+    .filter((arquivo) => arquivo.endsWith('.md'))
+    .map((arquivo) => {
+      const cabecalho = readFileSync(`${pastaBlog}/${arquivo}`, 'utf8').split(/^---\s*$/m)[1] ?? '';
+      const campo = (nome) => cabecalho.match(new RegExp(`^${nome}:\\s*["']?(\\d{4}-\\d{2}-\\d{2})`, 'm'))?.[1];
+      return [`/blog/${arquivo.slice(0, -3)}/`, campo('atualizado') ?? campo('data')];
+    }),
+);
+
 export default defineConfig({
   site: 'https://battisti.com.br',
   trailingSlash: 'always',
@@ -44,9 +58,14 @@ export default defineConfig({
     // Versão .md de cada página para agentes de IA (/work/ → /work.md), gerada no fim do build.
     paginasMarkdown(),
     // Fora do sitemap: só a 404. Regra: toda página com noindex fica fora do sitemap, e vice-versa.
-    // Sem <lastmod>: o site não guarda a data de atualização das páginas, e a data do build faria o Google
-    // desconfiar do campo.
-    sitemap({ filter: (pagina) => new URL(pagina).pathname !== '/404/' }),
+    // <lastmod> só nos posts do blog (ver datasDoBlog).
+    sitemap({
+      filter: (pagina) => new URL(pagina).pathname !== '/404/',
+      serialize(item) {
+        const data = datasDoBlog[new URL(item.url).pathname];
+        return data ? { ...item, lastmod: new Date(data).toISOString() } : item;
+      },
+    }),
   ],
   redirects: redirecionamentos,
   // smartypants desligado: o texto sai como foi escrito (o site antigo não trocava aspas nem travessões).

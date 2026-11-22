@@ -2038,6 +2038,25 @@ html.aviso-aberto body {
 	padding-bottom: var(--altura-aviso, 0);
 }
 
+/* Post do blog: texto longo, com vários títulos e blocos de código no meio. Os títulos ganham respiro em cima e
+   embaixo (nas outras páginas o h2 abre uma seção, com a margem na caixa em volta), e o bloco de código, embaixo. */
+.post > :is(h2, h3) {
+	margin: 2.25rem 0 0.75rem;
+}
+
+.post > pre[class*="language-"] {
+	margin-bottom: 1.25rem;
+}
+
+/* Nome de função ou de arquivo no meio da frase: a fonte é a mesma do texto (Roboto em tudo), então é o fundo que
+   mostra onde o código começa e termina. */
+.post :not(pre) > code {
+	padding: 0.05em 0.3em;
+	border-radius: 2px;
+	background-color: var(--surface-2);
+	font-size: 0.94em;
+}
+
 /* Aulas de uma disciplina: data, assunto (título e o que foi visto) e o botão do PDF. */
 .lectures {
 	width: 100%;

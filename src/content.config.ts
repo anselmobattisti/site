@@ -129,4 +129,22 @@ const extra = defineCollection({
   }),
 });
 
-export const collections = { publication, teaching, talks, projects, extra };
+// Blog: um .md por post. O texto fica no idioma em que foi escrito ("idioma" vira o atributo lang da página).
+const blog = defineCollection({
+  loader: pasta('blog'),
+  schema: z.object({
+    titulo: z.string(),
+    // Uma ou duas frases: aparece na lista, embaixo do título do post, na descrição da página e no feed.
+    resumo: z.string(),
+    data: z.coerce.date(),
+    // Só quando o post for revisado de verdade: aparece na página e vira o lastmod do sitemap.
+    atualizado: z.coerce.date().optional(),
+    idioma: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    mermaid: z.boolean().default(false),
+    // Rascunho: aparece no npm run dev, mas não vira página no build (nem entra no feed, no sitemap e no llms.txt).
+    rascunho: z.boolean().default(false),
+  }),
+});
+
+export const collections = { publication, teaching, talks, projects, extra, blog };

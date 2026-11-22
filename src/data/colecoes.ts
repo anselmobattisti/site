@@ -4,11 +4,12 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import { readdirSync, statSync, existsSync } from 'node:fs';
 import { extname, join } from 'node:path';
 
-export type Colecao = 'publication' | 'teaching' | 'talks' | 'projects' | 'extra';
+export type Colecao = 'publication' | 'teaching' | 'talks' | 'projects' | 'extra' | 'blog';
 
 // Da mais antiga para a mais nova (com o nome do arquivo como desempate), que é a ordem de "Earlier" / "Later".
 export async function itens<C extends Colecao>(colecao: C): Promise<CollectionEntry<C>[]> {
-  const lista = await getCollection(colecao);
+  // Rascunhos do blog só existem no npm run dev: no build, é como se o arquivo não estivesse lá.
+  const lista = (await getCollection(colecao)).filter((item) => import.meta.env.DEV || !('rascunho' in item.data && item.data.rascunho));
   return lista.sort((a, b) => a.data.data.getTime() - b.data.data.getTime() || a.id.localeCompare(b.id));
 }
 

@@ -1,0 +1,72 @@
+---
+// Página de um post do blog: título, resumo, datas, o texto (o .md) e os posts vizinhos.
+// "idioma" é uma etiqueta BCP-47 (ex.: pt-BR): diz aos leitores de tela e ao navegador em que língua o post está.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AnteriorProximo from '../../components/AnteriorProximo.astro';
+import { autor } from '../../data/autor';
+import { itens, resumir, dataPorExtenso, dataIso } from '../../data/colecoes';
+
+export async function getStaticPaths() {
+  return (await itens('blog')).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const p = post.data;
+const { Content } = await render(post);
+const endereco = new URL(Astro.url.pathname, Astro.site).href;
+
+// Diz ao Google que a página é um post, de quem e de quando.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: p.titulo,
+  description: p.resumo,
+  datePublished: dataIso(p.data),
+  dateModified: dataIso(p.atualizado ?? p.data),
+  inLanguage: p.idioma ?? 'en',
+  url: endereco,
+  mainEntityOfPage: endereco,
+  image: new URL('/img/share.jpg', Astro.site).href,
+  author: { '@id': `${autor.url}/#pessoa` },
+  publisher: { '@id': `${autor.url}/#pessoa` },
+  ...(p.tags.length > 0 && { keywords: p.tags.join(', ') }),
+};
+---
+
+<Base
+  title={p.titulo}
+  description={resumir(p.resumo)}
+  trilha={[{ nome: 'Blog', href: '/blog/' }, { nome: p.titulo, href: Astro.url.pathname }]}
+  artigo
+  codigo
+  diagrama={p.mermaid}
+  mermaid={p.mermaid}
+>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={dataIso(p.data)} />
+    {p.atualizado && <meta property="article:modified_time" content={dataIso(p.atualizado)} />}
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </Fragment>
+
+  <article lang={p.idioma}>
+    <div class="hero">
+      <p class="eyebrow" lang="en">Blog · <time datetime={dataIso(p.data)}>{dataPorExtenso(p.data)}</time>{p.rascunho && ' · Draft'}</p>
+      <h1>{p.titulo}</h1>
+      <p class="lede">{p.resumo}</p>
+    </div>
+
+    {(p.atualizado || p.tags.length > 0) && (
+      <ul class="publication-facts" lang="en">
+        {p.atualizado && <li><span class="k">Updated</span><span><time datetime={dataIso(p.atualizado)}>{dataPorExtenso(p.atualizado)}</time></span></li>}
+        {p.tags.length > 0 && <li><span class="k">Topics</span><span lang={p.idioma}>{p.tags.join(', ')}</span></li>}
+      </ul>
+    )}
+
+    <div class="section prose post">
+      <Content />
+    </div>
+
+    <AnteriorProximo colecao="blog" id={post.id} />
+  </article>
+</Base>

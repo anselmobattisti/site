@@ -7,9 +7,16 @@ import { recentes, url as caminho, tiposPublicacao, dataPorExtenso, resumir } fr
 const url = (endereco: string) => `${autor.url}${endereco}`;
 
 export const GET: APIRoute = async () => {
-  const [publicacoes, projetos, palestras, disciplinas, extras] = await Promise.all([
-    recentes('publication'), recentes('projects'), recentes('talks'), recentes('teaching'), recentes('extra'),
+  const [publicacoes, projetos, palestras, disciplinas, extras, posts] = await Promise.all([
+    recentes('publication'), recentes('projects'), recentes('talks'), recentes('teaching'), recentes('extra'), recentes('blog'),
   ]);
+  // A seção do blog só existe quando há post publicado.
+  const blog = posts.length === 0 ? '' : `## Blog
+
+${posts.map((p) => `- [${p.data.titulo}](${url(caminho('blog', p.id))}): ${resumir(p.data.resumo, 140)} (${dataPorExtenso(p.data.data)})`).join('\n')}
+- [All posts](${url('/blog/')})
+
+`;
   const { instituicao, perfis } = autor;
   const texto = `# ${autor.nome}
 
@@ -49,7 +56,7 @@ ${projetos.map((p) => `- [${p.data.titulo}](${url(caminho('projects', p.id))}): 
 ${palestras.map((p) => `- [${p.data.titulo}](${url(caminho('talks', p.id))}): ${[p.data.local, dataPorExtenso(p.data.data)].filter(Boolean).join(', ')}.`).join('\n')}
 - [All talks](${url('/talks/')})
 
-## Teaching
+${blog}## Teaching
 
 ${disciplinas.map((d) => `- [${d.data.titulo} (${d.data.semestre})](${url(caminho('teaching', d.id))}): ${d.data.instituicao}, ${d.data.curso}, ${d.data.horas} h.`).join('\n')}
 - [All courses, by semester](${url('/teaching/')})

@@ -54,6 +54,7 @@ export const menu: ItemMenu[] = [
   },
   { href: '/teaching/', nome: 'Teaching' },
   { href: '/talks/', nome: 'Talks' },
+  { href: '/blog/', nome: 'Blog' },
   { href: '/background/', nome: 'Background' },
   { href: '/extra/', nome: 'Extra' },
   { href: '/contact/', nome: 'Contact' },

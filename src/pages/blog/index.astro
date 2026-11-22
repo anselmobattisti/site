@@ -1,0 +1,42 @@
+---
+// Blog: os posts, do mais recente para o mais antigo.
+import Base from '../../layouts/Base.astro';
+import { recentes, url, ano, dataCurta, dataIso } from '../../data/colecoes';
+
+const posts = await recentes('blog');
+---
+
+<Base
+  title="Blog — Anselmo Luiz Éden Battisti"
+  description="Blog of Anselmo Luiz Éden Battisti: notes on software engineering, teaching, research and the tools he works with."
+  trilha={[{ nome: 'Blog', href: '/blog/' }]}
+>
+  <div class="hero">
+    <h1>Blog</h1>
+    <p class="lede">Notes and longer pieces, newest first.</p>
+  </div>
+
+  {posts.length ? (
+    <ul class="entry-list">
+      {posts.map(({ id, data: p }) => (
+        <li class="entry">
+          <div class="entry-year">{ano(p.data)}</div>
+          <div lang={p.idioma}>
+            <h2 class="entry-title"><a href={url('blog', id)}>{p.titulo}</a></h2>
+            <p class="entry-org">{p.resumo}</p>
+            <p class="entry-meta">
+              <span class="venue"><time datetime={dataIso(p.data)}>{dataCurta(p.data)}</time></span>
+              {p.idioma && <span class="kind">{p.idioma}</span>}
+              {p.rascunho && <span class="kind">Draft</span>}
+              <span class="entry-links">
+                <a href={url('blog', id)} lang="en">Read</a>
+              </span>
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="empty-state">No posts published yet.</p>
+  )}
+</Base>
