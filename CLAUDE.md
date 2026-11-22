@@ -95,6 +95,10 @@ estão na seção indicada entre parênteses.
   esquemas em `src/content.config.ts` e as funções de leitura em `src/data/colecoes.ts`. O nome do arquivo é o
   endereço. As páginas fixas (home, work, research, patents, awards, background, contact) são `.astro` em `src/pages/`.
   - Documentos de uma palestra: soltar o arquivo em `public/talks/<arquivo da palestra>/`; ele aparece na página.
+  - Aulas de uma disciplina (tabela "Lectures", com o botão do PDF): `pastaAulas` e a lista `aulas` (número, data,
+    título, descrição e arquivo) no cabeçalho do `.md`; os PDFs ficam em `public/<pastaAulas>/`. Arquivo que não
+    existe derruba o build. Campo novo no esquema que não aparece no `npm run dev` (mesmo depois de reiniciar):
+    o servidor ficou com o esquema antigo; salvar o `content.config.ts` de novo, com uma mudança de verdade, resolve.
   - Diagrama em Mermaid: bloco ```mermaid no `.md` e `mermaid: true` no cabeçalho (a biblioteca só entra nessas páginas).
   - Publicação em destaque na home: `destaque: true`.
 - **Visual:** `src/styles/global.css` é o CSS do site antigo (tokens `--ground`, `--surface`, `--accent`…, Roboto, texto

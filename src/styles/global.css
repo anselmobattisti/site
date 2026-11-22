@@ -2038,6 +2038,105 @@ html.aviso-aberto body {
 	padding-bottom: var(--altura-aviso, 0);
 }
 
+/* Aulas de uma disciplina: data, assunto (título e o que foi visto) e o botão do PDF. */
+.lectures {
+	width: 100%;
+	border-collapse: collapse;
+	border-top: 1px solid var(--rule);
+	font-size: var(--text-sm);
+}
+
+.lectures th {
+	padding: 0.55rem 0.9rem 0.55rem 0;
+	border-bottom: 1px solid var(--rule);
+	font-family: var(--font-family-data);
+	font-size: var(--text-xs);
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-align: left;
+	color: var(--muted);
+}
+
+.lectures td {
+	padding: 0.8rem 0.9rem 0.8rem 0;
+	border-bottom: 1px solid var(--rule-soft);
+	vertical-align: top;
+}
+
+.lectures :is(th, td):last-child {
+	padding-right: 0;
+	text-align: right;
+}
+
+.lecture-date {
+	font-family: var(--font-family-data);
+	font-variant-numeric: tabular-nums;
+	color: var(--muted);
+	white-space: nowrap;
+}
+
+.lecture-topic strong {
+	display: block;
+	font-weight: 500;
+	color: var(--ink);
+}
+
+/* Coluna estreita: justificado abriria buracos entre as palavras. */
+.lecture-desc {
+	display: block;
+	margin-top: 0.25rem;
+	color: var(--ink-soft);
+	text-align: left;
+	hyphens: manual;
+}
+
+.lecture-file a[href].btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	white-space: nowrap;
+}
+
+.lecture-file svg {
+	flex: none;
+}
+
+.lecture-size {
+	font-family: var(--font-family-data);
+	font-size: var(--text-xs);
+	font-weight: 400;
+	color: var(--muted);
+}
+
+/* Celular: a tabela não cabe. Cada aula vira um bloco: a data, o assunto e o botão embaixo. */
+@media (max-width: 620px) {
+	.lectures thead {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+	}
+
+	.lectures tr {
+		display: grid;
+		gap: 0.3rem;
+		padding: 0.9rem 0;
+		border-bottom: 1px solid var(--rule-soft);
+	}
+
+	.lectures td {
+		padding: 0;
+		border: 0;
+	}
+
+	.lectures td.lecture-file {
+		margin-top: 0.4rem;
+		text-align: left;
+	}
+}
+
 @media (max-width: 860px) {
 	/* Links da publicação (PDF, DOI, Details) sempre na linha de baixo: antes, dependia do tamanho do nome do
 	   veículo, e cada item ficava de um jeito. */

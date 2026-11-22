@@ -79,5 +79,22 @@ export function documentosDaPalestra(palestra: CollectionEntry<'talks'>) {
     .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR', { numeric: true, sensitivity: 'base' }));
 }
 
+// Aulas de uma disciplina, na ordem do .md, com o endereço e o tamanho do PDF de cada uma. Arquivo declarado que não
+// existe em public/ derruba o build: melhor do que publicar um botão que dá 404.
+export function aulasDaDisciplina(disciplina: CollectionEntry<'teaching'>) {
+  const pasta = (disciplina.data.pastaAulas ?? '').replace(/^\/+|\/+$/g, '');
+  // "?? []": o npm run dev às vezes fica com o esquema antigo depois de uma mudança no content.config.ts, e o campo
+  // chegava indefinido (erro 500 em todas as disciplinas).
+  return (disciplina.data.aulas ?? []).map((aula) => {
+    if (!aula.arquivo) return { ...aula, pdf: undefined };
+    const caminho = join('public', pasta, aula.arquivo);
+    if (!existsSync(caminho)) throw new Error(`${disciplina.id}: a aula ${aula.numero} aponta para ${caminho}, que não existe.`);
+    return { ...aula, pdf: { href: `/${pasta}/${aula.arquivo}`, tamanho: tamanho(statSync(caminho).size) } };
+  });
+}
+
+// "10 Aug": o ano já está no topo da página da disciplina.
+export const diaEMes = (d: Date) => `${parte(d, { day: '2-digit' })} ${parte(d, { month: 'short' })}`;
+
 // Endereço como a pessoa escreveria: sem "https://" e sem a barra final.
 export const urlCurta = (endereco: string) => endereco.replace(/^https?:\/\//, '').replace(/\/$/, '');

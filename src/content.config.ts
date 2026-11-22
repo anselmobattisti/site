@@ -57,6 +57,20 @@ const teaching = defineCollection({
     chamada: z.string().optional(),
     bibliografia: z.array(z.string()).default([]),
     bibliografiaComplementar: z.array(z.string()).default([]),
+    // Pasta dos slides, dentro de public/ (ex.: "teaching/2026-02/desenvolvimento-de-software").
+    pastaAulas: z.string().optional(),
+    // Uma linha por aula da tabela "Lectures". "arquivo" é o PDF dentro de pastaAulas; sem ele, a linha sai sem botão.
+    aulas: z
+      .array(
+        z.object({
+          numero: z.number(),
+          data: z.coerce.date(),
+          titulo: z.string(),
+          descricao: z.string(),
+          arquivo: z.string().optional(),
+        }),
+      )
+      .default([]),
   }),
 });
 
