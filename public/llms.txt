@@ -52,6 +52,11 @@ Every page of the site has a Markdown version with the content only: replace the
 - [O Paradoxo da IA: O retorno ao modelo Cascata na era do código gerado](https://battisti.com.br/talks/2026-paradoxo-da-ia-cascata/): XII SIMMA · UFF Volta Redonda/RJ, Brasil, 16 September 2026.
 - [All talks](https://battisti.com.br/talks/)
 
+## Blog
+
+- [MCP: como ligar um assistente de IA aos seus dados e ferramentas](https://battisti.com.br/blog/mcp-model-context-protocol/): O que é o Model Context Protocol, como host, cliente e servidor conversam, um servidor de tarefas em Python e os cuidados de segurança… (22 November 2026)
+- [All posts](https://battisti.com.br/blog/)
+
 ## Teaching
 
 - [Desenvolvimento de Software (2026)](https://battisti.com.br/teaching/2026-2-desenvolvimento-de-software/): IMPA Tech, Matemática da Tecnologia e Inovação, 54 h.

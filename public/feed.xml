@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>Anselmo Luiz Éden Battisti</title>
-  <subtitle>Publications, talks and research projects.</subtitle>
+  <subtitle>Publications, talks, research projects and blog posts.</subtitle>
   <link href="https://battisti.com.br/feed.xml" rel="self" />
   <link href="https://battisti.com.br/" />
-  <updated>2026-09-16T00:00:00.000Z</updated>
+  <updated>2026-11-22T00:00:00.000Z</updated>
   <id>https://battisti.com.br/</id>
   <author>
     <name>Anselmo Luiz Éden Battisti</name>
     <email>anselmo@battisti.com.br</email>
   </author>
+  <entry>
+    <title>MCP: como ligar um assistente de IA aos seus dados e ferramentas</title>
+    <link href="https://battisti.com.br/blog/mcp-model-context-protocol/" />
+    <updated>2026-11-22T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/blog/mcp-model-context-protocol/</id>
+    <summary>O que é o Model Context Protocol, como host, cliente e servidor conversam, um servidor de tarefas em Python e os cuidados de segurança antes de ligar um assistente aos seus sistemas.</summary>
+  </entry>
   <entry>
     <title>O Paradoxo da IA: O retorno ao modelo Cascata na era do código gerado</title>
     <link href="https://battisti.com.br/talks/2026-paradoxo-da-ia-cascata/" />
@@ -142,12 +149,5 @@
     <updated>2018-02-01T00:00:00.000Z</updated>
     <id>https://battisti.com.br/teaching/2018-1-matematica-computacional/</id>
     <summary>Compreender os domínios numéricos. Estudo da álgebra elementar. Noções sobre modelagem numérica, equações e gráficos. Estudo da Lógica Matemática: Conectivos; Proposições compostas; Quantificadores; Lógica e Teoria dos Conjuntos; Lógica de classes; Equivalência e Implicação Lógica; Equivalências Notáveis; Regras de Dedução. Compreensão dos princípios da Contagem e da Estatística elementar: medidas de posição e dispersão; probabilidade.</summary>
-  </entry>
-  <entry>
-    <title>Logística no Comércio Eletrônico (2018)</title>
-    <link href="https://battisti.com.br/teaching/2018-logistica-no-comercio-eletronico/" />
-    <updated>2018-02-01T00:00:00.000Z</updated>
-    <id>https://battisti.com.br/teaching/2018-logistica-no-comercio-eletronico/</id>
-    <summary>A disseminação de conhecimentos e desenvolvimento profissional de logística em comércio eletrônico. Estudo das atividades de transporte, gestão de estoques, processamento de pedidos, compras, armazenagem, manuseio de materiais, embalagem e programação da produção e distribuição no comércio eletrônico. Implementação de um modelo de negócios eletrônicos e a logística necessária.</summary>
   </entry>
 </feed>
