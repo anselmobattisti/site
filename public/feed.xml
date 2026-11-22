@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Anselmo Luiz Éden Battisti</title>
+  <subtitle>Publications, talks and research projects.</subtitle>
+  <link href="https://battisti.com.br/feed.xml" rel="self" />
+  <link href="https://battisti.com.br/" />
+  <updated>2026-09-16T00:00:00.000Z</updated>
+  <id>https://battisti.com.br/</id>
+  <author>
+    <name>Anselmo Luiz Éden Battisti</name>
+    <email>anselmo@battisti.com.br</email>
+  </author>
+  <entry>
+    <title>O Paradoxo da IA: O retorno ao modelo Cascata na era do código gerado</title>
+    <link href="https://battisti.com.br/talks/2026-paradoxo-da-ia-cascata/" />
+    <updated>2026-09-16T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/talks/2026-paradoxo-da-ia-cascata/</id>
+    <summary>Durante décadas, nos afastamos da rigidez do modelo Cascata e abraçamos o Ágil para evitar especificações lentas e caras. No entanto, as IAs estão invertendo essa lógica. Hoje, as LLMs escrevem código em segundos, mas geram um novo gargalo: o esgotamento cognitivo na revisão de código (Code Review) e a perda de contexto arquitetural. Para extrair código de qualidade, somos forçados a criar prompts hiperdetalhados. Nesta palestra, faremos um resgate histórico do desenvolvimento de software para debater uma provocação atual: a necessidade de detalhar regras e arquiteturas para a IA estaria nos devolvendo a um paradigma em Cascata?</summary>
+  </entry>
+  <entry>
+    <title>LibVox</title>
+    <link href="https://battisti.com.br/projects/libvox/" />
+    <updated>2026-09-08T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/projects/libvox/</id>
+    <summary>LibVox is an open-source, AI-powered conversational layer designed specifically for libraries. By leveraging Large Language Models (LLMs) and the Model Context Protocol (MCP), LibVox acts as an intelligent, conversational bridge that simplifies public access to complex library collections managed by open-source Integrated Library Systems (ILS) such as Koha and FOLIO.</summary>
+  </entry>
+  <entry>
+    <title>Desenvolvimento de Software (2026)</title>
+    <link href="https://battisti.com.br/teaching/2026-2-desenvolvimento-de-software/" />
+    <updated>2026-08-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/teaching/2026-2-desenvolvimento-de-software/</id>
+    <summary>Engenharia de requisitos: objetivos e métodos. Implementação de software: técnicas de codificação e estilos de programação. Projeto de software. Princípios de arquitetura de software. Gerência de projetos: planejamento, execução e controle. Desenvolvimento de software em equipe. Qualidade de software: critérios de qualidade, métricas, revisões e testes de software. Manutenção de software: fundamentos e reengenharia. Frameworks. Apoio automatizado ao desenvolvimento de software: ambientes e ferramentas CASE. Gerência de configuração de software e controle de versão. Linha de produtos de software.</summary>
+  </entry>
+  <entry>
+    <title>Speed: a distributed approach for SFC placement in the edge-cloud continuum</title>
+    <link href="https://battisti.com.br/publication/publication14-atc/" />
+    <updated>2026-02-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication14-atc/</id>
+    <summary>In the last decades, there has been a trend to virtualize computing and networking resources over the physical infrastructure. This approach was initially adopted in the core functions of the network, thus creating the network function virtualization paradigm. The process which defines the computational nodes and links to execute a set of virtual network functions (VNFs) is called placement. However, executing only VNFs individually is often not enough to meet users’ requirements. Therefore, the service function chain (SFC) concept was created. With the advancement of the edge-cloud continuum infrastructure, SFCs started to be executed on multiple nodes, sometimes managed by independent service providers. In this multi-domain scenario, a distributed placement mechanism to allocate SFCs without complete knowledge of the infrastructure where the VNF instances will be executed is required. In this paper, we propose a new approach, named SPEED, to solve the SFC placement problem (SFCPP) over a multi-domain environment in a distributed manner. The solution encompasses algorithms and a new mapping model between the SFCPP and the game theory approach. The results of a simulation-based performance evaluation show that SPEED is feasible and, compared to other approaches, has a gain of 30% in the number of SFC requests placed successfully.</summary>
+  </entry>
+  <entry>
+    <title>SPEED - SFC Placement in Edge-Cloud Continuum: a Distributed Approach</title>
+    <link href="https://battisti.com.br/publication/publication15-sbrc/" />
+    <updated>2026-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication15-sbrc/</id>
+    <summary>In the last decades, there has been a trend to virtualize computing and networking resources. This approach was initially adopted in the core functions of the network, thus creating the Network Function Virtualization paradigm. The process that defines the computational nodes and links to execute a set of Virtual Network Functions (VNF) is called placement. However, executing only VNFs individually is often not enough to meet users requirements. Therefore, the Service Function Chain (SFC) concept was created. With the advancement of the Edge-Cloud continuum infrastructure, SFCs started to be executed on multiple nodes, sometimes managed by independent service providers. In this multi-domain scenario, a distributed placement mechanism to allocate SFCs without complete knowledge of the infrastructure is required. In this work, we propose a new approach named SPEED to solve the SFC Placement Problem over a multi-domain environment in a distributed manner. The solution encompasses algorithms and a new mapping model between the SFCPP and the Game Theory approach. The results show that SPEED is feasible and, compared to other approaches, has a gain of 30% in the number of SFC requests placed.</summary>
+  </entry>
+  <entry>
+    <title>L-PRISM: A Domain-Specific Language for Describing Multimedia Service Function Chains</title>
+    <link href="https://battisti.com.br/publication/publication13-jbcs/" />
+    <updated>2025-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication13-jbcs/</id>
+    <summary>Virtualization has emerged as a key technology for handling the complexity of heterogeneous environments, such as the Internet of Things (IoT) and multimedia systems. In this context, multimedia sensors represent an important data source that contributes to the development of the Internet of Media Things (IoMT) paradigm. Using the concepts of virtualization and IoMT, a multimedia Virtual Network Function (multimedia VNF) has been introduced to encapsulate virtualized devices and software components for processing multimedia streams. Frequently, multimedia streams require a sequence of processing steps, forming what is known as multimedia Service Function Chains (multimedia SFCs). With the advancement of technologies like augmented reality and autonomous vehicles, which require processing complex multimedia streams, often handled by multimedia SFCs, the deployment continues to be highly challenging. Currently, the execution of multimedia SFCs is performed by creating and binding components individually, requiring manual configuration and low-level integration. This increases the development time and probability of errors. Moreover, existing approaches lack a standardized mechanism for describing multimedia SFCs, resulting in ad hoc solutions with low interoperability. Despite the importance of describing multimedia SFCs, there has been limited research on this topic. To bridge this gap, we propose a novel metamodel named M-PRISM, designed to serve as the conceptual foundation for describing multimedia stream processing. Using this metamodel, we create a new Domain-Specific Language (DSL) named L-PRISM, tailored to describe multimedia SFCs. Additionally, we introduce a novel architecture for executing multimedia SFCs, demonstrated through a Proof-of-Concept (PoC) which follows the proposed architecture and executes multimedia SFCs described in L-PRISM. Our approach was evaluated through experiments with software developers, focusing on aspects such as expressiveness, ease of adoption, and reduction of configuration complexity. In the experiments we adopted the Goal Question Metric (GQM), Technology Acceptance Model (TAM) and Cognitive Dimensions of Notations (CDN) approaches, and the results indicate that L-PRISM and its PoC facilitate the definition and deployment of multimedia SFCs based on multimedia VNFs.</summary>
+  </entry>
+  <entry>
+    <title>Logística no Comércio Eletrônico</title>
+    <link href="https://battisti.com.br/publication/publication16-logistica-ecommerce/" />
+    <updated>2025-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication16-logistica-ecommerce/</id>
+    <summary>Livro-texto da disciplina Logística no Comércio Eletrônico. O comércio eletrônico é uma ferramenta poderosa para a comercialização de produtos e serviços, e entre os diversos fatores que determinam o sucesso de uma loja virtual a logística tem papel de destaque. A obra apresenta os conceitos fundamentais — o que é o comércio eletrônico, quais são os seus principais tipos, que tecnologias estão envolvidas na sua elaboração e manutenção e de que maneira os pedidos são processados e manipulados — e avança para os conceitos associados à gestão logística, ao gerenciamento dos fluxos logísticos relacionados ao comércio eletrônico, às estratégias logísticas e ao papel da administração de materiais. Está organizada em quatro temas, da história do comércio eletrônico ao processamento de pedidos e ao controle de estoque.</summary>
+  </entry>
+  <entry>
+    <title>A Novel Method for SFC Segmentation in Edge-Cloud Environments</title>
+    <link href="https://battisti.com.br/publication/publication10-cloudnet/" />
+    <updated>2024-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication10-cloudnet/</id>
+    <summary>A Service Function Chain (SFC) is a chain of Virtual Network Functions (VNFs). SFCs enable orchestration of complex network services in edge-cloud environments. To execute an SFC in a multi-domain environments, it is necessary to split the SFC into small parts named segments. This paper presents the Distributed Segmentation Strategy (DSS), a novel approach to segmenting SFCs. The SFC segmentation problem involves dividing an SFC into smaller parts to optimize the deployment and operation of network services across multiple domains. Our method allows for configurable segmentation strategies, enabling different SFC placement methods to tailor the segmentation process according to their specific requirements. Experimental results demonstrate that DSS enhances performance based on the SFC placement criteria, making it a valuable contribution to Network Function Virtualization (NFV) environments.</summary>
+  </entry>
+  <entry>
+    <title>A Domain-Specific Language for Multimedia Service Function Chains based on Virtualization of Sensors</title>
+    <link href="https://battisti.com.br/publication/publication11-webmedia/" />
+    <updated>2024-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication11-webmedia/</id>
+    <summary>Virtualization is a widely used technology that can abstract the complexity of heterogeneous environments, such as the Internet of Things (IoT) and multimedia systems. Multimedia sensors are an important data source in the Internet of Things (IoT), which brings the Internet of Media Things (IoMT) paradigm. Based on virtualization and IoMT, the concept of a multimedia Virtual Network Function (multimedia VNF) has been adopted to denote the virtualized representation of devices and also software components that process multimedia streams. In many scenarios, multiple processes must be applied to multimedia streams in a predefined sequence, thus creating the concept of multimedia Service Function Chain (multimedia SFC). Few efforts have been made in the literature to create a description language to support the definition of multimedia SFCs. In order to fill this gap, we propose a Domain Specific Language (DSL) called L-PRISM. This DSL can be used as a conceptual base for developers to implement and virtualize multimedia applications using multimedia VNFs. We also present a Proof of Concept (PoC) that uses L-PRISM to run multimedia SFCs. Our DSL and PoC were evaluated by software developers, and the results show that adopting L-PRISM facilitates the definition and deployment of multimedia SFCs based on multimedia VNFs.</summary>
+  </entry>
+  <entry>
+    <title>Mobility-aware SFC migration in dynamic 5G-Edge networks</title>
+    <link href="https://battisti.com.br/publication/publication12-computers/" />
+    <updated>2024-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication12-computers/</id>
+    <summary>The fifth-generation mobile networks bring an evolution in the development of novel classes of applications, increasing the demand for performance and flexibility to support new classes of services. Edge Computing and Network Function Virtualization are two key technologies that bring data processing closer to the user and allow the replacement of traditional hardware-based network functions with virtualized counterparts, which reduces costs and permits the provision of low-latency services. In this scenario, services are often implemented as a Service Function Chain (SFC), consisting of a set of ordered Virtual Network Functions (VNFs) that provide the required service functionality. During service execution, users can move from one location to another, which impacts service performance. An approach to reduce the impact of user mobility is to migrate services as users move to different places. However, the SFC migration problem imposes several challenges that require complex decision-making. VNFs should be migrated to nodes that have the necessary resources to execute the VNF instances. Also, the migration should be fast and effective, using as few resources as possible to reduce migration costs. In this paper, we propose a proactive and iterative SFC migration strategy to address the performance impact caused by user mobility. Our proposed solution anticipates the movement of users and estimates the impact of their mobility on service delay, proactively triggering service migrations when needed. The proposed algorithm decides which VNFs of the SFC should be migrated and which compute nodes will host the migrating VNFs, fulfilling service, resource, and migration constraints while maintaining a low migration overhead. Our algorithm also considers the dynamic nature of the edge environment in which other SFC placement and migrations might be occurring when an SFC is being migrated, which also introduces new challenges related to the availability and concurrency of resources required for migration.</summary>
+  </entry>
+  <entry>
+    <title>Distributed Auction-Based SFC Placement in a Multi-domain 5G Environment</title>
+    <link href="https://battisti.com.br/publication/publication7-sncomputer/" />
+    <updated>2023-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication7-sncomputer/</id>
+    <summary>The fifth generation of mobile networks (5G) brings an evolution of network service provisioning through a new communication paradigm, which enables the development of new applications and improves users’ experience. With 5G, it is envisioned that networks will provide services accessed by a variety of mobile users, some of such services requiring ultra-low latency and very high reliability. 5G also enables massive connectivity of sensors and actuators in the Internet of Things and Cyberphysical Systems scenarios, standing for massive Machine-Type Communication applications. Network Function Virtualization (NFV) is an emerging and promising solution to deal with such demands for flexible and agile service provisioning by replacing dedicated hardware implementations with software instances based on virtualization. A well-known challenge in NFV is the resource allocation problem. In particular, the Service Function Chain (SFC) placement problem is considered a major challenge, even more, when considering the distributed placement in a multi-administrative domain context. We propose a novel solution for the SFC placement problem called Multi-Domain Distributed Auction-Based SFC Placement Algorithm, which relies on an auction-based strategy. The proposed algorithm targets different 5G application scenarios with a focus on solving the SFC placement problem taking into consideration the dynamic aspects of unpredictable requests and the management of the entire auction process to decide which domain will be selected to meet the required SFC. Evaluations were carried out in a simulated environment aiming at assessing the performance of the algorithm in terms of the profit for each service provider during the allocation of the requested services in the respective domain that the service provider is responsible for. Results showed that adopting an auction-based mechanism, and thus allowing a domain to outsource the provision of requested services, successfully reduced the total cost of the service execution in a multi-domain environment. The auction-based approach increases the service provider profit by around 20% in the tested scenarios. Moreover, the number of services placed increases in comparison to the approach where all the services must be executed in the decision domain (with no auction).</summary>
+  </entry>
+  <entry>
+    <title>Dynamic and Mobility-Aware VNF Placement in 5G-Edge Computing Environments</title>
+    <link href="https://battisti.com.br/publication/publication8-netsoft/" />
+    <updated>2023-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication8-netsoft/</id>
+    <summary>The combination of both Network Function Virtualization (NFV) and Edge Computing facilitates the Quality of Service (QoS) fulfillment of latency-stringent applications by taking advantage of the proximity of the devices at the edge and the user, and provides the necessary flexibility to enable agile, cost-effective, and on-demand service delivery models for 5G environments. However, to achieve those benefits, VNFs must be deployed so that system resource utilization is optimized and service QoS is maintained. In this context, the selection of the most suitable edge nodes to deploy VNFs is a challenging research issue because multiple — and often conflicting — objectives must be considered by the VNF placement algorithm. The challenges become greater when considering the high dynamism of the edge environment. The availability of edge nodes and users’ locations vary over time, making original allocation decisions ineffective. In this paper, we propose DSP, a Dynamic Smart VNF Placement algorithm that considers the dynamic nature of a 5G edge environment. Our proposal focuses on optimizing resource utilization with an online placement approach to handle continuously arriving service requests. Furthermore, we also account for user mobility providing an approach that reduces the performance impact caused by users’ movement. Additionally, a two-level resource-sharing mechanism is provided, minimizing the cost for the infrastructure provider with low impact on QoS.</summary>
+  </entry>
+  <entry>
+    <title>A MAPE-K and Queueing Theory Approach for VNF Auto-scaling in Edge Computin</title>
+    <link href="https://battisti.com.br/publication/publication9-mapk/" />
+    <updated>2023-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication9-mapk/</id>
+    <summary>Network Function Virtualization (NFV) and Edge Computing (EC) can accommodate various services on a shared virtualized infrastructure. By using distributed resources available at the network edge, the EC paradigm contributes to share service provisioning. To improve agility and flexibility for service provisioning while reducing deployment costs for infrastructure providers, NFV virtualizes computing, network, and storage resources to decouple network functions from the underlying hardware. Therefore, typical network functions in a virtualized network environment are implemented as software entities called Virtual Network Functions (VNFs), which can run on Virtual Machines (VMs) or containers within off-the-shelf servers. The integration of EC and NFV allows the creation of VNF chains, known as Service Function Chains (SFC), representing end-to-end services and their deployment on edge servers. Edge nodes tend to provide fewer stable services once the environment where they are located is unpredictable. Thus, running SFCs with an unpredictable workload is challenging, and many components may cooperate to meet the required Service Level Agreement (SLA). Therefore, such environments require strategies for automatically scaling VNFs as a function of workload fluctuation. This work addressed the VNF scaling problem by providing a novel MAPE-K-based architecture and a queue-based algorithm to dynamically scale VNF in the edge. We demonstrate that the proposed approach outperforms purely reactive auto-scaling.</summary>
+  </entry>
+  <entry>
+    <title>A Novel Strategy for VNF Placement in Edge Computing Environments</title>
+    <link href="https://battisti.com.br/publication/publication6-mdpi/" />
+    <updated>2022-11-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication6-mdpi/</id>
+    <summary>Network function virtualization (NFV) is a novel technology that virtualizes computing,network, and storage resources to decouple the network functions from the underlying hardware, thus allowing the software implementation of such functions to run on commodity hardware. By doing this, NFV provides the necessary flexibility to enable agile, cost-effective, and on-demand service delivery models combined with automated management. Different management and orchestration challenges arise in such virtualized and distributed environments. A major challenge in the selection of the most suitable edge nodes is that of deploying virtual network functions (VNFs) to meet requests from multiple users. This article addresses the VNF placement problem by providing a novel integer linear programming (ILP) optimization model and a novel VNF placement algorithm. In our definition, the multi-objective optimization problem aims to (i) minimize the energy consumption in the edge nodes; (ii) minimize the total latency; and (iii) reducing the total cost of the infrastructure.Our new solution formulates the VNF placement problem by taking these three objectives into account simultaneously. In addition, the novel VNF placement algorithm leverages VNF sharing, which reuses VNF instances already placed to potentially reduce computational resource usage. Such a feature is still little explored in the community. Through simulation, numerical results show that our approach can perform better than other approaches found in the literature regarding resource consumption and the number of SFC requests met.</summary>
+  </entry>
+  <entry>
+    <title>Enabling Internet of Media Things With Edge-Based Virtual Multimedia Sensors</title>
+    <link href="https://battisti.com.br/publication/publication5-wgrs/" />
+    <updated>2021-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication5-wgrs/</id>
+    <summary>Multimedia sensors have recently become a significant data source in the Internet of Things (IoT), giving rise to the Internet of Media Things (IoMT). Since multimedia applications are usually latency-sensitive, data processing in the cloud is not always suitable. A strategy to minimize delay is processing multimedia streams closer to data sources, exploiting resources at the network edge. Moreover, virtualization is widely used to reduce complexity arising from heterogeneity in IoT environments. In this paper, we propose an edge-based architecture and platform to manage virtual multimedia sensors (VMS), enabling IoMT applications to be easily deployed. Our proposal encompasses V-PRISM, a software architecture tailored for IoMT, and ALFA, a distributed implementation of the architecture. V-PRISM components were designed to be deployed and executed in multiple edge nodes. VMSs are in charge of processing multimedia streams and provide an abstraction layer between IoMT applications and physical devices that produce those streams. This paper describes the proposal and the results of experiments showing that the proposed approach can successfully perform multimedia stream processing for applications that requires low-latency.</summary>
+  </entry>
+  <entry>
+    <title>V-PRISM: An Edge-Based IoT Architecture to Virtualize Multimedia Sensors</title>
+    <link href="https://battisti.com.br/publication/publication4-wfiot/" />
+    <updated>2020-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication4-wfiot/</id>
+    <summary>Multimedia sensors have recently become a major data source, giving rise to the Internet of Multimedia Things. Since multimedia applications are usually latency-sensitive, data processing in the cloud is not always effective. A strategy to minimize delay is to process the streams closer to the data sources, exploiting the resources at the edge of the network. We propose V-PRISM, an architecture to virtualize multimedia sensors with components deployed and executed at the edge tier. V-PRISM can reduce the resource consumption of IoT devices, the network traffic, and the end-to-end delay while increasing the ROI (Return On Investment) for infrastructure providers.</summary>
+  </entry>
+  <entry>
+    <title>Uma Proposta de Arquitetura para Virtualização de Sensores Multimídia na Borda da Rede</title>
+    <link href="https://battisti.com.br/publication/publication5-ieeeaccess/" />
+    <updated>2020-01-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication5-ieeeaccess/</id>
+    <summary>Com a proliferação do uso de câmeras e microfones na IoT, o gerenciamento de fluxos multimídia tornou-se um desafio. Aplicações que consomem dados discretos tipicamente virtualizam seus sensores na Cloud. Já as aplicações multimídia consomem dados contínuos, são sensíveis à latência e, com o aumento das capacidades de computação na borda da rede e por sua proximidade aos sensores multimídia, a borda tornou-se um local privilegiado para o gerenciamento de fluxos multimídia. Neste trabalho propomos V-PRISM, uma arquitetura para virtualizar sensores multimídia implantada na borda. Sua adoção reduz o consumo de recursos dos dispositivos e rede IoT, reduz o atraso fim-a-fim e aumenta o ROI para provedores de infraestrutura.</summary>
+  </entry>
+  <entry>
+    <title>A influência da inovatividade e do financiamento sobre o resultado em web startups brasileiras</title>
+    <link href="https://battisti.com.br/publication/publication3-p2p/" />
+    <updated>2018-09-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/publication/publication3-p2p/</id>
+    <summary>A inovatividade e os resultados são cruciais para a sobrevivência das webs startups, empresas de base tecnológica. A obtenção de capital para o seu financiamento não é simples. Os mecanismos tradicionais de financiamento exigem garantias que raramente podem ser satisfeitas por estas organizações. Com isso, meios alternativos de financiamento surgiram para dar suporte as startups. Este trabalho visa investigar a relação existente entre a inovatividade, o financiamento e o resultado em startups. Esta pesquisa é correlacional-causal com corte transversal. A unidade de análise são startups brasileiras. Foi utilizado como instrumento de coleta de dados questionário estruturado. A análise dos dados foi quantitativa utilizando análise fatorial. Alguns resultados obtidos são que no Brasil as startups estruturam seu capital primeiramente pelo autofinanciamento, em seguida com os modelos alternativos e por fim utilizam o financiamento tradicionais, observou-se também que a inovatividade afeta positivamente a obtenção recursos que por sua vez influencia o resultado.</summary>
+  </entry>
+  <entry>
+    <title>Matemática Computacional (2018)</title>
+    <link href="https://battisti.com.br/teaching/2018-1-matematica-computacional/" />
+    <updated>2018-02-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/teaching/2018-1-matematica-computacional/</id>
+    <summary>Compreender os domínios numéricos. Estudo da álgebra elementar. Noções sobre modelagem numérica, equações e gráficos. Estudo da Lógica Matemática: Conectivos; Proposições compostas; Quantificadores; Lógica e Teoria dos Conjuntos; Lógica de classes; Equivalência e Implicação Lógica; Equivalências Notáveis; Regras de Dedução. Compreensão dos princípios da Contagem e da Estatística elementar: medidas de posição e dispersão; probabilidade.</summary>
+  </entry>
+  <entry>
+    <title>Logística no Comércio Eletrônico (2018)</title>
+    <link href="https://battisti.com.br/teaching/2018-logistica-no-comercio-eletronico/" />
+    <updated>2018-02-01T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/teaching/2018-logistica-no-comercio-eletronico/</id>
+    <summary>A disseminação de conhecimentos e desenvolvimento profissional de logística em comércio eletrônico. Estudo das atividades de transporte, gestão de estoques, processamento de pedidos, compras, armazenagem, manuseio de materiais, embalagem e programação da produção e distribuição no comércio eletrônico. Implementação de um modelo de negócios eletrônicos e a logística necessária.</summary>
+  </entry>
+</feed>

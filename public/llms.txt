@@ -1,0 +1,89 @@
+# Anselmo Luiz Éden Battisti
+
+> Professor at IMPA Tech and Ph.D. in Computer Science (UFF). Research on SFC placement across the edge–cloud continuum, virtual network functions, 5G and the Internet of Media Things. Co-founder of Webgenium (2007). This is his personal and academic website: publications, patents, projects, talks and every course taught since 2012.
+
+- Name: Anselmo Luiz Éden Battisti
+- Position: Professor, IMPA Tech
+- Degree: Ph.D. in Computer Science, UFF
+- Location: Rio de Janeiro, Brazil
+- Work address: IMPA Tech, Av. Prof. Pereira Reis, 76 - Santo Cristo, Rio de Janeiro - RJ, 20220-800, Brazil
+- Email: anselmo@battisti.com.br
+- Curriculum Lattes: https://lattes.cnpq.br/6937214674204474
+- Google Scholar: https://scholar.google.com/citations?user=vqylNDgAAAAJ&hl=pt-BR
+- GitHub: https://github.com/anselmobattisti
+- YouTube: https://www.youtube.com/@AnselmoBattisti
+- Google Patents: https://patents.google.com/?inventor=anselmo+battisti
+- PhD thesis (PDF): https://github.com/anselmobattisti/publications/blob/main/docs/2025/Tese/tese.pdf
+
+Every page of the site has a Markdown version with the content only: replace the trailing slash of the address with `.md`
+(https://battisti.com.br/publication/ → https://battisti.com.br/publication.md; the home page is https://battisti.com.br/index.md).
+
+## Publications
+
+- [Speed: a distributed approach for SFC placement in the edge-cloud continuum](https://battisti.com.br/publication/publication14-atc/): Journal, Annals of Telecommunications, 2026. A. L. É. Battisti, F. C. Delicato, D. C. Muchaluat-Saade. DOI 10.1007/s12243-026-01157-w.
+- [SPEED - SFC Placement in Edge-Cloud Continuum: a Distributed Approach](https://battisti.com.br/publication/publication15-sbrc/): Conference, SBRC (Concurso de Teses e Dissertações), 2026. A. L. É. Battisti, F. C. Delicato, D. C. Muchaluat-Saade. DOI 10.5753/sbrc_estendido.2026.20071.
+- [Logística no Comércio Eletrônico](https://battisti.com.br/publication/publication16-logistica-ecommerce/): Book, Univel, 2025. A. L. É. Battisti, S. R. Busato.
+- [L-PRISM: A Domain-Specific Language for Describing Multimedia Service Function Chains](https://battisti.com.br/publication/publication13-jbcs/): Journal, JBCS, 2025. F. J. V. Quico, A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato. DOI 10.5753/jbcs.2025.5453.
+- [Mobility-aware SFC migration in dynamic 5G-Edge networks](https://battisti.com.br/publication/publication12-computers/): Journal, Computer Networks, 2024. J. L. Vieira, E. L. C. Macedo, A. L. É. Battisti, J. Noce, P. F. Pires, D. C. Muchaluat-Saade, A. C. B. de Oliveira, F. C. Delicato. DOI 10.1016/j.comnet.2024.110571.
+- [A Domain-Specific Language for Multimedia Service Function Chains based on Virtualization of Sensors](https://battisti.com.br/publication/publication11-webmedia/): Conference, WebMedia, 2024. F. J. V. Quico, A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato. DOI 10.5753/webmedia.2024.243129.
+- [A Novel Method for SFC Segmentation in Edge-Cloud Environments](https://battisti.com.br/publication/publication10-cloudnet/): Conference, CloudNet, 2024. A. L. É. Battisti, F. C. Delicato, D. C. Muchaluat-Saade. DOI 10.1109/CloudNet62863.2024.10815829.
+- [A MAPE-K and Queueing Theory Approach for VNF Auto-scaling in Edge Computin](https://battisti.com.br/publication/publication9-mapk/): Conference, CloudNet, 2023. T. P. da Silva, T. V. Batista, A. L. É. Battisti, A. Saraiva, A. A. Rocha, F. C. Delicato, I. V. Bastos, E. L. C. Macedo, A. C. B. de Oliveira, P. F. Pires. DOI 10.1109/CloudNet59005.2023.10490065.
+- [Dynamic and Mobility-Aware VNF Placement in 5G-Edge Computing Environments](https://battisti.com.br/publication/publication8-netsoft/): Conference, NetSoft, 2023. J. L. Vieira, A. L. É. Battisti, E. L. C. Macedo, P. F. Pires, D. C. Muchaluat-Saade, F. C. Delicato, A. C. B. de Oliveira. DOI 10.1109/NetSoft57336.2023.10175437.
+- [Distributed Auction-Based SFC Placement in a Multi-domain 5G Environment](https://battisti.com.br/publication/publication7-sncomputer/): Journal, SN Computer Science, 2023. E. L. C. Macedo, A. L. É. Battisti, J. L. Vieira, J. Noce, P. F. Pires, D. C. Muchaluat-Saade, A. C. B. de Oliveira, F. C. Delicato. DOI 10.1007/s42979-023-02291-1.
+- [A Novel Strategy for VNF Placement in Edge Computing Environments](https://battisti.com.br/publication/publication6-mdpi/): Journal, Future Internet, 2022. A. L. É. Battisti, E. L. C. Macedo, M. I. P. Josué, H. Barbalho, F. C. Delicato, D. C. Muchaluat-Saade, P. F. Pires, D. P. de Mattos, A. C. B. de Oliveira. DOI 10.3390/fi14120361.
+- [Enabling Internet of Media Things With Edge-Based Virtual Multimedia Sensors](https://battisti.com.br/publication/publication5-wgrs/): Journal, IEEE Access, 2021. A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato. DOI 10.1109/ACCESS.2021.3073240.
+- [Uma Proposta de Arquitetura para Virtualização de Sensores Multimídia na Borda da Rede](https://battisti.com.br/publication/publication5-ieeeaccess/): Conference, WGRS, 2020. A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato. DOI 10.5753/wgrs.2020.12464.
+- [V-PRISM: An Edge-Based IoT Architecture to Virtualize Multimedia Sensors](https://battisti.com.br/publication/publication4-wfiot/): Conference, WFIoT, 2020. A. L. É. Battisti, D. C. Muchaluat-Saade, F. C. Delicato. DOI 10.1109/WF-IoT48130.2020.9221199.
+- [A influência da inovatividade e do financiamento sobre o resultado em web startups brasileiras](https://battisti.com.br/publication/publication3-p2p/): Journal, P2P E INOVAÇÃO, 2018. A. L. É. Battisti, C. O. Quandt. DOI 10.21721/p2p.2018v5n1.p43-69.
+- [AN ASSESSMENT OF THE INFLUENCE OF INNOVATIVENESS AND FINANCING ON THE OUTCOME IN WEB START-UPS BRAZILIAN](https://battisti.com.br/publication/publication2-inovativeness/): Conference, CONTECSI, 2015. A. L. É. Battisti, C. O. Quandt. DOI 10.5748/9788599693117-12contecsi/ps-2793.
+- [A e-PARTICIPAÇÃO COMO FERRAMENTA DE TRANSFORMAÇÃO SOCIAL – UM ESTUDO DE CASO](https://battisti.com.br/publication/publication1-eparticipacao/): Conference, CONTECSI, 2014. A. L. É. Battisti, M. A. Cunha, M. R. da Fonseca. DOI 10.5748/9788599693100-11contecsi/ps-685.
+- [All publications](https://battisti.com.br/publication/)
+
+## Research
+
+- [Research](https://battisti.com.br/research/): overview of the research on placing, migrating and scaling virtualized network functions between the edge and the cloud.
+- [LibVox](https://battisti.com.br/projects/libvox/): An open-source, AI-powered conversational layer for libraries. (2026 — present)
+- [Projects](https://battisti.com.br/projects/): research projects, newest first.
+- [Patents](https://battisti.com.br/patents/): US patent filings, with numbers, dates, assignees and inventors.
+- [Awards & Honors](https://battisti.com.br/awards/): academic and professional recognition.
+
+## Talks
+
+- [O Paradoxo da IA: O retorno ao modelo Cascata na era do código gerado](https://battisti.com.br/talks/2026-paradoxo-da-ia-cascata/): XII SIMMA · UFF Volta Redonda/RJ, Brasil, 16 September 2026.
+- [All talks](https://battisti.com.br/talks/)
+
+## Teaching
+
+- [Desenvolvimento de Software (2026)](https://battisti.com.br/teaching/2026-2-desenvolvimento-de-software/): IMPA Tech, Matemática da Tecnologia e Inovação, 54 h.
+- [Logística no Comércio Eletrônico (2018)](https://battisti.com.br/teaching/2018-logistica-no-comercio-eletronico/): UNIVEL, Tecnologia em Logística · EAD, 75 h.
+- [Matemática Computacional (2018)](https://battisti.com.br/teaching/2018-1-matematica-computacional/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Marketing Digital e E-commerce (2017)](https://battisti.com.br/teaching/2017-2-marketing-digital-e-e-commerce/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS) · 2º período, 75 h.
+- [Design de Interfaces (2017)](https://battisti.com.br/teaching/2017-2-design-de-interfaces/): UNIVEL, Jornalismo · 6º período, 75 h.
+- [Usabilidade e Acessibilidade Multimídia (2017)](https://battisti.com.br/teaching/2017-1-usabilidade-e-acessibilidade-multimidia/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS) · 5º período, 75 h.
+- [Estrutura de Dados (2017)](https://battisti.com.br/teaching/2017-1-estrutura-de-dados/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS) · 3º período, 75 h.
+- [Matemática Computacional (2016)](https://battisti.com.br/teaching/2016-matematica-computacional/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Matemática Computacional (2015)](https://battisti.com.br/teaching/2015-matematica-computacional/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Logística no Comércio Eletrônico (2015)](https://battisti.com.br/teaching/2015-logistica-no-comercio-eletronico/): UNIVEL, Tecnologia em Logística, 75 h.
+- [Empreendedorismo (2015)](https://battisti.com.br/teaching/2015-empreendedorismo/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Desenvolvimento de Interfaces para Internet (2015)](https://battisti.com.br/teaching/2015-desenvolvimento-de-interfaces-para-internet/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Matemática Computacional (2014)](https://battisti.com.br/teaching/2014-matematica-computacional/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Logística no Comércio Eletrônico (2014)](https://battisti.com.br/teaching/2014-logistica-no-comercio-eletronico/): UNIVEL, Tecnologia em Logística, 75 h.
+- [Fundamentos de Orientação a Objetos (2014)](https://battisti.com.br/teaching/2014-fundamentos-de-orientacao-a-objetos/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Empreendedorismo em Informática (2014)](https://battisti.com.br/teaching/2014-empreendedorismo-em-informatica/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Fundamentos de Orientação a Objetos (2013)](https://battisti.com.br/teaching/2013-fundamentos-de-orientacao-a-objetos/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [Fundamentos de Orientação a Objetos (2012)](https://battisti.com.br/teaching/2012-fundamentos-de-orientacao-a-objetos/): UNIVEL, Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), 75 h.
+- [All courses, by semester](https://battisti.com.br/teaching/)
+
+## About
+
+- [About](https://battisti.com.br/): who he is, research summary, selected publications and current positions.
+- [Work experience](https://battisti.com.br/work/): professional history since 2007.
+- [Academic background](https://battisti.com.br/background/): degrees, theses and advisors, with the PDFs.
+- [Contact](https://battisti.com.br/contact/): email, address and profiles.
+
+## Optional
+
+- [Pipo no Jardim](https://battisti.com.br/extra/pipo/): A Super Nintendo game for a three-year-old, made with my son Oliver.
+- [Extra](https://battisti.com.br/extra/): side projects outside research and teaching.
+- [Privacy Policy](https://battisti.com.br/privacy-policy/): data processed by the site, purposes, sharing and rights under the LGPD.
+- [Cookie Policy](https://battisti.com.br/cookie-policy/): cookies used by the site and how to accept or decline them.
