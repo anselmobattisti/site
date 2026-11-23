@@ -24,6 +24,12 @@ A primeira resposta a isso foram as **ferramentas** (_tool use_): a aplicação 
 
 O que sobra é um problema de escala. Sem um protocolo, cada sistema precisa de um conector para cada agente: três sistemas (GitHub, PostgreSQL, agenda) e quatro agentes (Claude, ChatGPT, VS Code, Gemini) dão 12 conectores. Com um protocolo comum, cada sistema publica **um servidor**, e todo agente que fala o protocolo, inclusive os que ainda vão surgir, já consegue usá-lo. São N + M integrações em vez de N × M.
 
+**Sem protocolo**, um conector por par: cada sistema escreve um conector por agente, 3 × 4 = 12.
+
+**Com o MCP**, um servidor por sistema: cada sistema publica um servidor MCP, 3 no total.
+
+O peso fica do lado do sistema: nenhum agente vai escrever um conector para cada sistema do mundo. Sem o MCP, o GitHub precisaria de um plugin para o ChatGPT, outro para o VS Code, outro para o Gemini.
+
 ## O que é o MCP
 
 O [Model Context Protocol](https://modelcontextprotocol.io) foi lançado pela Anthropic em novembro de 2024, como [projeto de código aberto](https://www.anthropic.com/news/model-context-protocol). Ele define como uma aplicação de IA descobre e usa dados, ferramentas e modelos de prompt oferecidos por outro programa.
@@ -41,7 +47,29 @@ São três papéis, mais o sistema de verdade:
 - **Servidor MCP**: o programa que traduz o MCP para o sistema. Ele não é o sistema.
 - **Sistema**: o serviço ou o banco de verdade, que nem sabe que o MCP existe.
 
-O servidor não conhece o modelo, e o modelo não fala com o servidor: quem intermedeia é o host. É também o host que pode pedir a confirmação da pessoa antes de uma chamada, o "Permitir?" que aparece no Claude Code e no VS Code.
+O servidor não conhece o modelo, e o modelo não fala com o servidor: quem intermedeia é o host. Uma chamada, do pedido à resposta:
+
+\---
+config:
+  sequence:
+    mirrorActors: false
+---
+sequenceDiagram
+    participant U as Usuário
+    participant H as Host
+    participant L as LLM
+    participant S as Servidor
+    U->>H: "Quais tarefas faltam?"
+    H->>S: tools/list (uma vez, ao conectar)
+    H->>L: pergunta + descrição das tools
+    L->>H: "chamar listar\_pendentes"
+    H->>S: tools/call
+    S-->>H: lista de tarefas
+    H->>L: resultado
+    L-->>H: resposta em texto
+    H-->>U: resposta
+
+É também o host que pode pedir a confirmação da pessoa antes do `tools/call`: é o "Permitir?" que aparece no Claude Code e no VS Code.
 
 As mensagens são JSON-RPC, e chegam por um de dois transportes. No **stdio**, o host inicia o servidor na mesma máquina e conversa pela entrada e saída padrão. No **Streamable HTTP**, o servidor fica numa URL, e o cliente se autentica com OAuth. A mensagem é a mesma nos dois: dá para começar local e publicar depois, sem reescrever nada.
 
