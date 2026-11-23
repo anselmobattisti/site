@@ -2044,7 +2044,8 @@ html.aviso-aberto body {
 	margin: 2.25rem 0 0.75rem;
 }
 
-.post > pre[class*="language-"] {
+.post > pre[class*="language-"],
+.post > pre.mermaid {
 	margin-bottom: 1.25rem;
 }
 
@@ -2055,6 +2056,50 @@ html.aviso-aberto body {
 	border-radius: 2px;
 	background-color: var(--surface-2);
 	font-size: 0.94em;
+}
+
+/* Diagrama "N × M" do post sobre o MCP, desenhado em SVG: agentes à esquerda, sistemas à direita. As caixas têm cor
+   clara fixa (com texto escuro) nos dois temas; as linhas seguem a cor do texto. */
+.diagram-nxm {
+	margin: 1.5rem 0 1.25rem;
+}
+
+figure.diagram-nxm > svg {
+	min-width: 0;
+	max-width: 620px;
+	margin: 0 auto;
+}
+
+.diagram-nxm text {
+	font-size: 13px;
+	fill: #2b2418;
+}
+
+.diagram-nxm .d-linhas {
+	stroke: var(--muted);
+	stroke-width: 1;
+}
+
+.diagram-nxm .d-agente {
+	fill: #fbdba3;
+	stroke: #d9a441;
+}
+
+.diagram-nxm .d-sistema {
+	fill: #cdeff7;
+	stroke: #6fb7c9;
+}
+
+.diagram-nxm .d-protocolo {
+	fill: #dff3c8;
+	stroke: #8fbf5a;
+}
+
+.diagram-nxm figcaption {
+	margin-top: 0.6rem;
+	font-size: var(--text-sm);
+	text-align: center;
+	color: var(--ink-soft);
 }
 
 /* Aulas de uma disciplina: data, assunto (título e o que foi visto) e o botão do PDF. */

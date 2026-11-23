@@ -4,6 +4,7 @@ resumo: "O que é o Model Context Protocol, como host, cliente e servidor conver
 data: 2026-11-22
 idioma: "pt-BR"
 tags: ["MCP", "IA", "engenharia de software", "Python"]
+mermaid: true
 ---
 
 Este texto acompanha a aula 24 da disciplina [Desenvolvimento de Software](/teaching/2026-2-desenvolvimento-de-software/),
@@ -30,6 +31,19 @@ sistemas (GitHub, PostgreSQL, agenda) e quatro agentes (Claude, ChatGPT, VS Code
 protocolo comum, cada sistema publica **um servidor**, e todo agente que fala o protocolo, inclusive os que ainda vão
 surgir, já consegue usá-lo. São N + M integrações em vez de N × M.
 
+<figure class="diagram diagram-nxm">
+<svg viewBox="0 0 560 235" role="img" aria-label="Quatro agentes (Claude, ChatGPT, VS Code e Gemini) ligados um a um a três sistemas (GitHub, PostgreSQL e Agenda): doze ligações."><g class="d-linhas"><line x1="200" y1="35" x2="360" y2="62" /><line x1="200" y1="35" x2="360" y2="117" /><line x1="200" y1="35" x2="360" y2="172" /><line x1="200" y1="90" x2="360" y2="62" /><line x1="200" y1="90" x2="360" y2="117" /><line x1="200" y1="90" x2="360" y2="172" /><line x1="200" y1="145" x2="360" y2="62" /><line x1="200" y1="145" x2="360" y2="117" /><line x1="200" y1="145" x2="360" y2="172" /><line x1="200" y1="200" x2="360" y2="62" /><line x1="200" y1="200" x2="360" y2="117" /><line x1="200" y1="200" x2="360" y2="172" /></g><rect class="d-agente" x="80" y="20" width="120" height="30" rx="3" /><text x="140" y="39" text-anchor="middle">Claude</text><rect class="d-agente" x="80" y="75" width="120" height="30" rx="3" /><text x="140" y="94" text-anchor="middle">ChatGPT</text><rect class="d-agente" x="80" y="130" width="120" height="30" rx="3" /><text x="140" y="149" text-anchor="middle">VS Code</text><rect class="d-agente" x="80" y="185" width="120" height="30" rx="3" /><text x="140" y="204" text-anchor="middle">Gemini</text><rect class="d-sistema" x="360" y="47" width="120" height="30" rx="3" /><text x="420" y="66" text-anchor="middle">GitHub</text><rect class="d-sistema" x="360" y="102" width="120" height="30" rx="3" /><text x="420" y="121" text-anchor="middle">PostgreSQL</text><rect class="d-sistema" x="360" y="157" width="120" height="30" rx="3" /><text x="420" y="176" text-anchor="middle">Agenda</text></svg>
+<figcaption><strong>Sem protocolo</strong>, um conector por par: cada sistema escreve um conector por agente, 3 × 4 = 12.</figcaption>
+</figure>
+
+<figure class="diagram diagram-nxm">
+<svg viewBox="0 0 560 235" role="img" aria-label="Os mesmos quatro agentes e três sistemas, todos ligados a um bloco central, o MCP: sete ligações."><g class="d-linhas"><line x1="200" y1="35" x2="250" y2="35" /><line x1="200" y1="90" x2="250" y2="90" /><line x1="200" y1="145" x2="250" y2="145" /><line x1="200" y1="200" x2="250" y2="200" /><line x1="310" y1="62" x2="360" y2="62" /><line x1="310" y1="117" x2="360" y2="117" /><line x1="310" y1="172" x2="360" y2="172" /></g><rect class="d-protocolo" x="250" y="20" width="60" height="195" rx="3" /><text x="280" y="121" text-anchor="middle">MCP</text><rect class="d-agente" x="80" y="20" width="120" height="30" rx="3" /><text x="140" y="39" text-anchor="middle">Claude</text><rect class="d-agente" x="80" y="75" width="120" height="30" rx="3" /><text x="140" y="94" text-anchor="middle">ChatGPT</text><rect class="d-agente" x="80" y="130" width="120" height="30" rx="3" /><text x="140" y="149" text-anchor="middle">VS Code</text><rect class="d-agente" x="80" y="185" width="120" height="30" rx="3" /><text x="140" y="204" text-anchor="middle">Gemini</text><rect class="d-sistema" x="360" y="47" width="120" height="30" rx="3" /><text x="420" y="66" text-anchor="middle">GitHub</text><rect class="d-sistema" x="360" y="102" width="120" height="30" rx="3" /><text x="420" y="121" text-anchor="middle">PostgreSQL</text><rect class="d-sistema" x="360" y="157" width="120" height="30" rx="3" /><text x="420" y="176" text-anchor="middle">Agenda</text></svg>
+<figcaption><strong>Com o MCP</strong>, um servidor por sistema: cada sistema publica um servidor MCP, 3 no total.</figcaption>
+</figure>
+
+O peso fica do lado do sistema: nenhum agente vai escrever um conector para cada sistema do mundo. Sem o MCP, o
+GitHub precisaria de um plugin para o ChatGPT, outro para o VS Code, outro para o Gemini.
+
 ## O que é o MCP
 
 O [Model Context Protocol](https://modelcontextprotocol.io) foi lançado pela Anthropic em novembro de 2024, como
@@ -52,8 +66,33 @@ São três papéis, mais o sistema de verdade:
 - **Servidor MCP**: o programa que traduz o MCP para o sistema. Ele não é o sistema.
 - **Sistema**: o serviço ou o banco de verdade, que nem sabe que o MCP existe.
 
-O servidor não conhece o modelo, e o modelo não fala com o servidor: quem intermedeia é o host. É também o host que
-pode pedir a confirmação da pessoa antes de uma chamada, o "Permitir?" que aparece no Claude Code e no VS Code.
+O servidor não conhece o modelo, e o modelo não fala com o servidor: quem intermedeia é o host. Uma chamada, do
+pedido à resposta:
+
+```mermaid
+---
+config:
+  sequence:
+    mirrorActors: false
+---
+sequenceDiagram
+    participant U as Usuário
+    participant H as Host
+    participant L as LLM
+    participant S as Servidor
+    U->>H: "Quais tarefas faltam?"
+    H->>S: tools/list (uma vez, ao conectar)
+    H->>L: pergunta + descrição das tools
+    L->>H: "chamar listar_pendentes"
+    H->>S: tools/call
+    S-->>H: lista de tarefas
+    H->>L: resultado
+    L-->>H: resposta em texto
+    H-->>U: resposta
+```
+
+É também o host que pode pedir a confirmação da pessoa antes do `tools/call`: é o "Permitir?" que aparece no Claude
+Code e no VS Code.
 
 As mensagens são JSON-RPC, e chegam por um de dois transportes. No **stdio**, o host inicia o servidor na mesma
 máquina e conversa pela entrada e saída padrão. No **Streamable HTTP**, o servidor fica numa URL, e o cliente se
