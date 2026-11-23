@@ -72,4 +72,7 @@ export default defineConfig({
   markdown: { syntaxHighlight: false, smartypants: false, rehypePlugins: [blocosDeCodigo] },
   // CSS pequeno: embutir no HTML elimina a requisição que bloqueia a renderização.
   build: { inlineStylesheets: 'always' },
+  // O Mermaid só é importado nas páginas com diagrama: sem isto, o Vite o descobre no meio do `npm run dev`, responde
+  // 504 (Outdated Optimize Dep) e o diagrama não é desenhado. Aqui ele é preparado ao subir o servidor.
+  vite: { optimizeDeps: { include: ['mermaid'] } },
 });
