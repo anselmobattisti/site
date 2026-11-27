@@ -65,6 +65,10 @@ engenharia de software é **"o desenvolvimento, por várias pessoas, de programa
 cenário em que um harness faz falta: muita gente mexendo, ao longo do tempo, em algo que ninguém consegue manter
 inteiro na cabeça.
 
+Vale registrar uma ressalva do próprio Randell: alguns grandes projetos feitos sob encomenda **ainda sofrem**
+problemas parecidos com os que, em 1968, levaram a falar em crise. O harness não resolveu tudo; o que ele faz é
+tornar o sucesso menos raro.
+
 ## O harness invisível da experiência
 
 Böckeler faz uma observação que vai na direção contrária e que vale a pena levar a sério. Para ela, nós, humanos,
@@ -72,11 +76,42 @@ Böckeler faz uma observação que vai na direção contrária e que vale a pena
 300 linhas, o fato de o nosso nome estar no commit, o conhecimento do que "bom" significa naquela equipe. O agente não
 tem nada disso, e por isso o harness dele precisa tornar explícito o que, em nós, é tácito.
 
-Concordo, com uma ressalva: **essa experiência foi formada pelo harness**. Ninguém nasce desconfiando de uma função de
-300 linhas. Aprende-se isso com revisões de código, com testes que quebraram, com o colega que pediu para separar a
-função em três. O gosto do desenvolvedor experiente é, em boa parte, o harness da engenharia de software
-**internalizado**. E mesmo o desenvolvedor mais experiente continua precisando da parte externa: ele também esquece
+Concordo, com uma ressalva. Minha impressão é que **boa parte dessa experiência foi formada pelo harness**. Ninguém
+nasce desconfiando de uma função de 300 linhas. Aprende-se isso com revisões de código, com testes que quebraram, com
+o colega que pediu para separar a função em três, e também com o sistema que caiu em produção. O gosto do
+desenvolvedor experiente é, em parte, o harness da engenharia de software **internalizado**. E mesmo o desenvolvedor mais experiente continua precisando da parte externa: ele também esquece
 um caso de borda, também quebra um teste que não rodou, também se beneficia de um segundo par de olhos.
+
+## O que a engenharia de software não previu
+
+Seria exagero dizer que nada muda. Algumas diferenças entre pessoas e agentes parecem novas, mas têm um paralelo
+humano conhecido:
+
+- **Contexto limitado.** A janela de contexto do agente não é infinita, assim como a memória de trabalho de uma
+  pessoa. A engenharia de software já tem resposta para isso: **módulos pequenos, interfaces claras e
+  encapsulamento**, para que ninguém precise ter o sistema inteiro na cabeça para mudar uma parte dele. Serve para os
+  dois.
+- **Pressa.** O usuário pode limitar o tempo ou o orçamento do agente, e um agente apressado, como uma pessoa com
+  prazo apertado, tende a entregar código pior. Os mesmos sensores que seguram a pessoa com prazo, como a regra de que
+  os testes têm de passar antes do merge, seguram o agente.
+- **Volume.** O agente escreve mais do que uma pessoa consegue revisar. Mas a revisão não precisa ser só humana: **um
+  agente pode revisar o código de outro**, de preferência com instruções diferentes. É a mesma ideia da revisão por
+  pares, que existe porque quem escreve não enxerga o próprio erro; na classificação de Böckeler, um sensor
+  inferencial.
+
+Outras diferenças são novas de fato, e é nelas que o harness dos agentes precisa ir além do que a engenharia de
+software construiu:
+
+- **Memória que zera.** Uma pessoa esquece aos poucos; o agente começa cada sessão do zero. O que ele precisa saber
+  tem de estar **escrito** (`AGENTS.md`, `CLAUDE.md`, a documentação do projeto), uma disciplina que as equipes
+  humanas sempre recomendaram e raramente seguiram.
+- **Erro confiante.** Uma pessoa costuma dizer "não entendi" ou "não sei". Um agente tende a preencher a lacuna com
+  algo plausível. Isso pede sensores que confiram **fatos e premissas**, não só código.
+- **Permissões.** Um agente executa comandos no seu computador e pode ser enganado por instruções escondidas num
+  arquivo ou numa página. Sandbox, lista de comandos permitidos e confirmação antes de ações irreversíveis passam a
+  fazer parte do harness.
+- **Responsabilidade.** O nome no commit continua sendo o de uma pessoa. O agente não responde pelo que fez; quem o
+  usou, sim.
 
 ## O que isso muda na prática
 
@@ -86,7 +121,7 @@ Se a engenharia de software é o harness dos humanos, algumas consequências apa
   documentada e um build que roda com um comando são o mesmo harness, servindo a pessoas e a modelos. Böckeler chama
   isso de *harnessability*: o quanto o ambiente é legível e navegável. O código legado sem testes é ruim para os dois.
 - **Pular as práticas "porque agora a IA escreve" é andar para trás.** O agente escreve mais rápido do que qualquer
-  pessoa consegue revisar. Sem sensores automáticos, o volume de código cresce e a confiança nele diminui. É a crise
+  pessoa consegue revisar. Sem sensores automáticos e sem outros agentes revisando, o volume de código cresce e a confiança nele diminui. É a crise
   de 1968 em velocidade maior.
 - **O papel da pessoa sobe de nível.** Em vez de escrever cada linha, ela passa a **cuidar do harness**: quando um erro
   se repete, a resposta não é corrigir à mão de novo, é acrescentar uma regra, um teste ou uma verificação que impeça
@@ -101,9 +136,13 @@ de qualquer sensor** se ninguém especificou com clareza o que queria. Testes co
 testes dizem; não conferem que os testes dizem a coisa certa.
 
 Nenhum harness substitui **entender o problema**. Ele só garante que, entendido o problema, o caminho até um software
-de boa qualidade seja menos dependente de sorte, de memória e de atenção, recursos que os humanos têm em quantidade
-limitada. Foi para isso que inventamos a engenharia de software. Os agentes, no fim das contas, só chegaram para usar
-o harness que já estava pronto.
+de boa qualidade seja menos dependente de sorte, de memória e de atenção, recursos que humanos e agentes têm em
+quantidade limitada. Foi para isso que inventamos a engenharia de software.
+
+O harness dos agentes é, em grande parte, **a engenharia de software reaplicada**. E o que falta nela mostra
+justamente o que os agentes têm de diferente: memória que zera, erro confiante, permissões e responsabilidade. Quem
+já pratica engenharia de software chega a essa nova fase com **metade do harness pronto**; a outra metade é o
+trabalho dos próximos anos.
 
 ## Fontes
 
