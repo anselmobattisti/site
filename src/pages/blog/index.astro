@@ -1,7 +1,9 @@
 ---
 // Blog: os posts, do mais recente para o mais antigo.
+// A data inteira fica na coluna da esquerda, no lugar do ano: a coluna larga de "período" (entry-list--period)
+// cabe "26 Nov 2026" e, no celular, vira uma linha acima do título.
 import Base from '../../layouts/Base.astro';
-import { recentes, url, ano, dataCurta, dataIso } from '../../data/colecoes';
+import { recentes, url, dataCurta, dataIso } from '../../data/colecoes';
 
 const posts = await recentes('blog');
 ---
@@ -17,15 +19,14 @@ const posts = await recentes('blog');
   </div>
 
   {posts.length ? (
-    <ul class="entry-list">
+    <ul class="entry-list entry-list--period">
       {posts.map(({ id, data: p }) => (
         <li class="entry">
-          <div class="entry-year">{ano(p.data)}</div>
+          <div class="entry-year"><time datetime={dataIso(p.data)}>{dataCurta(p.data)}</time></div>
           <div lang={p.idioma}>
             <h2 class="entry-title"><a href={url('blog', id)}>{p.titulo}</a></h2>
             <p class="entry-org">{p.resumo}</p>
             <p class="entry-meta">
-              <span class="venue"><time datetime={dataIso(p.data)}>{dataCurta(p.data)}</time></span>
               {p.idioma && <span class="kind">{p.idioma}</span>}
               {p.rascunho && <span class="kind">Draft</span>}
               <span class="entry-links">

@@ -1226,6 +1226,11 @@ dialog.lightbox::backdrop {
 	content: "· ";
 }
 
+/* Sem nada antes (o blog, com a data na coluna da esquerda), o separador sobraria. */
+.kind:first-child::before {
+	content: none;
+}
+
 .entry-links {
 	display: flex;
 	flex-wrap: wrap;
