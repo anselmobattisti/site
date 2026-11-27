@@ -4,12 +4,19 @@
   <subtitle>Publications, talks, research projects and blog posts.</subtitle>
   <link href="https://battisti.com.br/feed.xml" rel="self" />
   <link href="https://battisti.com.br/" />
-  <updated>2026-11-22T00:00:00.000Z</updated>
+  <updated>2026-11-26T00:00:00.000Z</updated>
   <id>https://battisti.com.br/</id>
   <author>
     <name>Anselmo Luiz Éden Battisti</name>
     <email>anselmo@battisti.com.br</email>
   </author>
+  <entry>
+    <title>A engenharia de software é o harness dos seres humanos</title>
+    <link href="https://battisti.com.br/blog/engenharia-de-software-harness-para-humanos/" />
+    <updated>2026-11-26T00:00:00.000Z</updated>
+    <id>https://battisti.com.br/blog/engenharia-de-software-harness-para-humanos/</id>
+    <summary>Testes, tipos, revisão de código e integração contínua não foram inventados para os agentes de IA: são o harness que montamos, ao longo de quase 60 anos, para que pessoas falíveis escrevessem software de boa qualidade.</summary>
+  </entry>
   <entry>
     <title>MCP: como ligar um assistente de IA aos seus dados e ferramentas</title>
     <link href="https://battisti.com.br/blog/mcp-model-context-protocol/" />
@@ -142,12 +149,5 @@
     <updated>2018-09-01T00:00:00.000Z</updated>
     <id>https://battisti.com.br/publication/publication3-p2p/</id>
     <summary>A inovatividade e os resultados são cruciais para a sobrevivência das webs startups, empresas de base tecnológica. A obtenção de capital para o seu financiamento não é simples. Os mecanismos tradicionais de financiamento exigem garantias que raramente podem ser satisfeitas por estas organizações. Com isso, meios alternativos de financiamento surgiram para dar suporte as startups. Este trabalho visa investigar a relação existente entre a inovatividade, o financiamento e o resultado em startups. Esta pesquisa é correlacional-causal com corte transversal. A unidade de análise são startups brasileiras. Foi utilizado como instrumento de coleta de dados questionário estruturado. A análise dos dados foi quantitativa utilizando análise fatorial. Alguns resultados obtidos são que no Brasil as startups estruturam seu capital primeiramente pelo autofinanciamento, em seguida com os modelos alternativos e por fim utilizam o financiamento tradicionais, observou-se também que a inovatividade afeta positivamente a obtenção recursos que por sua vez influencia o resultado.</summary>
-  </entry>
-  <entry>
-    <title>Matemática Computacional (2018)</title>
-    <link href="https://battisti.com.br/teaching/2018-1-matematica-computacional/" />
-    <updated>2018-02-01T00:00:00.000Z</updated>
-    <id>https://battisti.com.br/teaching/2018-1-matematica-computacional/</id>
-    <summary>Compreender os domínios numéricos. Estudo da álgebra elementar. Noções sobre modelagem numérica, equações e gráficos. Estudo da Lógica Matemática: Conectivos; Proposições compostas; Quantificadores; Lógica e Teoria dos Conjuntos; Lógica de classes; Equivalência e Implicação Lógica; Equivalências Notáveis; Regras de Dedução. Compreensão dos princípios da Contagem e da Estatística elementar: medidas de posição e dispersão; probabilidade.</summary>
   </entry>
 </feed>

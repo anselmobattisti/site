@@ -188,3 +188,6 @@ Como qualquer decisão de arquitetura, um protocolo tem custo: mais um processo 
 ## Fontes
 
 - Slides da aula 24, "Model Context Protocol (MCP): como conectar assistentes de IA a dados e ferramentas", da disciplina Desenvolvimento de Software (IMPA Tech, 2026): [aula24.pdf](https://battisti.com.br/teaching/2026-02/desenvolvimento-de-software/aula24.pdf). Consultados em 22/11/2026. As referências de cada dado citado estão nos últimos slides.
+
+- Later →
+  [A engenharia de software é o harness dos seres humanos](https://battisti.com.br/blog/engenharia-de-software-harness-para-humanos/)

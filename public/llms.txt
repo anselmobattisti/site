@@ -54,6 +54,7 @@ Every page of the site has a Markdown version with the content only: replace the
 
 ## Blog
 
+- [A engenharia de software é o harness dos seres humanos](https://battisti.com.br/blog/engenharia-de-software-harness-para-humanos/): Testes, tipos, revisão de código e integração contínua não foram inventados para os agentes de IA: são o harness que montamos, ao longo de… (26 November 2026)
 - [MCP: como ligar um assistente de IA aos seus dados e ferramentas](https://battisti.com.br/blog/mcp-model-context-protocol/): O que é o Model Context Protocol, como host, cliente e servidor conversam, um servidor de tarefas em Python e os cuidados de segurança… (22 November 2026)
 - [All posts](https://battisti.com.br/blog/)
 
